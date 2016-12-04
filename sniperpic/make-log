@@ -1,0 +1,539 @@
+[DEP   ] common/config/key.d
+[DEP   ] common/config/config.d
+[DEP   ] common/config/section.d
+[DEP   ] common/config/config_file.d
+[DEP   ] common/scripting/py_dvfs.d
+[DEP   ] common/scripting/py_control.d
+[DEP   ] common/scripting/py_thread.d
+[DEP   ] common/scripting/hooks_py.d
+[DEP   ] common/scripting/py_stats.d
+[DEP   ] common/scripting/py_mem.d
+[DEP   ] common/scripting/py_hooks.d
+[DEP   ] common/scripting/py_config.d
+[DEP   ] common/scripting/py_bbv.d
+[DEP   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cache.d
+[DEP   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/shmem_req.d
+[DEP   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.d
+[DEP   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_cntlr.d
+[DEP   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/shmem_msg.d
+[DEP   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/shmem_perf.d
+[DEP   ] common/core/memory_subsystem/dram/dram_cntlr_interface.d
+[DEP   ] common/core/memory_subsystem/dram/dram_cache.d
+[DEP   ] common/core/memory_subsystem/fast_nehalem/memory_manager.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/tlb.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/simple_prefetcher.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/cache_atd.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/nuca_cache.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/ghb_prefetcher.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/prefetcher.d
+[DEP   ] common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.d
+[DEP   ] common/core/memory_subsystem/directory_schemes/directory.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_mru.d
+[DEP   ] common/core/memory_subsystem/cache/shared_cache_block_info.d
+[DEP   ] common/core/memory_subsystem/cache/pr_l2_cache_block_info.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_random.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_plru.d
+[DEP   ] common/core/memory_subsystem/cache/cache_block_info.d
+[DEP   ] common/core/memory_subsystem/cache/cache.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_round_robin.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_lru.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_nmru.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_nru.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set.d
+[DEP   ] common/core/memory_subsystem/cache/cache_base.d
+[DEP   ] common/core/memory_subsystem/cache/cache_set_srrip.d
+[DEP   ] common/core/memory_subsystem/mem_component.d
+[DEP   ] common/core/memory_subsystem/memory_manager_base.d
+[DEP   ] common/core/memory_subsystem/addr_bank_mapping.d
+[DEP   ] common/core/memory_subsystem/address_home_lookup.d
+[DEP   ] common/core/syscall_model.d
+[DEP   ] common/core/thread.d
+[DEP   ] common/core/bbv_count.d
+[DEP   ] common/core/topology_info.d
+[DEP   ] common/core/core.d
+[DEP   ] common/core/pin_memory_manager.d
+[DEP   ] common/fault_injection/fault_injector_random.d
+[DEP   ] common/fault_injection/fault_injection.d
+[DEP   ] common/sampling/periodic_sampling.d
+[DEP   ] common/sampling/sampling_provider.d
+[DEP   ] common/sampling/sampling_algorithm.d
+[DEP   ] common/sampling/sampling_manager.d
+[DEP   ] common/user/sync_api.d
+[DEP   ] common/trace_frontend/trace_manager.d
+[DEP   ] common/trace_frontend/trace_thread.d
+[DEP   ] common/transport/transport.d
+[DEP   ] common/transport/smtransport.d
+[DEP   ] common/misc/semaphore.d
+[DEP   ] common/misc/callstack.d
+[DEP   ] common/misc/logmem.d
+[DEP   ] common/misc/bit_vector.d
+[DEP   ] common/misc/setlock.d
+[DEP   ] common/misc/handle_args.d
+[DEP   ] common/misc/log.d
+[DEP   ] common/misc/selock.d
+[DEP   ] common/misc/modulo_num.d
+[DEP   ] common/misc/pthread_lock.d
+[DEP   ] common/misc/subsecond_time_c.d
+[DEP   ] common/misc/spin_loop_detector.d
+[DEP   ] common/misc/subsecond_time.d
+[DEP   ] common/misc/memguard.d
+[DEP   ] common/misc/barrier.d
+[DEP   ] common/misc/fxsupport.d
+[DEP   ] common/misc/stats.d
+[DEP   ] common/misc/syscall_strings.d
+[DEP   ] common/misc/packetize.d
+[DEP   ] common/misc/timer.d
+[DEP   ] common/misc/progress.d
+[DEP   ] common/misc/tls.d
+[DEP   ] common/misc/pthread_thread.d
+[DEP   ] common/misc/tags.d
+[DEP   ] common/misc/circular_log.d
+[DEP   ] common/misc/cond.d
+[DEP   ] common/misc/basic_hash.d
+[DEP   ] common/misc/checksum.d
+[DEP   ] common/misc/locked_hash.d
+[DEP   ] common/misc/config.d
+[DEP   ] common/misc/utils.d
+[DEP   ] common/misc/lockfree_hash.d
+[DEP   ] common/misc/pthread_tls.d
+[DEP   ] common/misc/bottlegraph.d
+[DEP   ] common/network/network_model_emesh_hop_counter.d
+[DEP   ] common/network/network_model_bus.d
+[DEP   ] common/network/network_model.d
+[DEP   ] common/network/network_model_emesh_hop_by_hop.d
+[DEP   ] common/network/network.d
+[DEP   ] common/network/network_model_magic.d
+[DEP   ] common/network/packet_type.d
+[DEP   ] common/performance_model/branch_predictors/pentium_m_branch_predictor.d
+[DEP   ] common/performance_model/branch_predictors/branch_predictor_return_value.d
+[DEP   ] common/performance_model/branch_predictors/one_bit_branch_predictor.d
+[DEP   ] common/performance_model/performance_models/interval_performance_model/windows.d
+[DEP   ] common/performance_model/performance_models/interval_performance_model/interval_contention_nehalem.d
+[DEP   ] common/performance_model/performance_models/interval_performance_model/interval_timer.d
+[DEP   ] common/performance_model/performance_models/rob_performance_model/rob_smt_timer.d
+[DEP   ] common/performance_model/performance_models/rob_performance_model/rob_timer.d
+[DEP   ] common/performance_model/performance_models/rob_performance_model/smt_timer.d
+[DEP   ] common/performance_model/performance_models/rob_performance_model/rob_contention_nehalem.d
+[DEP   ] common/performance_model/performance_models/core_model/core_model.d
+[DEP   ] common/performance_model/performance_models/core_model/dynamic_micro_op_nehalem.d
+[DEP   ] common/performance_model/performance_models/core_model/core_model_nehalem.d
+[DEP   ] common/performance_model/performance_models/micro_op/instruction_decoder.d
+[DEP   ] common/performance_model/performance_models/micro_op/register_dependencies.d
+[DEP   ] common/performance_model/performance_models/micro_op/memory_dependencies.d
+[DEP   ] common/performance_model/performance_models/micro_op/micro_op.d
+[DEP   ] common/performance_model/performance_models/micro_op/dynamic_micro_op.d
+[DEP   ] common/performance_model/performance_models/interval_performance_model.d
+[DEP   ] common/performance_model/performance_models/iocoom_performance_model.d
+[DEP   ] common/performance_model/performance_models/rob_smt_performance_model.d
+[DEP   ] common/performance_model/performance_models/magic_performance_model.d
+[DEP   ] common/performance_model/performance_models/rob_performance_model.d
+[DEP   ] common/performance_model/performance_models/oneipc_performance_model.d
+[DEP   ] common/performance_model/performance_models/micro_op_performance_model.d
+[DEP   ] common/performance_model/performance_models/simple_performance_model.d
+[DEP   ] common/performance_model/instruction_tracers/instruction_tracer_fpstats.d
+[DEP   ] common/performance_model/instruction_tracers/instruction_tracer_print.d
+[DEP   ] common/performance_model/instruction_tracers/instruction_tracer.d
+[DEP   ] common/performance_model/instruction_tracers/loop_profiler.d
+[DEP   ] common/performance_model/instruction_tracers/loop_tracer.d
+[DEP   ] common/performance_model/fastforward_performance_model.d
+[DEP   ] common/performance_model/queue_model_history_list.d
+[DEP   ] common/performance_model/dram_perf_model_normal.d
+[DEP   ] common/performance_model/mmu_perf_model_base.d
+[DEP   ] common/performance_model/contention_model.d
+[DEP   ] common/performance_model/cache_perf_model.d
+[DEP   ] common/performance_model/dram_perf_model_constant.d
+[DEP   ] common/performance_model/hit_where.d
+[DEP   ] common/performance_model/branch_predictor.d
+[DEP   ] common/performance_model/queue_model_basic.d
+[DEP   ] common/performance_model/queue_model_windowed_mg1.d
+[DEP   ] common/performance_model/dram_perf_model_readwrite.d
+[DEP   ] common/performance_model/dram_directory_perf_model_base.d
+[DEP   ] common/performance_model/performance_model.d
+[DEP   ] common/performance_model/queue_model.d
+[DEP   ] common/performance_model/shmem_perf_model.d
+[DEP   ] common/performance_model/instruction.d
+[DEP   ] common/performance_model/dram_perf_model.d
+[DEP   ] common/performance_model/queue_model_contention.d
+[DEP   ] common/scheduler/scheduler_big_small.d
+[DEP   ] common/scheduler/scheduler_roaming.d
+[DEP   ] common/scheduler/scheduler_static.d
+[DEP   ] common/scheduler/scheduler_pinned.d
+[DEP   ] common/scheduler/scheduler.d
+[DEP   ] common/scheduler/scheduler_dynamic.d
+[DEP   ] common/scheduler/scheduler_pinned_base.d
+[DEP   ] common/system/magic_client.d
+[DEP   ] common/system/barrier_sync_client.d
+[DEP   ] common/system/core_manager.d
+[DEP   ] common/system/clock_skew_minimization_object.d
+[DEP   ] common/system/sim_thread.d
+[DEP   ] common/system/core_thread.d
+[DEP   ] common/system/routine_tracer.d
+[DEP   ] common/system/pthread_emu.d
+[DEP   ] common/system/simulator.d
+[DEP   ] common/system/thread_stats_manager.d
+[DEP   ] common/system/sim_thread_manager.d
+[DEP   ] common/system/fastforward_performance_manager.d
+[DEP   ] common/system/dvfs_manager.d
+[DEP   ] common/system/routine_tracer_funcstats.d
+[DEP   ] common/system/magic_server.d
+[DEP   ] common/system/thread_manager.d
+[DEP   ] common/system/syscall_server.d
+[DEP   ] common/system/sync_client.d
+[DEP   ] common/system/barrier_sync_server.d
+[DEP   ] common/system/sync_server.d
+[DEP   ] common/system/memory_tracker.d
+[DEP   ] common/system/hooks_manager.d
+[DEP   ] common/system/routine_tracer_ondemand.d
+[DEP   ] common/system/routine_tracer_print.d
+[DEP   ] common/system/inst_mode.d
+[DEP   ] common/system/hooks_manager_init.d
+[CXX   ] common/system/hooks_manager_init.o
+[CXX   ] common/system/inst_mode.o
+[CXX   ] common/system/routine_tracer_print.o
+[CXX   ] common/system/routine_tracer_ondemand.o
+[CXX   ] common/system/hooks_manager.o
+[CXX   ] common/system/memory_tracker.o
+[CXX   ] common/system/sync_server.o
+[CXX   ] common/system/barrier_sync_server.o
+[CXX   ] common/system/sync_client.o
+[CXX   ] common/system/syscall_server.o
+[CXX   ] common/system/thread_manager.o
+[CXX   ] common/system/magic_server.o
+[CXX   ] common/system/routine_tracer_funcstats.o
+[CXX   ] common/system/dvfs_manager.o
+[CXX   ] common/system/fastforward_performance_manager.o
+[CXX   ] common/system/sim_thread_manager.o
+[CXX   ] common/system/thread_stats_manager.o
+[CXX   ] common/system/simulator.o
+[CXX   ] common/system/pthread_emu.o
+[CXX   ] common/system/routine_tracer.o
+[CXX   ] common/system/core_thread.o
+[CXX   ] common/system/sim_thread.o
+[CXX   ] common/system/clock_skew_minimization_object.o
+[CXX   ] common/system/core_manager.o
+[CXX   ] common/system/barrier_sync_client.o
+[CXX   ] common/system/magic_client.o
+[CXX   ] common/scheduler/scheduler_pinned_base.o
+[CXX   ] common/scheduler/scheduler_dynamic.o
+[CXX   ] common/scheduler/scheduler.o
+[CXX   ] common/scheduler/scheduler_pinned.o
+[CXX   ] common/scheduler/scheduler_static.o
+[CXX   ] common/scheduler/scheduler_roaming.o
+[CXX   ] common/scheduler/scheduler_big_small.o
+[CXX   ] common/performance_model/queue_model_contention.o
+[CXX   ] common/performance_model/dram_perf_model.o
+[CXX   ] common/performance_model/instruction.o
+[CXX   ] common/performance_model/shmem_perf_model.o
+[CXX   ] common/performance_model/queue_model.o
+[CXX   ] common/performance_model/performance_model.o
+/home/rashmivs/compute_cache_sources/sniperpic/common/performance_model/performance_model.cc: In member function ‘void PerformanceModel::psuedo_iterate(bool, int)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/performance_model/performance_model.cc:335:34: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      && (getInstructionCount() < target_instruction_cnt)
+                                  ^
+[CXX   ] common/performance_model/dram_directory_perf_model_base.o
+[CXX   ] common/performance_model/dram_perf_model_readwrite.o
+[CXX   ] common/performance_model/queue_model_windowed_mg1.o
+[CXX   ] common/performance_model/queue_model_basic.o
+[CXX   ] common/performance_model/branch_predictor.o
+[CXX   ] common/performance_model/hit_where.o
+[CXX   ] common/performance_model/dram_perf_model_constant.o
+[CXX   ] common/performance_model/cache_perf_model.o
+[CXX   ] common/performance_model/contention_model.o
+[CXX   ] common/performance_model/mmu_perf_model_base.o
+[CXX   ] common/performance_model/dram_perf_model_normal.o
+[CXX   ] common/performance_model/queue_model_history_list.o
+[CXX   ] common/performance_model/fastforward_performance_model.o
+[CXX   ] common/performance_model/instruction_tracers/loop_tracer.o
+[CXX   ] common/performance_model/instruction_tracers/loop_profiler.o
+[CXX   ] common/performance_model/instruction_tracers/instruction_tracer.o
+[CXX   ] common/performance_model/instruction_tracers/instruction_tracer_print.o
+[CXX   ] common/performance_model/instruction_tracers/instruction_tracer_fpstats.o
+[CXX   ] common/performance_model/performance_models/simple_performance_model.o
+[CXX   ] common/performance_model/performance_models/micro_op_performance_model.o
+[CXX   ] common/performance_model/performance_models/oneipc_performance_model.o
+[CXX   ] common/performance_model/performance_models/rob_performance_model.o
+[CXX   ] common/performance_model/performance_models/magic_performance_model.o
+[CXX   ] common/performance_model/performance_models/rob_smt_performance_model.o
+[CXX   ] common/performance_model/performance_models/iocoom_performance_model.o
+[CXX   ] common/performance_model/performance_models/interval_performance_model.o
+[CXX   ] common/performance_model/performance_models/micro_op/dynamic_micro_op.o
+[CXX   ] common/performance_model/performance_models/micro_op/micro_op.o
+[CXX   ] common/performance_model/performance_models/micro_op/memory_dependencies.o
+[CXX   ] common/performance_model/performance_models/micro_op/register_dependencies.o
+[CXX   ] common/performance_model/performance_models/micro_op/instruction_decoder.o
+/home/rashmivs/compute_cache_sources/sniperpic/common/performance_model/performance_models/micro_op/instruction_decoder.cc: In static member function ‘static const std::vector<const MicroOp*>* InstructionDecoder::decode(IntPtr, const xed_decoded_inst_t*, Instruction*)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/performance_model/performance_models/micro_op/instruction_decoder.cc:128:9: warning: variable ‘is_atomic’ set but not used [-Wunused-but-set-variable]
+    bool is_atomic = false;
+         ^
+[CXX   ] common/performance_model/performance_models/core_model/core_model_nehalem.o
+[CXX   ] common/performance_model/performance_models/core_model/dynamic_micro_op_nehalem.o
+[CXX   ] common/performance_model/performance_models/core_model/core_model.o
+[CXX   ] common/performance_model/performance_models/rob_performance_model/rob_contention_nehalem.o
+[CXX   ] common/performance_model/performance_models/rob_performance_model/smt_timer.o
+[CXX   ] common/performance_model/performance_models/rob_performance_model/rob_timer.o
+[CXX   ] common/performance_model/performance_models/rob_performance_model/rob_smt_timer.o
+[CXX   ] common/performance_model/performance_models/interval_performance_model/interval_timer.o
+[CXX   ] common/performance_model/performance_models/interval_performance_model/interval_contention_nehalem.o
+[CXX   ] common/performance_model/performance_models/interval_performance_model/windows.o
+[CXX   ] common/performance_model/branch_predictors/one_bit_branch_predictor.o
+[CXX   ] common/performance_model/branch_predictors/branch_predictor_return_value.o
+[CXX   ] common/performance_model/branch_predictors/pentium_m_branch_predictor.o
+[CXX   ] common/network/packet_type.o
+[CXX   ] common/network/network_model_magic.o
+[CXX   ] common/network/network.o
+[CXX   ] common/network/network_model_emesh_hop_by_hop.o
+[CXX   ] common/network/network_model.o
+[CXX   ] common/network/network_model_bus.o
+[CXX   ] common/network/network_model_emesh_hop_counter.o
+[CXX   ] common/misc/fxsupport.o
+[CXX   ] common/misc/bottlegraph.o
+[CXX   ] common/misc/pthread_tls.o
+[CXX   ] common/misc/checksum.o
+[CXX   ] common/misc/locked_hash.o
+[CXX   ] common/misc/basic_hash.o
+[CXX   ] common/misc/cond.o
+[CXX   ] common/misc/progress.o
+[CXX   ] common/misc/timer.o
+[CXX   ] common/misc/selock.o
+[CXX   ] common/misc/stats.o
+[CXX   ] common/misc/barrier.o
+[CXX   ] common/misc/config.o
+[CXX   ] common/misc/utils.o
+[CXX   ] common/misc/handle_args.o
+[CXX   ] common/misc/tags.o
+[CXX   ] common/misc/semaphore.o
+[CXX   ] common/misc/circular_log.o
+[CXX   ] common/misc/memguard.o
+[CXX   ] common/misc/lockfree_hash.o
+[CXX   ] common/misc/log.o
+[CXX   ] common/misc/packetize.o
+[CXX   ] common/misc/pthread_thread.o
+[CXX   ] common/misc/tls.o
+[CXX   ] common/misc/syscall_strings.o
+[CXX   ] common/misc/callstack.o
+[CXX   ] common/misc/subsecond_time.o
+[CXX   ] common/misc/spin_loop_detector.o
+[CXX   ] common/misc/subsecond_time_c.o
+[CXX   ] common/misc/pthread_lock.o
+[CXX   ] common/misc/modulo_num.o
+[CXX   ] common/misc/setlock.o
+[CXX   ] common/misc/bit_vector.o
+[CXX   ] common/misc/logmem.o
+[CXX   ] common/transport/smtransport.o
+[CXX   ] common/transport/transport.o
+[CXX   ] common/trace_frontend/trace_thread.o
+[CXX   ] common/trace_frontend/trace_manager.o
+[CXX   ] common/user/sync_api.o
+[CXX   ] common/sampling/sampling_manager.o
+[CXX   ] common/sampling/sampling_algorithm.o
+[CXX   ] common/sampling/sampling_provider.o
+[CXX   ] common/sampling/periodic_sampling.o
+[CXX   ] common/fault_injection/fault_injection.o
+[CXX   ] common/fault_injection/fault_injector_random.o
+[CXX   ] common/core/pin_memory_manager.o
+[CXX   ] common/core/core.o
+[CXX   ] common/core/topology_info.o
+[CXX   ] common/core/bbv_count.o
+[CXX   ] common/core/thread.o
+[CXX   ] common/core/syscall_model.o
+[CXX   ] common/core/memory_subsystem/address_home_lookup.o
+[CXX   ] common/core/memory_subsystem/addr_bank_mapping.o
+[CXX   ] common/core/memory_subsystem/memory_manager_base.o
+[CXX   ] common/core/memory_subsystem/mem_component.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set_srrip.o
+[CXX   ] common/core/memory_subsystem/cache/cache_base.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set.o
+In file included from /usr/include/c++/4.8.2/cassert:43:0,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/misc/config.h:23,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/system/simulator.h:4,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set.cc:12:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set.cc: In member function ‘void CacheSet::insert(CacheBlockInfo*, Byte*, bool*, CacheBlockInfo*, Byte*, CacheCntlr*, int, int)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set.cc:106:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   assert(index != avoid_index);
+                   ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set.cc:107:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   assert(index != avoid_index2);
+                   ^
+[CXX   ] common/core/memory_subsystem/cache/cache_set_nru.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set_nmru.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set_lru.o
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set_lru.cc: In member function ‘virtual UInt32 CacheSetLRU::getReplacementIndex(CacheCntlr*, int, int)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set_lru.cc:43:56: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (UInt32 i = 0; (i < m_associativity) && (i!= avoid_index) && (i!= avoid_index2); i++)
+                                                        ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/cache/cache_set_lru.cc:43:77: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       for (UInt32 i = 0; (i < m_associativity) && (i!= avoid_index) && (i!= avoid_index2); i++)
+                                                                             ^
+[CXX   ] common/core/memory_subsystem/cache/cache_set_round_robin.o
+[CXX   ] common/core/memory_subsystem/cache/cache.o
+[CXX   ] common/core/memory_subsystem/cache/cache_block_info.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set_plru.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set_random.o
+[CXX   ] common/core/memory_subsystem/cache/pr_l2_cache_block_info.o
+[CXX   ] common/core/memory_subsystem/cache/shared_cache_block_info.o
+[CXX   ] common/core/memory_subsystem/cache/cache_set_mru.o
+[CXX   ] common/core/memory_subsystem/directory_schemes/directory.o
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.o
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc: In member function ‘void ParametricDramDirectoryMSI::MemoryManager::create_cache_program_instructions(Byte*)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:878:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         while(sub_block < cache_subblocks) {
+                           ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:882:70: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘UInt64 {aka long unsigned int}’ [-Wformat=]
+           printf("Address: 0x%x, Value: %d\n", address, temp_data_buf);
+                                                                      ^
+In file included from /usr/include/c++/4.8.2/cassert:43:0,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/directory_schemes/directory_entry.h:10,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/directory_schemes/directory.h:4,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/../pr_l1_pr_l2_dram_directory_msi/dram_directory_cache.h:5,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/../pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.h:3,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.h:6,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:2:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc: In member function ‘void ParametricDramDirectoryMSI::MemoryManager::schedule_cap_instructions()’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:941:34: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   assert(count == m_cap_ins.size());
+                                  ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc: In member function ‘void ParametricDramDirectoryMSI::MemoryManager::create_cap_ss_instructions(Byte*)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:955:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         while(sub_block < ss_subblocks) {
+                           ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:958:69: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘UInt64 {aka long unsigned int}’ [-Wformat=]
+           printf("STE no: 0x%x, Value: %d\n", address, temp_data_buf);
+                                                                     ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:947:10: warning: unused variable ‘ste_num’ [-Wunused-variable]
+   UInt32 ste_num;
+          ^
+In file included from /usr/include/c++/4.8.2/cassert:43:0,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/directory_schemes/directory_entry.h:10,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/directory_schemes/directory.h:4,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/../pr_l1_pr_l2_dram_directory_msi/dram_directory_cache.h:5,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/../pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.h:3,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.h:6,
+                 from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:2:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc: In member function ‘void ParametricDramDirectoryMSI::MemoryManager::create_microbench_pic_fastbit_instructions()’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:1573:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  assert(m_mbench_dest_dyn_ins_info.size() == pic_vec_lgcl_ins);
+                                              ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc: In member function ‘void ParametricDramDirectoryMSI::MemoryManager::create_microbench_fastbit_instructions()’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:1655:75: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  assert(m_mbench_dest_dyn_ins_info.size() == (vec_store_ins + vec_load_ins));
+                                                                           ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc: In member function ‘void ParametricDramDirectoryMSI::MemoryManager::create_microbench_bmm_instructions()’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:2271:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   (vec_col_load_ins * vec_row_batches)));
+                                       ^
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/prefetcher.o
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/ghb_prefetcher.o
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/nuca_cache.o
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/cache_atd.o
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.o
+In file included from /home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:1:0:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.h: In constructor ‘ParametricDramDirectoryMSI::CacheCntlr::CacheCntlr(MemComponent::component_t, String, core_id_t, ParametricDramDirectoryMSI::MemoryManager*, AddressHomeLookup*, Semaphore*, Semaphore*, UInt32, ParametricDramDirectoryMSI::CacheParameters&, ShmemPerfModel*, bool)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.h:335:26: warning: ‘ParametricDramDirectoryMSI::CacheCntlr::m_shmem_perf_model’ will be initialized after [-Wreorder]
+          ShmemPerfModel* m_shmem_perf_model;
+                          ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.h:251:17: warning:   ‘UInt32 ParametricDramDirectoryMSI::CacheCntlr::m_logASCIISetIndex’ [-Wreorder]
+          UInt32 m_logASCIISetIndex; 
+                 ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:124:1: warning:   when initialized here [-Wreorder]
+ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
+ ^
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc: In member function ‘HitWhere::where_t ParametricDramDirectoryMSI::CacheCntlr::processCAPSOpFromCore(ParametricDramDirectoryMSI::CacheCntlr::cap_ops_t, IntPtr)’:
+/home/rashmivs/compute_cache_sources/sniperpic/common/core/memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:2761:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/simple_prefetcher.o
+[CXX   ] common/core/memory_subsystem/parametric_dram_directory_msi/tlb.o
+[CXX   ] common/core/memory_subsystem/fast_nehalem/memory_manager.o
+[CXX   ] common/core/memory_subsystem/dram/dram_cache.o
+[CXX   ] common/core/memory_subsystem/dram/dram_cntlr_interface.o
+[CXX   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/shmem_perf.o
+[CXX   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/shmem_msg.o
+[CXX   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_cntlr.o
+[CXX   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.o
+[CXX   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/shmem_req.o
+[CXX   ] common/core/memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cache.o
+[CXX   ] common/scripting/py_bbv.o
+[CXX   ] common/scripting/py_config.o
+[CXX   ] common/scripting/py_hooks.o
+[CXX   ] common/scripting/py_mem.o
+[CXX   ] common/scripting/py_stats.o
+[CXX   ] common/scripting/hooks_py.o
+[CXX   ] common/scripting/py_thread.o
+[CXX   ] common/scripting/py_control.o
+[CXX   ] common/scripting/py_dvfs.o
+[CXX   ] common/config/config_file.o
+[CXX   ] common/config/section.o
+[CXX   ] common/config/config.o
+[CXX   ] common/config/key.o
+[AR    ] lib/libcarbon_sim.a
+[DEP   ] sift/sift_writer.d
+[DEP   ] sift/sift_utils.d
+[DEP   ] sift/zfstream.d
+[DEP   ] sift/sift_reader.d
+[CXX   ] sift/sift_reader.o
+[CXX   ] sift/zfstream.o
+[CXX   ] sift/sift_utils.o
+[CXX   ] sift/sift_writer.o
+[AR    ] sift/libsift.a
+[CXX   ] sift/siftdump.o
+[CXX   ] sift/siftdump
+[DEP   ] sift/recorder/syscall_modeling.d
+[DEP   ] sift/recorder/recorder_control.d
+[DEP   ] sift/recorder/pinboost_debug.d
+[DEP   ] sift/recorder/trace_rtn.d
+[DEP   ] sift/recorder/bbv_count.d
+[DEP   ] sift/recorder/threads.d
+[DEP   ] sift/recorder/globals.d
+[DEP   ] sift/recorder/sift_recorder.d
+[DEP   ] sift/recorder/recorder_base.d
+[DEP   ] sift/recorder/emulation.d
+[CXX   ] sift/recorder/emulation.o
+[CXX   ] sift/recorder/recorder_base.o
+[CXX   ] sift/recorder/sift_recorder.o
+[CXX   ] sift/recorder/globals.o
+[CXX   ] sift/recorder/threads.o
+[CXX   ] sift/recorder/bbv_count.o
+[CXX   ] sift/recorder/trace_rtn.o
+[CXX   ] sift/recorder/pinboost_debug.o
+[CXX   ] sift/recorder/recorder_control.o
+[CXX   ] sift/recorder/syscall_modeling.o
+[CXX   ] sift/recorder/sift_recorder
+[DEP   ] pin/lite/handle_syscalls.d
+[DEP   ] pin/lite/memory_modeling.d
+[DEP   ] pin/lite/routine_replace.d
+[DEP   ] pin/pin_thread.d
+[DEP   ] pin/trace_rtn.d
+[DEP   ] pin/pin_sim.d
+[DEP   ] pin/pin_tls.d
+[DEP   ] pin/pin_exceptions.d
+[DEP   ] pin/local_storage.d
+[DEP   ] pin/toolreg.d
+[DEP   ] pin/codecache_trace.d
+[DEP   ] pin/instruction_modeling.d
+[DEP   ] pin/spin_loop_detection.d
+[DEP   ] pin/pin_lock.d
+[DEP   ] pin/inst_mode.d
+[CXX   ] pin/inst_mode.o
+[CXX   ] pin/pin_lock.o
+[CXX   ] pin/spin_loop_detection.o
+[CXX   ] pin/instruction_modeling.o
+[CXX   ] pin/codecache_trace.o
+[CXX   ] pin/toolreg.o
+[CXX   ] pin/local_storage.o
+[CXX   ] pin/pin_exceptions.o
+[CXX   ] pin/pin_tls.o
+[CXX   ] pin/pin_sim.o
+[CXX   ] pin/trace_rtn.o
+[CXX   ] pin/pin_thread.o
+[CXX   ] pin/lite/routine_replace.o
+[CXX   ] pin/lite/memory_modeling.o
+[CXX   ] pin/lite/handle_syscalls.o
+[LD    ] lib/pin_sim.so
+[CXX   ] pin/follow_execv/follow_execv.o
+[LD    ] lib/follow_execv.so
+[DEP   ] standalone/standalone.d
+[DEP   ] standalone/exceptions.d
+[CXX   ] standalone/exceptions.o
+[CXX   ] standalone/standalone.o
+[LD    ] lib/sniper
