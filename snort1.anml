@@ -1,0 +1,68 @@
+<anml version="1.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <automata-network id="an1">
+    <state-transition-element id="__2__" symbol-set="[\xff]" start="start-of-data">
+      <activate-on-match element="__2__"/>
+      <activate-on-match element="__3__"/>
+      <activate-on-match element="__7__:cnt"/>
+    </state-transition-element>
+    <state-transition-element id="__3__" symbol-set="[^\xff]">
+      <activate-on-match element="__7__:rst"/>
+    </state-transition-element>
+    <state-transition-element id="__4__" symbol-set="[\xff]">
+      <activate-on-match element="__25__"/>
+    </state-transition-element>
+    <state-transition-element id="__8__" symbol-set="[\dA-F]" start="start-of-data">
+      <activate-on-match element="__8__"/>
+      <activate-on-match element="__9__"/>
+      <activate-on-match element="__13__:cnt"/>
+    </state-transition-element>
+    <state-transition-element id="__9__" symbol-set="[^\dA-F]">
+      <activate-on-match element="__13__:rst"/>
+    </state-transition-element>
+    <state-transition-element id="__10__" symbol-set="[\dA-F]">
+      <activate-on-match element="__25__"/>
+    </state-transition-element>
+    <state-transition-element id="__14__" symbol-set="[C]" start="start-of-data">
+      <activate-on-match element="__15__"/>
+    </state-transition-element>
+    <state-transition-element id="__15__" symbol-set="[o]">
+      <activate-on-match element="__16__"/>
+    </state-transition-element>
+    <state-transition-element id="__16__" symbol-set="[l]">
+      <activate-on-match element="__17__"/>
+    </state-transition-element>
+    <state-transition-element id="__17__" symbol-set="[o]">
+      <activate-on-match element="__18__"/>
+    </state-transition-element>
+    <state-transition-element id="__18__" symbol-set="[r]">
+      <activate-on-match element="__25__"/>
+    </state-transition-element>
+    <state-transition-element id="__19__" symbol-set="[M]" start="start-of-data">
+      <activate-on-match element="__20__"/>
+    </state-transition-element>
+    <state-transition-element id="__20__" symbol-set="[o]">
+      <activate-on-match element="__21__"/>
+    </state-transition-element>
+    <state-transition-element id="__21__" symbol-set="[t]">
+      <activate-on-match element="__22__"/>
+    </state-transition-element>
+    <state-transition-element id="__22__" symbol-set="[i]">
+      <activate-on-match element="__23__"/>
+    </state-transition-element>
+    <state-transition-element id="__23__" symbol-set="[o]">
+      <activate-on-match element="__24__"/>
+    </state-transition-element>
+    <state-transition-element id="__24__" symbol-set="[n]">
+      <activate-on-match element="__25__"/>
+    </state-transition-element>
+    <counter id="__7__" target="31">
+      <activate-on-target element="__4__"/>
+    </counter>
+    <counter id="__13__" target="21">
+      <activate-on-target element="__10__"/>
+    </counter>
+    <or id="__25__">
+      <report-on-high reportcode="1"/>
+    </or>
+  </automata-network>
+</anml>
