@@ -162,7 +162,7 @@ void MicroOpPerformanceModel::doSquashing(uint32_t first_squashed)
 bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
 {
 
-   printf("\n Instruction addr: %lu", instruction->getAddress());
+   printf("\n CAP: MicroOpPerformanceModel::handleInstruction: Instruction addr: %lu", instruction->getAddress());
 
    if (m_state_instruction == NULL)
    {
@@ -434,6 +434,7 @@ bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
    if(m_current_uops.size() > 0)
    {
       uint64_t new_latency_cycles;
+
       boost::tie(new_num_insns, new_latency_cycles) = simulate(m_current_uops);
       new_latency.addCycleLatency(new_latency_cycles);
 

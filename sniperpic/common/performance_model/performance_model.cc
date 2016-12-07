@@ -119,7 +119,12 @@ void PerformanceModel::processAppMagic(UInt64 argument) {
 				m_ignore_functional_model = false;
 				//printf("\nSee a marker: %lu, %s", args_in->arg0, args_in->str);
 			}
-		}
+	    if (marker.compare("cprg") == 0) {
+			   m_ignore_functional_model = true;
+               printf("CAP: PerformanceModel::processAppMagic: %lld\n", argument);
+
+         } 
+	}
 	}
 }
 
@@ -212,7 +217,10 @@ void PerformanceModel::queueDynamicInstruction(Instruction *i)
 
 void PerformanceModel::queueInstruction(Instruction *ins, bool is_pic_ins)
 {
+   printf("CAP: Inside PerformanceModel::queueInstruction\n");
 	 if(!m_ignore_functional_model || is_pic_ins) {
+   printf("CAP: Inside PerformanceModel::queueInstruction: IF condition\n");
+
    	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_instruction_queue.push_wait(ins);
    	#else
@@ -379,7 +387,7 @@ void PerformanceModel::psuedo_iterate(
 
 void PerformanceModel::iterate()
 {
-   printf("CAP: Perf Mdl Iterate \n");
+   printf("CAP: PerformanceModel::iterate \n");
 
    while (m_instruction_queue.size() > 0)
    {
@@ -392,6 +400,7 @@ void PerformanceModel::iterate()
       Instruction *ins = m_instruction_queue.front();
 
       LOG_ASSERT_ERROR(!ins->isIdle(), "Idle instructions should not make it here!");
+
 
       bool res = handleInstruction(ins);
       if (!res)
@@ -416,7 +425,9 @@ void PerformanceModel::synchronize()
 
 void PerformanceModel::pushDynamicInstructionInfo(DynamicInstructionInfo &i, bool is_pic_ins)
 {
+   printf("CAP: Inside PerformanceModel::pushDynamicInstructionInfo\n");
 	 if(!m_ignore_functional_model || is_pic_ins) {
+   printf("CAP: Inside PerformanceModel::pushDynamicInstructionInfo: IF condition\n");
    	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_dynamic_info_queue.push_wait(i);
    	#else
@@ -427,6 +438,7 @@ void PerformanceModel::pushDynamicInstructionInfo(DynamicInstructionInfo &i, boo
 
 void PerformanceModel::popDynamicInstructionInfo()
 {
+
    #ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_dynamic_info_queue.pop_wait();
    #else

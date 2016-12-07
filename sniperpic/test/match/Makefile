@@ -1,6 +1,6 @@
 TARGET = match_fsm
-CC = gcc
-SNIPER_ROOT = /home/rashmivs/cap_compute_cache/sniperpic
+CC = gcc -g
+SNIPER_ROOT = ../../
 
 OSTYPE = $(shell uname)
 
@@ -36,6 +36,10 @@ $(TARGET): $(STR_MATCH_PIC_OBJS)
 
 run:
 	../../run-sniper -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt
+
+run_app:
+	../../run-sniper -n 1 --gdb -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt
+
 
 clean:
 	rm -f $(PROGS) *.o *.a *~ *.tmp *.bak *.log sim.out sim.info sim.stats.sqlite3 sim.cfg sim.scripts.py power.*

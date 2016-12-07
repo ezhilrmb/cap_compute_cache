@@ -277,13 +277,20 @@ VOID traceCallback(TRACE trace, void *v)
             INSTRUMENT(INSTR_IF_DETAILED(inst_mode), trace, ins, IPOINT_BEFORE, AFUNPTR(InstructionModeling::handleInstruction), IARG_THREAD_ID, IARG_PTR, inst, IARG_END);
          }
          ++icount;
-
          if (ins == BBL_InsTail(bbl) || icount >= 32 || INS_HasRealRep(ins))
          {
             if (INS_HasFallThrough(ins))
+            {
+               printf("CAP: pin_sim HasFallThrough:%d\n", inst_mode);
+               showInstructionInfo(ins);
                INSTRUMENT(INSTR_IF_DETAILED(inst_mode), trace, ins, IPOINT_AFTER, AFUNPTR(InstructionModeling::handleBasicBlock), IARG_THREAD_ID, IARG_END);
+            }
             if (INS_IsBranch(ins))
+            {
+               printf("CAP: pin_sim IsBranch:%d \n", inst_mode);
+               showInstructionInfo(ins);
                INSTRUMENT(INSTR_IF_DETAILED(inst_mode), trace, ins, IPOINT_TAKEN_BRANCH, AFUNPTR(InstructionModeling::handleBasicBlock), IARG_THREAD_ID, IARG_END);
+            }
             icount = 0;
          }
 

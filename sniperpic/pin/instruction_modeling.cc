@@ -36,10 +36,14 @@ void InstructionModeling::handleBasicBlock(THREADID thread_id)
    Core *core = thread->getCore();
    assert(core);
    PerformanceModel *prfmdl = core->getPerformanceModel();
-
+   printf("CAP: handleBasicBlock: Inst modelling\n");
 #ifndef ENABLE_PERF_MODEL_OWN_THREAD
-   prfmdl->iterate();
    SubsecondTime time = prfmdl->getElapsedTime();
+   printf("CAP: InstructionModeling::handleBasicBlock: Time: %s\n", itostr(prfmdl->getElapsedTime()).c_str());
+
+   prfmdl->iterate();
+   time = prfmdl->getElapsedTime();
+
    if (thread->reschedule(time, core))
    {
       core = thread->getCore();

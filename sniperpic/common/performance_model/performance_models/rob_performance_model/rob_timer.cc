@@ -392,6 +392,7 @@ boost::tuple<uint64_t,SubsecondTime> RobTimer::simulate(const std::vector<Dynami
    {
       uint64_t instructionsExecuted;
       SubsecondTime latency;
+
       execute(instructionsExecuted, latency);
       totalInsnExec += instructionsExecuted;
       totalLat += latency;
@@ -438,21 +439,25 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
 {
    SubsecondTime next_event = SubsecondTime::MaxTime();
    SubsecondTime *cpiFrontEnd = NULL;
-
+   
+   printf("CAP: doDispatch: now: %s, frontend_stalled_until: %s\n ", itostr(now).c_str(), itostr(frontend_stalled_until).c_str());
    if (frontend_stalled_until <= now)
    {
       uint32_t instrs_dispatched = 0, uops_dispatched = 0;
 
+      printf("before while: num_in_rob: %d, windowSize: %d\n", m_num_in_rob, windowSize);
       while(m_num_in_rob < windowSize)
       {
          LOG_ASSERT_ERROR(m_num_in_rob < rob.size(), "Expected sufficient uops for dispatching in pre-ROB buffer, but didn't find them");
          RobEntry *entry = &rob.at(m_num_in_rob);
          DynamicMicroOp &uop = *entry->uop;
+         printf("CAP: doDispatch: before break\n");
 
          // Dispatch up to 4 instructions
          if (uops_dispatched == dispatchWidth)
             break;
 
+         printf("CAP: doDispatch: after break\n");
          // This is actually in the decode stage, there's a buffer between decode and dispatch
          // so we shouldn't do this here.
          //// First instruction can be any size, but second and subsequent ones may only be single-uop
@@ -463,6 +468,7 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
          bool iCacheMiss = (uop.getICacheHitWhere() != HitWhere::L1I);
          if (iCacheMiss)
          {
+            printf("iCacheMiss: %d, in_icache_miss: %d \n", iCacheMiss, in_icache_miss);
             if (in_icache_miss)
             {
                // We just took the latency for this instruction, now dispatch it
@@ -476,6 +482,7 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
                #ifdef DEBUG_PERCYCLE
                   std::cout<<"-- icache miss("<<uop.getICacheLatency()<<")"<<std::endl;
                #endif
+                  printf("CAP: doDispatch: Inside Icache\n");
                frontend_stalled_until = now + uop.getICacheLatency();
                in_icache_miss = true;
                // Don't dispatch this instruction yet
@@ -513,6 +520,7 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
          // Mispredicted branch
          if (uop.getMicroOp()->isBranch() && uop.isBranchMispredicted())
          {
+                  printf("CAP: doDispatch: Inside branch\n");
             frontend_stalled_until = SubsecondTime::MaxTime();
             #ifdef DEBUG_PERCYCLE
                std::cout<<"-- branch mispredict"<<std::endl;
@@ -690,6 +698,8 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
    // After issuing a mispredicted branch: allow the ROB to refill after flushing the pipeline
    if (uop.getMicroOp()->isBranch() && uop.isBranchMispredicted())
    {
+
+      printf("CAP: doIssue: Inside branch\n");
       frontend_stalled_until = now + (misprediction_penalty - 2); // The frontend needs to start 2 cycles earlier to get a total penalty of <misprediction_penalty>
       #ifdef DEBUG_PERCYCLE
          std::cout<<"-- branch resolve"<<std::endl;
@@ -893,6 +903,7 @@ void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
       if (rob.size() < m_num_in_rob + 2*dispatchWidth)
       {
          // We don't have enough instructions to dispatch <dispatchWidth> new ones. Ask for more before doing anything this cycle.
+         printf("CAP: execute: Time Now: %s frontend stalled: %s rob size: %d, m_num_in_rob: %d, dispatchWidth: %d \n", itostr(now).c_str(), itostr(frontend_stalled_until).c_str(), rob.size(), m_num_in_rob, dispatchWidth);
          return;
       }
    }
@@ -901,7 +912,9 @@ void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
    // Model dispatch, issue and commit stages
    // Decode stage is not modeled, assumes the decoders can keep up with (up to) dispatchWidth uops per cycle
 
+
    SubsecondTime next_dispatch = doDispatch(&cpiComponent);
+
    SubsecondTime next_issue    = doIssue();
    SubsecondTime next_commit   = doCommit(instructionsExecuted);
 

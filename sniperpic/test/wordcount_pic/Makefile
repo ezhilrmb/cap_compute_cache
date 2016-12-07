@@ -1,6 +1,6 @@
 TARGET = wordcount_pic
 CC = gcc -g 
-SNIPER_ROOT = /home/rashmivs/cap_compute_cache/sniperpic
+SNIPER_ROOT = ../../
 OSTYPE = $(shell uname)
 
 ifeq ($(OSTYPE),CYGWIN_NT-5.1)
@@ -38,6 +38,9 @@ $(TARGET): $(WC_OBJS_SER_PIC)
 run:
 	../../run-sniper -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -- ./wordcount_pic $(FILE)
 	#../../run-sniper -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -s markers:stats -- ./wordcount_pic $(FILE)
+
+run_app:
+	../../run-sniper --gdb -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -- ./wordcount_pic $(FILE)
 
 clean:
 	rm -f $(PROGS) *.o *.a *~ *.tmp *.bak *.log sim.out sim.info sim.stats.sqlite3 sim.cfg sim.scripts.py power.*

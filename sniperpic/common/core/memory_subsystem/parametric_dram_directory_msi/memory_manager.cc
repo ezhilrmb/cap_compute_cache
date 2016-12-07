@@ -887,7 +887,7 @@ void  MemoryManager::create_cache_program_instructions(
           address = (cur_subarray<<(8+m_log_blocksize)) | (cur_cache_line<<m_log_blocksize) | sub_block;
           cur_byte_pos = (cur_subarray * subarray_size) + (cur_cache_line * block_size) + sub_block;
           memcpy(temp_data_buf, cap_file + (cur_byte_pos), 1); 
-          printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
+          //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
           OperandList store_list;
           store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
           store_list.push_back(Operand(Operand::REG, (unsigned long)(*temp_data_buf), Operand::READ, "", true));

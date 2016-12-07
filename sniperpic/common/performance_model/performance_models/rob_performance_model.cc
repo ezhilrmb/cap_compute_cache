@@ -20,6 +20,8 @@ RobPerformanceModel::~RobPerformanceModel()
 boost::tuple<uint64_t,uint64_t> RobPerformanceModel::simulate(const std::vector<DynamicMicroOp*>& insts)
 {
    uint64_t ins; SubsecondTime latency;
+
+  
    boost::tie(ins, latency) = rob_timer.simulate(insts);
 
    return boost::tuple<uint64_t,uint64_t>(ins, SubsecondTime::divideRounded(latency, m_elapsed_time.getPeriod()));
