@@ -1,6 +1,6 @@
 TARGET = wordcount_pic
-CC = gcc
-
+CC = gcc -g 
+SNIPER_ROOT = /home/rashmivs/cap_compute_cache/sniperpic
 OSTYPE = $(shell uname)
 
 ifeq ($(OSTYPE),CYGWIN_NT-5.1)
@@ -25,8 +25,9 @@ CFLAGS = -Wall $(ARCH) -O3 -I $(SNIPER_ROOT)/include
 LIBS = -lpthread -lm -lrt
 WC_OBJS_SER_PIC = wordcount_pic.o
 PROGS = wordcount_pic
-FILE = $(INPUT_DIR)/word_10MB.txt
+#FILE = $(INPUT_DIR)/word_10MB.txt
 #FILE = $(INPUT_DIR)/word_simple.txt
+FILE = word_10MB.txt
 
 .PHONY: default clean
 all: $(PROGS)

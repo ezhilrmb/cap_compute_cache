@@ -21,8 +21,8 @@ class DramCache;
 class ShmemPerf;
 
 // CAP: another way to extract cache size/number of rows per sub-array
-#define CACHE_LINES_PER_SUBARRAY 256
-#define NUM_SUBARRAYS 4
+#define CACHE_LINES_PER_SUBARRAY 1
+#define NUM_SUBARRAYS 1
 
 #define PIC_IS_MICROBENCH_COPY 0 
 #define PIC_IS_MICROBENCH_CMP 1

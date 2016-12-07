@@ -1,0 +1,140 @@
+../../run-sniper -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt
+[SNIPER] Start
+Created Rob Perf modelCreated Rob Perf modelCreated Rob Perf modelCreated Rob Perf modelCreated Rob Perf modelCreated Rob Perf modelCreated Rob Perf modelCreated Rob Perf model[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using Pin frontend
+[SNIPER] Running pre-ROI region in  FAST_FORWARD mode
+[SNIPER] Running application ROI in DETAILED mode
+[SNIPER] Running post-ROI region in FAST_FORWARD mode
+[SNIPER] --------------------------------------------------------------------------------
+CAP: Mem manager - Cache pgm file ptr :0x0x7f6798510000, content: 69Address: 0x0, Value: 65
+Address: 0x1, Value: 69
+Address: 0x2, Value: 69
+Address: 0x3, Value: 69
+Address: 0x4, Value: 69
+Address: 0x5, Value: 69
+Address: 0x6, Value: 69
+Address: 0x7, Value: 69
+Address: 0x8, Value: 66
+Address: 0x9, Value: 49
+Address: 0xa, Value: 49
+Address: 0xb, Value: 49
+Address: 0xc, Value: 49
+Address: 0xd, Value: 49
+Address: 0xe, Value: 49
+Address: 0xf, Value: 49
+Address: 0x10, Value: 67
+Address: 0x11, Value: 50
+Address: 0x12, Value: 50
+Address: 0x13, Value: 50
+Address: 0x14, Value: 50
+Address: 0x15, Value: 50
+Address: 0x16, Value: 50
+Address: 0x17, Value: 50
+Address: 0x18, Value: 68
+Address: 0x19, Value: 70
+Address: 0x1a, Value: 70
+Address: 0x1b, Value: 70
+Address: 0x1c, Value: 70
+Address: 0x1d, Value: 70
+Address: 0x1e, Value: 70
+Address: 0x1f, Value: 70
+Address: 0x20, Value: 69
+Address: 0x21, Value: 51
+Address: 0x22, Value: 51
+Address: 0x23, Value: 51
+Address: 0x24, Value: 51
+Address: 0x25, Value: 51
+Address: 0x26, Value: 51
+Address: 0x27, Value: 51
+Address: 0x28, Value: 65
+Address: 0x29, Value: 69
+Address: 0x2a, Value: 69
+Address: 0x2b, Value: 69
+Address: 0x2c, Value: 69
+Address: 0x2d, Value: 69
+Address: 0x2e, Value: 69
+Address: 0x2f, Value: 69
+Address: 0x30, Value: 66
+Address: 0x31, Value: 49
+Address: 0x32, Value: 49
+Address: 0x33, Value: 49
+Address: 0x34, Value: 49
+Address: 0x35, Value: 49
+Address: 0x36, Value: 49
+Address: 0x37, Value: 49
+Address: 0x38, Value: 67
+Address: 0x39, Value: 50
+Address: 0x3a, Value: 50
+Address: 0x3b, Value: 50
+Address: 0x3c, Value: 50
+Address: 0x3d, Value: 50
+Address: 0x3e, Value: 50
+Address: 0x3f, Value: 50
+CAP: Mem manager - Cache pgm file ptr :0x0x7f6798510000, content: 69Address: 0x0, Value: 65
+Address: 0x1, Value: 69
+Address: 0x2, Value: 69
+Address: 0x3, Value: 69
+Address: 0x4, Value: 69
+Address: 0x5, Value: 69
+Address: 0x6, Value: 69
+Address: 0x7, Value: 69
+Address: 0x8, Value: 66
+Address: 0x9, Value: 49
+Address: 0xa, Value: 49
+Address: 0xb, Value: 49
+Address: 0xc, Value: 49
+Address: 0xd, Value: 49
+Address: 0xe, Value: 49
+Address: 0xf, Value: 49
+Address: 0x10, Value: 67
+Address: 0x11, Value: 50
+Address: 0x12, Value: 50
+Address: 0x13, Value: 50
+Address: 0x14, Value: 50
+Address: 0x15, Value: 50
+Address: 0x16, Value: 50
+Address: 0x17, Value: 50
+Address: 0x18, Value: 68
+Address: 0x19, Value: 70
+Address: 0x1a, Value: 70
+Address: 0x1b, Value: 70
+Address: 0x1c, Value: 70
+Address: 0x1d, Value: 70
+Address: 0x1e, Value: 70
+Address: 0x1f, Value: 70
+Address: 0x20, Value: 69
+Address: 0x21, Value: 51
+Address: 0x22, Value: 51
+Address: 0x23, Value: 51
+Address: 0x24, Value: 51
+Address: 0x25, Value: 51
+Address: 0x26, Value: 51
+Address: 0x27, Value: 51
+Address: 0x28, Value: 65
+Address: 0x29, Value: 69
+Address: 0x2a, Value: 69
+Address: 0x2b, Value: 69
+Address: 0x2c, Value: 69
+Address: 0x2d, Value: 69
+Address: 0x2e, Value: 69
+Address: 0x2f, Value: 69
+Address: 0x30, Value: 66
+Address: 0x31, Value: 49
+Address: 0x32, Value: 49
+Address: 0x33, Value: 49
+Address: 0x34, Value: 49
+Address: 0x35, Value: 49
+Address: 0x36, Value: 49
+Address: 0x37, Value: 49
+Address: 0x38, Value: 67
+Address: 0x39, Value: 50
+Address: 0x3a, Value: 50
+Address: 0x3b, Value: 50
+Address: 0x3c, Value: 50
+Address: 0x3d, Value: 50
+Address: 0x3e, Value: 50
+Address: 0x3f, Value: 50
+CAP: Program the Cache with STEs...
+CAP: Cache pgm file ptr :0x0x7f6798510000, content: 69CAP: Cache STE Programming Completed 0
+[SNIPER] End
+[SNIPER] Elapsed time: 1.15 seconds

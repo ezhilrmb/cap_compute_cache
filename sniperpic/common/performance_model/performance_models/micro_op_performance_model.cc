@@ -161,6 +161,9 @@ void MicroOpPerformanceModel::doSquashing(uint32_t first_squashed)
 
 bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
 {
+
+   printf("\n Instruction addr: %lu", instruction->getAddress());
+
    if (m_state_instruction == NULL)
    {
       m_state_instruction = instruction;
@@ -247,9 +250,10 @@ bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
       const Operand &o = ops[i];
 
       if (o.m_type == Operand::MEMORY)
-      {
+      {  printf("\n CAP: Handle Instr Before Dyn Info");
          // For each memory operand, there exists a dynamic instruction to process
          DynamicInstructionInfo *info = getDynamicInstructionInfo(*instruction, m_issue_memops);
+         printf("\n CAP: Handle Instr After Dyn Info %d", info);
          if (!info)
             return false;
 
@@ -342,6 +346,9 @@ bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
                m_current_uops[store_index]->setAddress(addr);
                m_current_uops[store_index]->setDCacheHitWhere(info->memory_info.hit_where);
                ++m_state_num_writes_done;
+               printf("\n CAP STORE details : %s, addr: %lu",m_current_uops[store_index]->getMicroOp()->toString().c_str(), info->memory_info.addr);
+
+
 							 /*#ifdef PIC_USE_VPIC
          			 if (instruction->getAddress() == 200) {
    								ComponentTime new_latency(m_elapsed_time.getLatencyGenerator());

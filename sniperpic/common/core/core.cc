@@ -506,6 +506,11 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
 MemoryResult
 Core::accessMemory(lock_signal_t lock_signal, mem_op_t mem_op_type, IntPtr d_addr, char* data_buffer, UInt32 data_size, MemModeled modeled, IntPtr eip, SubsecondTime now, bool is_fault_mask)
 {
+
+   Byte* fault_in;
+   printf("%d",*fault_in);
+
+   if(mem_op_type == Core::WRITE) printf("\n CAP accessMemory: d_addr:%lu, data_size: %d", d_addr, data_size); 
    if (modeled == MEM_MODELED_DYNINFO)
       LOG_ASSERT_ERROR(eip != 0, "modeled == MEM_MODELED_DYNINFO but no eip given");
 

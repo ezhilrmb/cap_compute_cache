@@ -11,8 +11,8 @@ CC=$(SNIPER_CC)
 LDFLAGS=$(SNIPER_LDFLAGS)
 CFLAGS=$(SNIPER_CFLAGS)
 
-# '--roi' allows for ROI timing with program hooks instead of full-program timing
-# See ${SNIPER_ROOT}/include/sim_api.h for more information
+
+
 run: $(TARGET) run_$(TARGET)
 	@echo
 	@echo

@@ -1,0 +1,59 @@
+bbv_count.cc:   printf("BBV: ");
+bbv_count.cc:      printf(" %ld", m_bbv_counts[i]);
+bbv_count.cc:   printf("\n");
+core.cc:#  define MYLOG(...) { ScopedLock l(iolock); fflush(stderr); fprintf(stderr, "[%8lu] %dcor %-25s@%03u: ", getPerformanceModel()->getCycleCount(ShmemPerfModel::_USER_THREAD), m_core_id, __FUNCTION__, __LINE__); fprintf(stderr, __VA_ARGS__); fprintf(stderr, "\n"); fflush(stderr); }
+core.cc:			printf("\nNeed: %lu instructions\n", getMemoryManager()->microbench_target_ins_cnt());
+core.cc:      printf("[TIME],%lu,", (Timer::now() / 100000) % 10000000);
+core.cc:          printf("%lu,%lu,%lu,", initial_time, getShmemPerfModel()->getCycleCount(ShmemPerfModel::_USER_THREAD), getShmemPerfModel()->getCycleCount(ShmemPerfModel::_SIM_THREAD));
+core.cc:          printf(",,,");
+core.cc:      printf("\n");
+core.cc:   printf("CPUID[%d]: %08x %08x => ", m_core_id, eax, ecx);
+core.cc:   printf("%08x %08x %08x %08x\n", res.eax, res.ebx, res.ecx, res.edx);
+memory_subsystem/cache/cache.cc:   printf("Cache %s set usage:", m_name.c_str());
+memory_subsystem/cache/cache.cc:      printf(" %" PRId64, m_set_usage_hist[i]);
+memory_subsystem/cache/cache.cc:   printf("\n");
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:#  define LOGID() fprintf(stderr, "[%s] %2u%c [ %2d(%2d)-L%u%c ] %-25s@%3u: ", \
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:#  define MYLOG(...) LOCKED(LOGID(); fprintf(stderr, __VA_ARGS__); fprintf(stderr, "\n");)
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:#  define DUMPDATA(data_buf, data_length) { for(UInt32 i = 0; i < data_length; ++i) fprintf(stderr, "%02x ", data_buf[i]); }
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:      printf("%2u-%s: ", m_core_id, HitWhereString(it->first));
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:      printf("ERROR! Transaction reached L1 or L2");
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:	printf("\n CAP OPCODE :%d, STE Num: 0x%x", (int)cap_op, addr);
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc:    printf("ERROR! Transaction reached L1/L2...\n");
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc://printf("\nVPIC_COPY_REP<%u @ %lx", sender, address);
+memory_subsystem/parametric_dram_directory_msi/cache_cntlr.cc://printf("\nVPIC_CMP_REP<%u @ %lx", sender, address);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:#  define MYLOG(...) { ScopedLock l(iolock); fflush(stderr); fprintf(stderr, "[%s] %d%cmm %-25s@%03u: ", itostr(getShmemPerfModel()->getElapsedTime()).c_str(), getCore()->getId(), Sim()->getCoreManager()->amiUserThread() ? '^' : '_', __FUNCTION__, __LINE__); fprintf(stderr, __VA_ARGS__); fprintf(stderr, "\n"); fflush(stderr); }
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:			printf("\nRunning microbench(%d), total=%lu, loop=%lu, op=%lu",
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:				//printf("\nSee a marker: %lu, %s", args_in->arg0, args_in->str);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:				//printf("\nIN(%u,%u)", array[0], array[1]);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	//printf("\nWC[%d]:(%lu,%lu):(%lu,%lu->%lu)", data_home, 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nStash: Searches(%lu), Comp/Mask(%lu)",
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:			//printf("\npic-ins(%lu)-(%lu)\n", app_data_addr, 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	//printf("\nSearches(%lu), Comp/Mask(%lu)",
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:          printf("Address: 0x%x, Value: %d\n", address, temp_data_buf);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:          printf("STE no: 0x%x, Value: %d\n", address, temp_data_buf);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:				printf("\nWARMUP: Touching addresses:(%lu-%lu-%lu = %lu, %lu)\n", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:				printf("\nWARMUP: Touching addresses:(%lu, %lu = %lu)\n", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:			printf("\nWARMUP: Touching addresses:(%lu, %lu = %lu)\n", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:			printf("\nWARMUP: Touching addresses:(%lu, %lu = %lu)\n", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nFASTBIT(total_ins(%d)", pic_vec_lgcl_ins);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\n(%lu,%lu,%lu,%lu,%lu)", load1_address, load2_address, m_mbench_dest_addr, m_mbench_src_addr, last_op_size);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nFASTBIT(total_ins(%d), load(%d), store(%d), or(%d)", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nBMM(%lu)->ins(%d)", m_microbench_opsize, total_instructions);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	//printf("\nAddresses(%lx/%lx, %lx->%lx: (%lu, %lu)", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nBMM(total_ins(%d), rowl(%d), total_coll(%d), total_clmult(%d)", 
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nBMM-Addr(%lu, %lu, %lu, %lu)", row_load_ins_addr, col_load_ins_addr, clmult_ins_addr, res_store_ins_addr);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:	printf("\nM-size(%lu), row(%lu), col(%lu), res(%lu)",
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:  //printf("[CHKPNT]: START\n");
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:  	//printf("[CHKPNT]: INSPECT: %lu\n", page_address);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:  	//printf("[CHKPNT] INSPECT: %lu\n", page_address);
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:  		//printf("[CHKPNT]: NEW_I\n");
+memory_subsystem/parametric_dram_directory_msi/memory_manager.cc:  //printf("[CHKPNT]: Taking{%lu: %lu}\n",
+memory_subsystem/memory_manager_base.cc:   fprintf(stderr, "Core IDs' with memory controllers = (%s)\n", (core_list.str()).c_str());
+memory_subsystem/addr_bank_mapping.cc:				//printf("\nALL: l%d: (%d,%d), (%d,%d) -> (%d, %d)", 
+memory_subsystem/addr_bank_mapping.cc:				//printf("\nSETS: l%d: (%d,%d), (%d,%d) -> (%d, %d)", 
+memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_cntlr.cc:#  define MYLOG(...) { ScopedLock l(iolock); fflush(stdout); printf("[%s] %d%cdr %-25s@%3u: ", itostr(getShmemPerfModel()->getElapsedTime()).c_str(), getMemoryManager()->getCore()->getId(), Sim()->getCoreManager()->amiUserThread() ? '^' : '_', __FUNCTION__, __LINE__); printf(__VA_ARGS__); printf("\n"); fflush(stdout); }
+memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.cc:#  define MYLOG(...) { ScopedLock l(iolock); fflush(stdout); printf("[%s] %d%cdd %-25s@%3u: ", itostr(getShmemPerfModel()->getElapsedTime()).c_str(), getMemoryManager()->getCore()->getId(), Sim()->getCoreManager()->amiUserThread() ? '^' : '_', __FUNCTION__, __LINE__); printf(__VA_ARGS__); printf("\n"); fflush(stdout); }
+memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.cc:								//printf("\nNUCA-COMPLETE(%lx)", address);
+memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.cc:					//printf("\nNUCA-NOWRITE(%lx)", address);
+memory_subsystem/pr_l1_pr_l2_dram_directory_msi/dram_directory_cntlr.cc:   //printf("\nNUCA-EVICT(%lx)", replaced_address );
+topology_info.cc:   printf("CORE %d: SMT %d/%d CORE %d/%d PACKAGE %d APICID %d\n", core_id, smt_index, smt_count, core_index, core_count, package, apic_id);

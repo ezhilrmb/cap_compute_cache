@@ -1,0 +1,4066 @@
+../../run-sniper -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -- ./wordcount_pic word_10MB.txt
+[SNIPER] Start
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Sniper using Pin frontend
+[SNIPER] Running pre-ROI region in  FAST_FORWARD mode
+[SNIPER] Running application ROI in DETAILED mode
+[SNIPER] Running post-ROI region in FAST_FORWARD mode
+[SNIPER] --------------------------------------------------------------------------------
+[SNIPER] Enabling performance models
+[SNIPER] Setting instrumentation mode to DETAILED
+
+ Instruction addr: 4199617
+ Instruction addr: 4199620
+ Instruction addr: 4199623
+ Instruction addr: 4199625
+ Instruction addr: 4196576
+ Instruction addr: 4196582
+ Instruction addr: 4196587
+ Instruction addr: 4196560
+ Instruction addr: 4196566
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199617
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199625
+ Instruction addr: 139670149136912
+ Instruction addr: 139670149136916
+ Instruction addr: 139670149136921
+ Instruction addr: 139670149136926
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303768 and i_addr: 0x4196576
+ Instruction addr: 139670149136931
+ Instruction addr: 139670149136936
+ Instruction addr: 139670149136941
+ Instruction addr: 139670149136946
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303752 and i_addr: 0x4196560
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303760 and i_addr: 0x4196566
+ Instruction addr: 139670149136951
+ Instruction addr: 139670149136956
+ Instruction addr: 139670149136962
+ Instruction addr: 139670149136968
+ Instruction addr: 139670149136974
+ Instruction addr: 139670149136982
+ Instruction addr: 139670149136987
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4196582
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4196560
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x139670149136916
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943464 and i_addr: 0x139670149136921
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943472 and i_addr: 0x139670149136926
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x139670149136931
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x139670149136936
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x139670149136941
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x139670149136946
+ Instruction addr: 139670149109392
+ Instruction addr: 139670149109394
+ Instruction addr: 139670149109397
+ Instruction addr: 139670149109399
+ Instruction addr: 139670149109403
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x139670149136974
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x139670149136982
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943384 and i_addr: 0x139670149136987
+ Instruction addr: 139670149109404
+ Instruction addr: 139670149109405
+ Instruction addr: 139670149109409
+ Instruction addr: 139670149109413
+ Instruction addr: 139670149109417
+ Instruction addr: 139670149109421
+ Instruction addr: 139670149109428
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943376 and i_addr: 0x139670149109392
+ Instruction addr: 139670149109432
+ Instruction addr: 139670149109436
+ Instruction addr: 139670149109440
+ Instruction addr: 139670149109443
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943368 and i_addr: 0x139670149109403
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291504 and i_addr: 0x139670149109409
+ Instruction addr: 139670149109447
+ Instruction addr: 139670149109451
+ Instruction addr: 139670149109454
+ Instruction addr: 139670149109459
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943360 and i_addr: 0x139670149109404
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291512 and i_addr: 0x139670149109413
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291648 and i_addr: 0x139670149109421
+ Instruction addr: 139670149109462
+ Instruction addr: 139670149109465
+ Instruction addr: 139670149109469
+ Instruction addr: 139670149109475
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291400 and i_addr: 0x139670149109451
+ Instruction addr: 139670149109482
+ Instruction addr: 139670149109485
+ Instruction addr: 139670149109491
+ Instruction addr: 139670149109495
+ Instruction addr: 139670149109499
+ Instruction addr: 139670149109505
+ Instruction addr: 139670149109509
+ Instruction addr: 139670149109516
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291856 and i_addr: 0x139670149109475
+ Instruction addr: 139670149109520
+ Instruction addr: 139670149109525
+ Instruction addr: 139670149109529
+ Instruction addr: 139670149109531
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303408 and i_addr: 0x139670149109417
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303424 and i_addr: 0x139670149109428
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303536 and i_addr: 0x139670149109432
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303632 and i_addr: 0x139670149109491
+ Instruction addr: 139670149109535
+ Instruction addr: 139670149109543
+ Instruction addr: 139670149109545
+ Instruction addr: 139670149109551
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292136 and i_addr: 0x139670149109509
+ Instruction addr: 139670149109557
+ Instruction addr: 139670149109566
+ Instruction addr: 139670149109578
+ Instruction addr: 139670149109580
+ Instruction addr: 139670149109587
+ Instruction addr: 139670149109592
+ Instruction addr: 139670149109596
+ Instruction addr: 139670149109605
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631832 and i_addr: 0x139670149109535
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631884 and i_addr: 0x139670149109557
+ CAP: RobTimer::accessMem uop's d_addr: 0x4196060 and i_addr: 0x139670149109440
+ CAP: RobTimer::accessMem uop's d_addr: 0x4196048 and i_addr: 0x139670149109462
+ Instruction addr: 139670149109611
+ Instruction addr: 139670149109614
+ Instruction addr: 139670149109617
+ Instruction addr: 139670149090640
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292296 and i_addr: 0x139670149109580
+ Instruction addr: 139670149090641
+ Instruction addr: 139670149090644
+ Instruction addr: 139670149090646
+ Instruction addr: 139670149090649
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195894 and i_addr: 0x139670149109495
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943352 and i_addr: 0x139670149109454
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195029 and i_addr: 0x139670149109465
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195024 and i_addr: 0x139670149109578
+ Instruction addr: 139670149090651
+ Instruction addr: 139670149090653
+ Instruction addr: 139670149090656
+ Instruction addr: 139670149090658
+ Instruction addr: 139670149090661
+ Instruction addr: 139670149090662
+ Instruction addr: 139670149090665
+ Instruction addr: 139670149090672
+ Instruction addr: 139670149090675
+ Instruction addr: 139670149090682
+ Instruction addr: 139670149090689
+ Instruction addr: 139670149090691
+ Instruction addr: 139670149090697
+ Instruction addr: 139670149090700
+ Instruction addr: 139670149090706
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262440 and i_addr: 0x139670149109525
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195819 and i_addr: 0x139670149090672
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195820 and i_addr: 0x139670149090729
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631884 and i_addr: 0x139670149109566
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943328 and i_addr: 0x139670149109592
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943336 and i_addr: 0x139670149109596
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943320 and i_addr: 0x139670149109617
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943312 and i_addr: 0x139670149090640
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943304 and i_addr: 0x139670149090644
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943296 and i_addr: 0x139670149090649
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943288 and i_addr: 0x139670149090651
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943280 and i_addr: 0x139670149090656
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943272 and i_addr: 0x139670149090661
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943144 and i_addr: 0x139670149090675
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943112 and i_addr: 0x139670149090682
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195821 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195822 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195823 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195824 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195825 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195826 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195827 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195828 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195829 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195830 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195831 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195832 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195833 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195834 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090734
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195835 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ Instruction addr: 139670149090734
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195836 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090712
+ Instruction addr: 139670149090715
+ Instruction addr: 139670149090719
+ Instruction addr: 139670149090723
+ Instruction addr: 139670149090726
+ Instruction addr: 139670149090729
+ Instruction addr: 139670149090732
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195837 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090734
+ Instruction addr: 139670149090736
+ Instruction addr: 139670149090739
+ Instruction addr: 139670149090746
+ Instruction addr: 139670149090751
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195838 and i_addr: 0x139670149090729
+ Instruction addr: 139670149090759
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943136 and i_addr: 0x139670149090739
+ Instruction addr: 139670149090764
+ Instruction addr: 139670149090771
+ Instruction addr: 139670149090778
+ Instruction addr: 139670149090789
+ Instruction addr: 139670149090800
+ Instruction addr: 139670149090803
+ Instruction addr: 139670149090809
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151289208 and i_addr: 0x139670149090751
+ Instruction addr: 139670149090812
+ Instruction addr: 139670149090818
+ Instruction addr: 139670149090821
+ Instruction addr: 139670149090828
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943336 and i_addr: 0x139670149090759
+ Instruction addr: 139670149090831
+ Instruction addr: 139670149090838
+ Instruction addr: 139670149090845
+ Instruction addr: 139670149090852
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943112 and i_addr: 0x139670149090771
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292256 and i_addr: 0x139670149090800
+ Instruction addr: 139670149090855
+ Instruction addr: 139670149090862
+ Instruction addr: 139670149090865
+ Instruction addr: 139670149090872
+ Instruction addr: 139670149090879
+ Instruction addr: 139670149090886
+ Instruction addr: 139670149090891
+ Instruction addr: 139670149090896
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943328 and i_addr: 0x139670149090852
+ Instruction addr: 139670149090905
+ Instruction addr: 139670149090909
+ Instruction addr: 139670149090914
+ Instruction addr: 139670149090922
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943120 and i_addr: 0x139670149090855
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943352 and i_addr: 0x139670149090862
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943128 and i_addr: 0x139670149090865
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943136 and i_addr: 0x139670149090872
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151289208 and i_addr: 0x139670149090751
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943152 and i_addr: 0x139670149090764
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943168 and i_addr: 0x139670149090778
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943176 and i_addr: 0x139670149090789
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943120 and i_addr: 0x139670149090831
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943128 and i_addr: 0x139670149090845
+ Instruction addr: 139670149088384
+ Instruction addr: 139670149088386
+ Instruction addr: 139670149088389
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943144 and i_addr: 0x139670149090879
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943064 and i_addr: 0x139670149090886
+ Instruction addr: 139670149088391
+ Instruction addr: 139670149088393
+ Instruction addr: 139670149088396
+ Instruction addr: 139670149088398
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943056 and i_addr: 0x139670149090891
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943048 and i_addr: 0x139670149090896
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943040 and i_addr: 0x139670149090905
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943032 and i_addr: 0x139670149090909
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943024 and i_addr: 0x139670149090914
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943016 and i_addr: 0x139670149090922
+ Instruction addr: 139670149088399
+ Instruction addr: 139670149088400
+ Instruction addr: 139670149088407
+ Instruction addr: 139670149088411
+ Instruction addr: 139670149088419
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943008 and i_addr: 0x139670149088384
+ Instruction addr: 139670149088424
+ Instruction addr: 139670149088432
+ Instruction addr: 139670149088440
+ Instruction addr: 139670149088445
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943000 and i_addr: 0x139670149088389
+ Instruction addr: 139670149088450
+ Instruction addr: 139670149088455
+ Instruction addr: 139670149088462
+ Instruction addr: 139670149088466
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942992 and i_addr: 0x139670149088391
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292104 and i_addr: 0x139670149088407
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942984 and i_addr: 0x139670149088396
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943032 and i_addr: 0x139670149088411
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942976 and i_addr: 0x139670149088398
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943024 and i_addr: 0x139670149088424
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942968 and i_addr: 0x139670149088399
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943048 and i_addr: 0x139670149088432
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942864 and i_addr: 0x139670149088419
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942920 and i_addr: 0x139670149088440
+ Instruction addr: 139670149088473
+ Instruction addr: 139670149088477
+ Instruction addr: 139670149088482
+ Instruction addr: 139670149088485
+ Instruction addr: 139670149088488
+ Instruction addr: 139670149088491
+ Instruction addr: 139670149088495
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942936 and i_addr: 0x139670149088445
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943040 and i_addr: 0x139670149088455
+ Instruction addr: 139670149088499
+ Instruction addr: 139670149088504
+ Instruction addr: 139670149088512
+ Instruction addr: 139670149088516
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942904 and i_addr: 0x139670149088450
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943056 and i_addr: 0x139670149088466
+ Instruction addr: 139670149088524
+ Instruction addr: 139670149088533
+ Instruction addr: 139670149088537
+ Instruction addr: 139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292096 and i_addr: 0x139670149088482
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942948 and i_addr: 0x139670149088462
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088473
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942840 and i_addr: 0x139670149088499
+ Instruction addr: 139670149088545
+ Instruction addr: 139670149088551
+ Instruction addr: 139670149088556
+ Instruction addr: 139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262336 and i_addr: 0x139670149088512
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088516
+ Instruction addr: 139670149088578
+ Instruction addr: 139670149088584
+ Instruction addr: 139670149088591
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942896 and i_addr: 0x139670149088524
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088551
+ Instruction addr: 139670149088597
+ Instruction addr: 139670149088603
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291440 and i_addr: 0x139670149088533
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088540
+ Instruction addr: 139670149088605
+ Instruction addr: 139670149088611
+ Instruction addr: 139670149088615
+ Instruction addr: 139670149088619
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292189 and i_addr: 0x139670149088571
+ Instruction addr: 139670149088623
+ Instruction addr: 139670149088627
+ Instruction addr: 139670149088632
+ Instruction addr: 139670149088639
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285824 and i_addr: 0x139670149088584
+ Instruction addr: 139670149088642
+ Instruction addr: 139670149088648
+ Instruction addr: 139670149088651
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292148 and i_addr: 0x139670149088597
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291512 and i_addr: 0x139670149088611
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291504 and i_addr: 0x139670149088619
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292160 and i_addr: 0x139670149088632
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303424 and i_addr: 0x139670149088615
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303408 and i_addr: 0x139670149088623
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942928 and i_addr: 0x139670149088627
+ Instruction addr: 139670149088657
+ Instruction addr: 139670149088661
+ Instruction addr: 139670149088667
+ Instruction addr: 139670149088670
+ Instruction addr: 139670149088673
+ Instruction addr: 139670149088676
+ Instruction addr: 139670149088679
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292152 and i_addr: 0x139670149088651
+ Instruction addr: 139670149088682
+ Instruction addr: 139670149088685
+ Instruction addr: 139670149088688
+ Instruction addr: 139670149088691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292156 and i_addr: 0x139670149088661
+ Instruction addr: 139670149088693
+ Instruction addr: 139670149088699
+ Instruction addr: 139670149088707
+ Instruction addr: 139670149088712
+ Instruction addr: 139670149088714
+ Instruction addr: 139670149088719
+ Instruction addr: 139670149088722
+ CAP: RobTimer::accessMem uop's d_addr: 0x4194984 and i_addr: 0x139670149088657
+ Instruction addr: 139670149088724
+ Instruction addr: 139670149088728
+ Instruction addr: 139670149088731
+ Instruction addr: 139670149088733
+ Instruction addr: 139670149088738
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088707
+ Instruction addr: 139670149088743
+ Instruction addr: 139670149088748
+ Instruction addr: 139670149088753
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942904 and i_addr: 0x139670149088714
+ Instruction addr: 139670149116720
+ Instruction addr: 139670149116721
+ Instruction addr: 139670149116724
+ Instruction addr: 139670149116725
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088733
+ Instruction addr: 139670149116728
+ Instruction addr: 139670149116732
+ Instruction addr: 139670149116736
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942952 and i_addr: 0x139670149088699
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262448 and i_addr: 0x139670149088724
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088738
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088743
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088748
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149088753
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116720
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116724
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291408 and i_addr: 0x139670149116732
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116736
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670149166181 and i_addr: 0x139670149151506
+ Instruction addr: 139670149116741
+ Instruction addr: 139670149116743
+ Instruction addr: 139670149116748
+ Instruction addr: 139670149116750
+ Instruction addr: 139670149116754
+ Instruction addr: 139670149116757
+ Instruction addr: 139670149116777
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149116780
+ Instruction addr: 139670149116783
+ Instruction addr: 139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151291456 and i_addr: 0x139670149116750
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292792 and i_addr: 0x139670149116777
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116783
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292816 and i_addr: 0x139670149151506
+ Instruction addr: 139670149116788
+ Instruction addr: 139670149116790
+ Instruction addr: 139670149116768
+ Instruction addr: 139670149116772
+ Instruction addr: 139670149116775
+ Instruction addr: 139670149116816
+ Instruction addr: 139670149116820
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149116822
+ Instruction addr: 139670149116823
+ Instruction addr: 139670149116825
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151292800 and i_addr: 0x139670149116768
+ Instruction addr: 139670149116826
+ Instruction addr: 139670149088758
+ Instruction addr: 139670149088760
+ Instruction addr: 139670149088765
+ Instruction addr: 139670149088770
+ Instruction addr: 139670149088775
+ Instruction addr: 139670149088781
+ Instruction addr: 139670149088784
+ Instruction addr: 139670149088788
+ Instruction addr: 139670149088791
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116822
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116825
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149116826
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088760
+ Instruction addr: 139670149088512
+ Instruction addr: 139670149088516
+ Instruction addr: 139670149088524
+ Instruction addr: 139670149088533
+ Instruction addr: 139670149088537
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088765
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088770
+ Instruction addr: 139670149088540
+ Instruction addr: 139670149088545
+ Instruction addr: 139670149088551
+ Instruction addr: 139670149088556
+ Instruction addr: 139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262344 and i_addr: 0x139670149088512
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088516
+ Instruction addr: 139670149088578
+ Instruction addr: 139670149088584
+ Instruction addr: 139670149088591
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942896 and i_addr: 0x139670149088524
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088551
+ Instruction addr: 139670149088597
+ Instruction addr: 139670149088603
+ Instruction addr: 139670149088605
+ Instruction addr: 139670149088611
+ Instruction addr: 139670149088615
+ Instruction addr: 139670149088619
+ Instruction addr: 139670149088623
+ Instruction addr: 139670149088627
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285824 and i_addr: 0x139670149088584
+ Instruction addr: 139670149088632
+ Instruction addr: 139670149088639
+ Instruction addr: 139670149088642
+ Instruction addr: 139670149088648
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362337408 and i_addr: 0x139670149088533
+ Instruction addr: 139670149088651
+ Instruction addr: 139670149088657
+ Instruction addr: 139670149088661
+ Instruction addr: 139670149088667
+ Instruction addr: 139670149088670
+ Instruction addr: 139670149088673
+ Instruction addr: 139670149088676
+ Instruction addr: 139670149088679
+ Instruction addr: 139670149088682
+ Instruction addr: 139670149088685
+ Instruction addr: 139670149088688
+ Instruction addr: 139670149088691
+ Instruction addr: 139670149088693
+ Instruction addr: 139670149088699
+ Instruction addr: 139670149088707
+ Instruction addr: 139670149088712
+ Instruction addr: 139670149088714
+ Instruction addr: 139670149088719
+ Instruction addr: 139670149088722
+ Instruction addr: 139670149088724
+ Instruction addr: 139670149088728
+ Instruction addr: 139670149088731
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088707
+ Instruction addr: 139670149088733
+ Instruction addr: 139670149088738
+ Instruction addr: 139670149088743
+ Instruction addr: 139670149088748
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942904 and i_addr: 0x139670149088714
+ Instruction addr: 139670149088753
+ Instruction addr: 139670149116720
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262448 and i_addr: 0x139670149088724
+ Instruction addr: 139670149116721
+ Instruction addr: 139670149116724
+ Instruction addr: 139670149116725
+ Instruction addr: 139670149116728
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088733
+ Instruction addr: 139670149116732
+ Instruction addr: 139670149116736
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338157 and i_addr: 0x139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338116 and i_addr: 0x139670149088597
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362337480 and i_addr: 0x139670149088611
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362337472 and i_addr: 0x139670149088619
+ Instruction addr: 139670149116741
+ Instruction addr: 139670149116743
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338128 and i_addr: 0x139670149088632
+ Instruction addr: 139670149116748
+ Instruction addr: 139670149116750
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338120 and i_addr: 0x139670149088651
+ Instruction addr: 139670149116754
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338124 and i_addr: 0x139670149088661
+ Instruction addr: 139670149116757
+ Instruction addr: 139670149116777
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362337376 and i_addr: 0x139670149116732
+ Instruction addr: 139670149116780
+ Instruction addr: 139670149116783
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362337424 and i_addr: 0x139670149116750
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338504 and i_addr: 0x139670149116777
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359264568 and i_addr: 0x139670149088657
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669361454616 and i_addr: 0x139670149088615
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669361454600 and i_addr: 0x139670149088623
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362337344 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338528 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195715 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338529 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195716 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338530 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195717 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338531 and i_addr: 0x139670149151506
+ Instruction addr: 139670149116788
+ Instruction addr: 139670149116790
+ Instruction addr: 139670149116768
+ Instruction addr: 139670149116772
+ Instruction addr: 139670149116775
+ Instruction addr: 139670149116816
+ Instruction addr: 139670149116820
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149116822
+ Instruction addr: 139670149116823
+ Instruction addr: 139670149116825
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338512 and i_addr: 0x139670149116768
+ Instruction addr: 139670149116826
+ Instruction addr: 139670149088758
+ Instruction addr: 139670149088760
+ Instruction addr: 139670149088765
+ Instruction addr: 139670149088770
+ Instruction addr: 139670149088775
+ Instruction addr: 139670149088781
+ Instruction addr: 139670149088784
+ Instruction addr: 139670149088788
+ Instruction addr: 139670149088791
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116822
+ Instruction addr: 139670149088512
+ Instruction addr: 139670149088516
+ Instruction addr: 139670149088524
+ Instruction addr: 139670149088533
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116825
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149116826
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088760
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088765
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088770
+ Instruction addr: 139670149088537
+ Instruction addr: 139670149088540
+ Instruction addr: 139670149088545
+ Instruction addr: 139670149088551
+ Instruction addr: 139670149088556
+ Instruction addr: 139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262352 and i_addr: 0x139670149088512
+ Instruction addr: 139670149088578
+ Instruction addr: 139670149088584
+ Instruction addr: 139670149088591
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088551
+ Instruction addr: 139670149088597
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338632 and i_addr: 0x139670149088533
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942928 and i_addr: 0x139670149088627
+ Instruction addr: 139670149088603
+ Instruction addr: 139670149088605
+ Instruction addr: 139670149088611
+ Instruction addr: 139670149088615
+ Instruction addr: 139670149088619
+ Instruction addr: 139670149088623
+ Instruction addr: 139670149088627
+ Instruction addr: 139670149088632
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285824 and i_addr: 0x139670149088584
+ Instruction addr: 139670149088639
+ Instruction addr: 139670149088642
+ Instruction addr: 139670149088648
+ Instruction addr: 139670149088651
+ Instruction addr: 139670149088657
+ Instruction addr: 139670149088661
+ Instruction addr: 139670149088667
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942952 and i_addr: 0x139670149088699
+ Instruction addr: 139670149088670
+ Instruction addr: 139670149088673
+ Instruction addr: 139670149088676
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088738
+ Instruction addr: 139670149088679
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088743
+ Instruction addr: 139670149088682
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088748
+ Instruction addr: 139670149088685
+ Instruction addr: 139670149088688
+ Instruction addr: 139670149088691
+ Instruction addr: 139670149088693
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149088753
+ Instruction addr: 139670149088699
+ Instruction addr: 139670149088707
+ Instruction addr: 139670149088712
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116720
+ Instruction addr: 139670149088714
+ Instruction addr: 139670149088719
+ Instruction addr: 139670149088722
+ Instruction addr: 139670149088724
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116724
+ Instruction addr: 139670149088728
+ Instruction addr: 139670149088731
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116736
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088707
+ Instruction addr: 139670149088733
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116783
+ Instruction addr: 139670149088738
+ Instruction addr: 139670149088743
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088516
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942904 and i_addr: 0x139670149088714
+ Instruction addr: 139670149088748
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942896 and i_addr: 0x139670149088524
+ Instruction addr: 139670149088753
+ Instruction addr: 139670149116720
+ Instruction addr: 139670149116721
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262448 and i_addr: 0x139670149088724
+ Instruction addr: 139670149116724
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088733
+ Instruction addr: 139670149116725
+ Instruction addr: 139670149116728
+ Instruction addr: 139670149116732
+ Instruction addr: 139670149116736
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339381 and i_addr: 0x139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339340 and i_addr: 0x139670149088597
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338704 and i_addr: 0x139670149088611
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338696 and i_addr: 0x139670149088619
+ Instruction addr: 139670149116741
+ Instruction addr: 139670149116743
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339352 and i_addr: 0x139670149088632
+ Instruction addr: 139670149116748
+ Instruction addr: 139670149116750
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339344 and i_addr: 0x139670149088651
+ Instruction addr: 139670149116754
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339348 and i_addr: 0x139670149088661
+ Instruction addr: 139670149116757
+ Instruction addr: 139670149116777
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338600 and i_addr: 0x139670149116732
+ Instruction addr: 139670149116780
+ Instruction addr: 139670149116783
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338648 and i_addr: 0x139670149116750
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339728 and i_addr: 0x139670149116777
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669355979576 and i_addr: 0x139670149088657
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195715 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359128160 and i_addr: 0x139670149088615
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359128144 and i_addr: 0x139670149088623
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362338568 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339752 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339753 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195716 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339754 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195717 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339755 and i_addr: 0x139670149151506
+ Instruction addr: 139670149116788
+ Instruction addr: 139670149116790
+ Instruction addr: 139670149116768
+ Instruction addr: 139670149116772
+ Instruction addr: 139670149116775
+ Instruction addr: 139670149116816
+ Instruction addr: 139670149116820
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149116822
+ Instruction addr: 139670149116823
+ Instruction addr: 139670149116825
+ Instruction addr: 139670149116826
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339736 and i_addr: 0x139670149116768
+ Instruction addr: 139670149088758
+ Instruction addr: 139670149088760
+ Instruction addr: 139670149088765
+ Instruction addr: 139670149088770
+ Instruction addr: 139670149088775
+ Instruction addr: 139670149088781
+ Instruction addr: 139670149088784
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116822
+ Instruction addr: 139670149088788
+ Instruction addr: 139670149088791
+ Instruction addr: 139670149088512
+ Instruction addr: 139670149088516
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116825
+ Instruction addr: 139670149088524
+ Instruction addr: 139670149088533
+ Instruction addr: 139670149088537
+ Instruction addr: 139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149116826
+ Instruction addr: 139670149088545
+ Instruction addr: 139670149088551
+ Instruction addr: 139670149088556
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088760
+ Instruction addr: 139670149088571
+ Instruction addr: 139670149088578
+ Instruction addr: 139670149088584
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088765
+ Instruction addr: 139670149088591
+ Instruction addr: 139670149088597
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088770
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262360 and i_addr: 0x139670149088512
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088551
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359259688 and i_addr: 0x139670149088533
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942928 and i_addr: 0x139670149088627
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942952 and i_addr: 0x139670149088699
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088738
+ Instruction addr: 139670149088603
+ Instruction addr: 139670149088605
+ Instruction addr: 139670149088611
+ Instruction addr: 139670149088615
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088743
+ Instruction addr: 139670149088619
+ Instruction addr: 139670149088623
+ Instruction addr: 139670149088627
+ Instruction addr: 139670149088632
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088748
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285824 and i_addr: 0x139670149088584
+ Instruction addr: 139670149088639
+ Instruction addr: 139670149088642
+ Instruction addr: 139670149088648
+ Instruction addr: 139670149088651
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149088753
+ Instruction addr: 139670149088657
+ Instruction addr: 139670149088661
+ Instruction addr: 139670149088667
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116720
+ Instruction addr: 139670149088670
+ Instruction addr: 139670149088673
+ Instruction addr: 139670149088676
+ Instruction addr: 139670149088679
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116724
+ Instruction addr: 139670149088682
+ Instruction addr: 139670149088685
+ Instruction addr: 139670149088688
+ Instruction addr: 139670149088691
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116736
+ Instruction addr: 139670149088693
+ Instruction addr: 139670149088699
+ Instruction addr: 139670149088707
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116783
+ Instruction addr: 139670149088712
+ Instruction addr: 139670149088714
+ Instruction addr: 139670149088719
+ Instruction addr: 139670149088722
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088516
+ Instruction addr: 139670149088724
+ Instruction addr: 139670149088728
+ Instruction addr: 139670149088731
+ Instruction addr: 139670149088733
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942896 and i_addr: 0x139670149088524
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088707
+ Instruction addr: 139670149088738
+ Instruction addr: 139670149088743
+ Instruction addr: 139670149088748
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942904 and i_addr: 0x139670149088714
+ Instruction addr: 139670149088753
+ Instruction addr: 139670149116720
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262448 and i_addr: 0x139670149088724
+ Instruction addr: 139670149116721
+ Instruction addr: 139670149116724
+ Instruction addr: 139670149116725
+ Instruction addr: 139670149116728
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088733
+ Instruction addr: 139670149116732
+ Instruction addr: 139670149116736
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260437 and i_addr: 0x139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260396 and i_addr: 0x139670149088597
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359259760 and i_addr: 0x139670149088611
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359259752 and i_addr: 0x139670149088619
+ Instruction addr: 139670149116741
+ Instruction addr: 139670149116743
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260408 and i_addr: 0x139670149088632
+ Instruction addr: 139670149116748
+ Instruction addr: 139670149116750
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260400 and i_addr: 0x139670149088651
+ Instruction addr: 139670149116754
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260404 and i_addr: 0x139670149088661
+ Instruction addr: 139670149116757
+ Instruction addr: 139670149116777
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359259656 and i_addr: 0x139670149116732
+ Instruction addr: 139670149116780
+ Instruction addr: 139670149116783
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669362339792 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359259704 and i_addr: 0x139670149116750
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260784 and i_addr: 0x139670149116777
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195714 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669353849528 and i_addr: 0x139670149088657
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669355974200 and i_addr: 0x139670149088615
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669355974184 and i_addr: 0x139670149088623
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260808 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942928 and i_addr: 0x139670149088627
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942952 and i_addr: 0x139670149088699
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088738
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088743
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088748
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149088753
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116720
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116724
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116736
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149116783
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195715 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260809 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195716 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151523
+ Instruction addr: 139670149151528
+ Instruction addr: 139670149151533
+ Instruction addr: 139670149151536
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260810 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195717 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260811 and i_addr: 0x139670149151506
+ Instruction addr: 139670149116788
+ Instruction addr: 139670149116790
+ Instruction addr: 139670149116768
+ Instruction addr: 139670149116772
+ Instruction addr: 139670149116775
+ Instruction addr: 139670149116816
+ Instruction addr: 139670149116820
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149151536
+ Instruction addr: 139670149116822
+ Instruction addr: 139670149116823
+ Instruction addr: 139670149116825
+ Instruction addr: 139670149116826
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260792 and i_addr: 0x139670149116768
+ Instruction addr: 139670149088758
+ Instruction addr: 139670149088760
+ Instruction addr: 139670149088765
+ Instruction addr: 139670149088770
+ Instruction addr: 139670149088775
+ Instruction addr: 139670149088781
+ Instruction addr: 139670149088784
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149116822
+ Instruction addr: 139670149088788
+ Instruction addr: 139670149088791
+ Instruction addr: 139670149088512
+ Instruction addr: 139670149088516
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149116825
+ Instruction addr: 139670149088524
+ Instruction addr: 139670149088533
+ Instruction addr: 139670149088537
+ Instruction addr: 139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149116826
+ Instruction addr: 139670149088545
+ Instruction addr: 139670149088551
+ Instruction addr: 139670149088556
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149088760
+ Instruction addr: 139670149088571
+ Instruction addr: 139670149088578
+ Instruction addr: 139670149088584
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088765
+ Instruction addr: 139670149088591
+ Instruction addr: 139670149088597
+ Instruction addr: 139670149088603
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149088770
+ Instruction addr: 139670149088605
+ Instruction addr: 139670149088611
+ Instruction addr: 139670149088615
+ Instruction addr: 139670149088619
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262368 and i_addr: 0x139670149088512
+ Instruction addr: 139670149088623
+ Instruction addr: 139670149088627
+ Instruction addr: 139670149088632
+ Instruction addr: 139670149088639
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942944 and i_addr: 0x139670149088516
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088551
+ Instruction addr: 139670149088642
+ Instruction addr: 139670149088648
+ Instruction addr: 139670149088651
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942896 and i_addr: 0x139670149088524
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285824 and i_addr: 0x139670149088584
+ Instruction addr: 139670149088657
+ Instruction addr: 139670149088661
+ Instruction addr: 139670149088667
+ Instruction addr: 139670149088670
+ Instruction addr: 139670149088673
+ Instruction addr: 139670149088676
+ Instruction addr: 139670149088679
+ Instruction addr: 139670149088682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260912 and i_addr: 0x139670149088533
+ Instruction addr: 139670149088685
+ Instruction addr: 139670149088688
+ Instruction addr: 139670149088691
+ Instruction addr: 139670149088693
+ Instruction addr: 139670149090047
+ Instruction addr: 139670149090049
+ Instruction addr: 139670149090052
+ Instruction addr: 139670149090054
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088540
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261661 and i_addr: 0x139670149088571
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261620 and i_addr: 0x139670149088597
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260984 and i_addr: 0x139670149088611
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260976 and i_addr: 0x139670149088619
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261632 and i_addr: 0x139670149088632
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261624 and i_addr: 0x139670149088651
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261628 and i_addr: 0x139670149088661
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349774704 and i_addr: 0x139670149088657
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669353683976 and i_addr: 0x139670149088615
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669353683960 and i_addr: 0x139670149088623
+ Instruction addr: 139670149090057
+ Instruction addr: 139670149090064
+ Instruction addr: 139670149090067
+ Instruction addr: 139670149090069
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942928 and i_addr: 0x139670149088627
+ Instruction addr: 139670149090075
+ Instruction addr: 139670149090082
+ Instruction addr: 139670149090086
+ Instruction addr: 139670149090109
+ Instruction addr: 139670149090111
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261640 and i_addr: 0x139670149090057
+ Instruction addr: 139670149090113
+ Instruction addr: 139670149090116
+ Instruction addr: 139670149090119
+ Instruction addr: 139670149090121
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261648 and i_addr: 0x139670149090075
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349779428 and i_addr: 0x139670149090064
+ Instruction addr: 139670149090126
+ Instruction addr: 139670149090129
+ Instruction addr: 139670149090134
+ Instruction addr: 139670149090139
+ Instruction addr: 139670149090144
+ Instruction addr: 139670149090149
+ Instruction addr: 139670149090154
+ Instruction addr: 139670149090161
+ Instruction addr: 139670149090164
+ Instruction addr: 139670149090168
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149090121
+ Instruction addr: 139670149090172
+ Instruction addr: 139670149090174
+ Instruction addr: 139670149090178
+ Instruction addr: 139670149090182
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942840 and i_addr: 0x139670149090129
+ Instruction addr: 139670149088048
+ Instruction addr: 139670149088050
+ Instruction addr: 139670149088052
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261648 and i_addr: 0x139670149090154
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349787408 and i_addr: 0x139670149090109
+ Instruction addr: 139670149088053
+ Instruction addr: 139670149088056
+ Instruction addr: 139670149088057
+ Instruction addr: 139670149088060
+ Instruction addr: 139670149088064
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942880 and i_addr: 0x139670149090134
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149090139
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149090144
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942848 and i_addr: 0x139670149090149
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942952 and i_addr: 0x139670149090168
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149090182
+ Instruction addr: 139670149088068
+ Instruction addr: 139670149088071
+ Instruction addr: 139670149088076
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149088048
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149088050
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942800 and i_addr: 0x139670149088052
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149088056
+ Instruction addr: 139670149088082
+ Instruction addr: 139670149088084
+ Instruction addr: 139670149088089
+ Instruction addr: 139670149088092
+ Instruction addr: 139670149088095
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832924 and i_addr: 0x139670149088064
+ Instruction addr: 139670149088101
+ Instruction addr: 139670149088106
+ Instruction addr: 139670149088109
+ Instruction addr: 139670149088115
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832928 and i_addr: 0x139670149088071
+ Instruction addr: 139670149088119
+ Instruction addr: 139670149088121
+ Instruction addr: 139670149088124
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832926 and i_addr: 0x139670149088084
+ Instruction addr: 139670149088128
+ Instruction addr: 139670149088132
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942956 and i_addr: 0x139670149088092
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942936 and i_addr: 0x139670149088115
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832920 and i_addr: 0x139670149088121
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942920 and i_addr: 0x139670149088124
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942928 and i_addr: 0x139670149088128
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195819 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942776 and i_addr: 0x139670149088132
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844134 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844135 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195820 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844136 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195821 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844137 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195822 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844138 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195823 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844139 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195824 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844140 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195825 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844141 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195826 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844142 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195827 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844143 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195828 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844144 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195829 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844145 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195830 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844146 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195831 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844147 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195832 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844148 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195833 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844149 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195834 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844150 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195835 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844151 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195836 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844152 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195837 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151520
+ Instruction addr: 139670149151522
+ Instruction addr: 139670149088137
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349844153 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195838 and i_addr: 0x139670149151506
+ Instruction addr: 139670149088139
+ Instruction addr: 139670149088145
+ Instruction addr: 139670149088149
+ Instruction addr: 139670149088153
+ Instruction addr: 139670149088156
+ Instruction addr: 139670149088163
+ Instruction addr: 139670149088165
+ Instruction addr: 139670149088168
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942776 and i_addr: 0x139670149151522
+ Instruction addr: 139670149088170
+ Instruction addr: 139670149088173
+ Instruction addr: 139670149088178
+ Instruction addr: 139670149088181
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942904 and i_addr: 0x139670149088145
+ Instruction addr: 139670149088186
+ Instruction addr: 139670149088190
+ Instruction addr: 139670149088197
+ Instruction addr: 139670149088201
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088149
+ Instruction addr: 139670149088204
+ Instruction addr: 139670149088209
+ Instruction addr: 139670149088328
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942952 and i_addr: 0x139670149088170
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261688 and i_addr: 0x139670149088156
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349868514 and i_addr: 0x139670149088173
+ Instruction addr: 139670149088332
+ Instruction addr: 139670149088335
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261608 and i_addr: 0x139670149088190
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262440 and i_addr: 0x139670149088204
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349666920 and i_addr: 0x139670149088201
+ Instruction addr: 139670149151508
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359262432 and i_addr: 0x139670149088328
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349666912 and i_addr: 0x139670149088332
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942776 and i_addr: 0x139670149088335
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195881 and i_addr: 0x139670149151506
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864641 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864642 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195882 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864643 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195883 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864644 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195884 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864645 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195885 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864646 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195886 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864647 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195887 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864648 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195888 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151504
+ Instruction addr: 139670149151506
+ Instruction addr: 139670149151508
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864649 and i_addr: 0x139670149151504
+ Instruction addr: 139670149151510
+ Instruction addr: 139670149151513
+ Instruction addr: 139670149151516
+ Instruction addr: 139670149151518
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195889 and i_addr: 0x139670149151506
+ Instruction addr: 139670149151520
+ Instruction addr: 139670149151522
+ Instruction addr: 139670149088340
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349864650 and i_addr: 0x139670149151504
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195890 and i_addr: 0x139670149151506
+ Instruction addr: 139670149088342
+ Instruction addr: 139670149088345
+ Instruction addr: 139670149088347
+ Instruction addr: 139670149088233
+ Instruction addr: 139670149088237
+ Instruction addr: 139670149088238
+ Instruction addr: 139670149088239
+ Instruction addr: 139670149088241
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942776 and i_addr: 0x139670149151522
+ Instruction addr: 139670149088243
+ Instruction addr: 139670149090187
+ Instruction addr: 139670149090190
+ Instruction addr: 139670149090195
+ Instruction addr: 139670149090200
+ Instruction addr: 139670149090205
+ Instruction addr: 139670149088818
+ Instruction addr: 139670149088822
+ Instruction addr: 139670149088825
+ Instruction addr: 139670149088828
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942792 and i_addr: 0x139670149088237
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942800 and i_addr: 0x139670149088238
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942808 and i_addr: 0x139670149088239
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942816 and i_addr: 0x139670149088241
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942824 and i_addr: 0x139670149088243
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149090190
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942872 and i_addr: 0x139670149090195
+ Instruction addr: 139670149088830
+ Instruction addr: 139670149088833
+ Instruction addr: 139670149088835
+ Instruction addr: 139670149088838
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942880 and i_addr: 0x139670149090200
+ Instruction addr: 139670149088886
+ Instruction addr: 139670149088891
+ Instruction addr: 139670149088894
+ Instruction addr: 139670149088899
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832924 and i_addr: 0x139670149088818
+ Instruction addr: 139670149088904
+ Instruction addr: 139670149088907
+ Instruction addr: 139670149088911
+ Instruction addr: 139670149088916
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942856 and i_addr: 0x139670149088886
+ Instruction addr: 139670149088923
+ Instruction addr: 139670149088924
+ Instruction addr: 139670149088925
+ Instruction addr: 139670149088927
+ Instruction addr: 139670149088929
+ Instruction addr: 139670149088931
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942864 and i_addr: 0x139670149088894
+ Instruction addr: 139670149088933
+ Instruction addr: 139670149090927
+ Instruction addr: 139670149090930
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942912 and i_addr: 0x139670149088899
+ Instruction addr: 139670149090950
+ Instruction addr: 139670149090961
+ Instruction addr: 139670149090968
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942968 and i_addr: 0x139670149088923
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942976 and i_addr: 0x139670149088924
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943168 and i_addr: 0x139670149088904
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942984 and i_addr: 0x139670149088925
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943176 and i_addr: 0x139670149088907
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885942992 and i_addr: 0x139670149088927
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943000 and i_addr: 0x139670149088929
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943008 and i_addr: 0x139670149088931
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943016 and i_addr: 0x139670149088933
+ Instruction addr: 139670149090976
+ Instruction addr: 139670149090982
+ Instruction addr: 139670149090985
+ Instruction addr: 139670149090988
+ Instruction addr: 139670149090990
+ Instruction addr: 139670149090994
+ Instruction addr: 139670149090997
+ Instruction addr: 139670149090999
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943104 and i_addr: 0x139670149090950
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943168 and i_addr: 0x139670149090968
+ Instruction addr: 139670149091001
+ Instruction addr: 139670149091008
+ Instruction addr: 139670149091011
+ Instruction addr: 139670149091019
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943352 and i_addr: 0x139670149090982
+ Instruction addr: 139670149091022
+ Instruction addr: 139670149091024
+ Instruction addr: 139670149091027
+ Instruction addr: 139670149091033
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943176 and i_addr: 0x139670149091001
+ CAP: RobTimer::accessMem uop's d_addr: 0x4195029 and i_addr: 0x139670149090990
+ Instruction addr: 139670149091039
+ Instruction addr: 139670149091041
+ Instruction addr: 139670149091047
+ Instruction addr: 139670149091053
+ Instruction addr: 139670149091059
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261660 and i_addr: 0x139670149091011
+ Instruction addr: 139670149091065
+ Instruction addr: 139670149091072
+ Instruction addr: 139670149091075
+ Instruction addr: 139670149091079
+ Instruction addr: 139670149091080
+ Instruction addr: 139670149091082
+ Instruction addr: 139670149091084
+ Instruction addr: 139670149091086
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359261844 and i_addr: 0x139670149091033
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285824 and i_addr: 0x139670149091047
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943168 and i_addr: 0x139670149091065
+ Instruction addr: 139670149091088
+ Instruction addr: 139670149091089
+ Instruction addr: 139670149109622
+ Instruction addr: 139670149109625
+ Instruction addr: 139670149109633
+ Instruction addr: 139670149109635
+ Instruction addr: 139670149109641
+ Instruction addr: 139670149109649
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943272 and i_addr: 0x139670149091079
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943280 and i_addr: 0x139670149091080
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943288 and i_addr: 0x139670149091082
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943296 and i_addr: 0x139670149091084
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943304 and i_addr: 0x139670149091086
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943312 and i_addr: 0x139670149091088
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943320 and i_addr: 0x139670149091089
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943352 and i_addr: 0x139670149091072
+ Instruction addr: 139670149109651
+ Instruction addr: 139670149109653
+ Instruction addr: 139670149109662
+ Instruction addr: 139670149109667
+ Instruction addr: 139670149109670
+ Instruction addr: 139670149109672
+ Instruction addr: 139670149109675
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631832 and i_addr: 0x139670149109625
+ Instruction addr: 139670149109677
+ Instruction addr: 139670149109681
+ Instruction addr: 139670149109685
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631884 and i_addr: 0x139670149109641
+ Instruction addr: 139670149109689
+ Instruction addr: 139670149109692
+ Instruction addr: 139670149109695
+ Instruction addr: 139670149109701
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943352 and i_addr: 0x139670149109662
+ Instruction addr: 139670149109707
+ Instruction addr: 139670149109709
+ Instruction addr: 139670149109711
+ Instruction addr: 139670149109714
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669359260872 and i_addr: 0x139670149109677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631884 and i_addr: 0x139670149109653
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832924 and i_addr: 0x139670149109681
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349832928 and i_addr: 0x139670149109685
+ Instruction addr: 139670149109718
+ Instruction addr: 139670149109719
+ Instruction addr: 139670149109720
+ Instruction addr: 139670149109722
+ Instruction addr: 139670149136992
+ CAP: RobTimer::accessMem uop's d_addr: 0x139670151285896 and i_addr: 0x139670149109701
+ Instruction addr: 139670149136995
+ Instruction addr: 139670149137001
+ Instruction addr: 139670149137007
+ Instruction addr: 139670149137013
+ Instruction addr: 139670149137018
+ Instruction addr: 139670149137023
+ Instruction addr: 139670149137028
+ Instruction addr: 139670149137033
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943360 and i_addr: 0x139670149109718
+ Instruction addr: 139670149137038
+ Instruction addr: 139670149137043
+ Instruction addr: 139670149137048
+ Instruction addr: 139670149137053
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943368 and i_addr: 0x139670149109719
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943376 and i_addr: 0x139670149109720
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943384 and i_addr: 0x139670149109722
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x139670149137018
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303768 and i_addr: 0x139670149109711
+ Instruction addr: 139670149137060
+ Instruction addr: 139669349964448
+ Instruction addr: 139669349964455
+ Instruction addr: 139669349964464
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x139670149137023
+ Instruction addr: 4199630
+ Instruction addr: 4199635
+ Instruction addr: 4199638
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x139670149137028
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x139670149137033
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943472 and i_addr: 0x139670149137038
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943464 and i_addr: 0x139670149137043
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x139670149137048
+ Instruction addr: 4199641
+ Instruction addr: 4199644
+ Instruction addr: 4199647
+ Instruction addr: 4199650
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669353684696 and i_addr: 0x139669349964448
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631808 and i_addr: 0x139669349964455
+ Instruction addr: 4199694
+ Instruction addr: 4199696
+ Instruction addr: 4199699
+ Instruction addr: 4199701
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x139669349964464
+ Instruction addr: 4199703
+ Instruction addr: 4199705
+ Instruction addr: 4199709
+ Instruction addr: 4199713
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938304 and i_addr: 0x4199682
+ Instruction addr: 4199716
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ Instruction addr: 4199725
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938305 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938306 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938307 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938308 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938309 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199760
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938310 and i_addr: 0x4199682
+ Instruction addr: 4199763
+ Instruction addr: 4199765
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199768
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243232 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243212 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243284 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243212 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243232 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242944 and i_addr: 0x4199691
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938304 and i_addr: 0x4199703
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938305 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938306 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938307 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938308 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938309 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938310 and i_addr: 0x4199659
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938310 and i_addr: 0x4199771
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ Instruction addr: 4197993
+ Instruction addr: 4197996
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ Instruction addr: 4198000
+ Instruction addr: 4198002
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ Instruction addr: 4198019
+ Instruction addr: 4198021
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938304 and i_addr: 0x4197993
+ Instruction addr: 4198024
+ Instruction addr: 4198026
+ Instruction addr: 4198029
+ Instruction addr: 4198032
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938305 and i_addr: 0x4198002
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ Instruction addr: 4198118
+ Instruction addr: 4199194
+ Instruction addr: 4199198
+ Instruction addr: 4199205
+ Instruction addr: 4199213
+ Instruction addr: 4199218
+ Instruction addr: 4198524
+ Instruction addr: 4198529
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198095
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ Instruction addr: 4198531
+ Instruction addr: 4198534
+ Instruction addr: 4199233
+ Instruction addr: 4199240
+ Instruction addr: 4199243
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4199205
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4199213
+ Instruction addr: 4198540
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198524
+ Instruction addr: 4198544
+ Instruction addr: 4198546
+ Instruction addr: 4198552
+ Instruction addr: 4198557
+ Instruction addr: 4198561
+ Instruction addr: 4198564
+ Instruction addr: 4198568
+ Instruction addr: 4198575
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4199233
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198540
+ Instruction addr: 4198579
+ Instruction addr: 4198586
+ Instruction addr: 4198592
+ Instruction addr: 4198597
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938304 and i_addr: 0x4198552
+ Instruction addr: 4198600
+ Instruction addr: 4198603
+ Instruction addr: 4198610
+ Instruction addr: 4198614
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198557
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198568
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365836 and i_addr: 0x4198564
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198579
+ Instruction addr: 4198621
+ Instruction addr: 4198627
+ Instruction addr: 4198632
+ Instruction addr: 4198635
+ Instruction addr: 4198638
+ Instruction addr: 4198645
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938305 and i_addr: 0x4198592
+ Instruction addr: 4198649
+ Instruction addr: 4198656
+ Instruction addr: 4198658
+ Instruction addr: 4198663
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198603
+ Instruction addr: 4198666
+ Instruction addr: 4198673
+ Instruction addr: 4198678
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938306 and i_addr: 0x4198627
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365837 and i_addr: 0x4198600
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198614
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198638
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365838 and i_addr: 0x4198635
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198649
+ Instruction addr: 4198682
+ Instruction addr: 4198689
+ Instruction addr: 4198695
+ Instruction addr: 4198700
+ Instruction addr: 4198704
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938307 and i_addr: 0x4198658
+ Instruction addr: 4198707
+ Instruction addr: 4198711
+ Instruction addr: 4198718
+ Instruction addr: 4198722
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198666
+ Instruction addr: 4198729
+ Instruction addr: 4198735
+ Instruction addr: 4198740
+ Instruction addr: 4198743
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938308 and i_addr: 0x4198695
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365839 and i_addr: 0x4198663
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198700
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198682
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198711
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365840 and i_addr: 0x4198707
+ Instruction addr: 4198746
+ Instruction addr: 4198753
+ Instruction addr: 4198757
+ Instruction addr: 4198764
+ Instruction addr: 4198770
+ Instruction addr: 4198775
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938309 and i_addr: 0x4198735
+ Instruction addr: 4198778
+ Instruction addr: 4198781
+ Instruction addr: 4198788
+ Instruction addr: 4198792
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198722
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198746
+ Instruction addr: 4198799
+ Instruction addr: 4199146
+ Instruction addr: 4199150
+ Instruction addr: 4199154
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938310 and i_addr: 0x4198770
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365841 and i_addr: 0x4198743
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198757
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365842 and i_addr: 0x4198778
+ Instruction addr: 4199158
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198781
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198792
+ Instruction addr: 4199162
+ Instruction addr: 4199166
+ Instruction addr: 4199170
+ Instruction addr: 4199174
+ Instruction addr: 4199061
+ Instruction addr: 4199065
+ Instruction addr: 4199072
+ Instruction addr: 4199076
+ Instruction addr: 4199083
+ Instruction addr: 4199086
+ Instruction addr: 4199088
+ Instruction addr: 4199092
+ Instruction addr: 4199099
+ Instruction addr: 4199102
+ Instruction addr: 4199106
+ Instruction addr: 4199109
+ Instruction addr: 4199113
+ Instruction addr: 4199117
+ Instruction addr: 4199120
+ Instruction addr: 4198325
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4199065
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4199076
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365851 and i_addr: 0x4199072
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4199092
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ Instruction addr: 4199223
+ Instruction addr: 4199228
+ Instruction addr: 4198424
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ Instruction addr: 4198427
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198436
+ Instruction addr: 4198437
+ Instruction addr: 4198439
+ Instruction addr: 4198441
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ CAP: RobTimer::accessMem uop's d_addr: 0x7028088 and i_addr: 0x4198427
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4198437
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4198439
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4198443
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4198445
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199790
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199799
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199696
+ Instruction addr: 4199699
+ Instruction addr: 4199701
+ Instruction addr: 4199703
+ Instruction addr: 4199705
+ Instruction addr: 4199709
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938311 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ Instruction addr: 4199713
+ Instruction addr: 4199716
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ Instruction addr: 4199725
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938312 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x7028088 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243276 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938311 and i_addr: 0x4199703
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938312 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199760
+ Instruction addr: 4199763
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938313 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242944 and i_addr: 0x4199691
+ Instruction addr: 4199765
+ Instruction addr: 4199768
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938313 and i_addr: 0x4199659
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938313 and i_addr: 0x4199771
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ Instruction addr: 4197993
+ Instruction addr: 4197996
+ Instruction addr: 4198000
+ Instruction addr: 4198002
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ Instruction addr: 4198019
+ Instruction addr: 4198021
+ Instruction addr: 4198024
+ Instruction addr: 4198026
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938311 and i_addr: 0x4197993
+ Instruction addr: 4198029
+ Instruction addr: 4198032
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938312 and i_addr: 0x4198002
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ Instruction addr: 4198118
+ Instruction addr: 4199194
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ Instruction addr: 4199198
+ Instruction addr: 4199205
+ Instruction addr: 4199213
+ Instruction addr: 4199218
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198095
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ Instruction addr: 4198524
+ Instruction addr: 4198529
+ Instruction addr: 4198531
+ Instruction addr: 4198534
+ Instruction addr: 4199233
+ Instruction addr: 4199240
+ Instruction addr: 4199243
+ Instruction addr: 4198540
+ Instruction addr: 4198544
+ Instruction addr: 4198546
+ Instruction addr: 4198552
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4199205
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198524
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4199213
+ Instruction addr: 4198557
+ Instruction addr: 4198561
+ Instruction addr: 4198564
+ Instruction addr: 4198568
+ Instruction addr: 4198575
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4199233
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198540
+ Instruction addr: 4198579
+ Instruction addr: 4198586
+ Instruction addr: 4198592
+ Instruction addr: 4198597
+ Instruction addr: 4198600
+ Instruction addr: 4198603
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938311 and i_addr: 0x4198552
+ Instruction addr: 4198610
+ Instruction addr: 4198614
+ Instruction addr: 4198621
+ Instruction addr: 4198627
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198557
+ Instruction addr: 4198632
+ Instruction addr: 4198635
+ Instruction addr: 4198638
+ Instruction addr: 4198645
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198568
+ Instruction addr: 4198649
+ Instruction addr: 4198656
+ Instruction addr: 4198673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938312 and i_addr: 0x4198592
+ Instruction addr: 4198678
+ Instruction addr: 4198682
+ Instruction addr: 4198689
+ Instruction addr: 4199134
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938313 and i_addr: 0x4198627
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540852 and i_addr: 0x4198564
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198579
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198603
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540853 and i_addr: 0x4198600
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198614
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198638
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540854 and i_addr: 0x4198635
+ Instruction addr: 4199138
+ Instruction addr: 4199142
+ Instruction addr: 4199146
+ Instruction addr: 4199150
+ Instruction addr: 4199154
+ Instruction addr: 4199158
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198673
+ Instruction addr: 4199162
+ Instruction addr: 4199166
+ Instruction addr: 4199170
+ Instruction addr: 4199174
+ Instruction addr: 4199061
+ Instruction addr: 4199065
+ Instruction addr: 4199072
+ Instruction addr: 4199076
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198649
+ Instruction addr: 4199083
+ Instruction addr: 4199086
+ Instruction addr: 4199088
+ Instruction addr: 4199092
+ Instruction addr: 4199099
+ Instruction addr: 4199102
+ Instruction addr: 4199106
+ Instruction addr: 4199109
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4198682
+ Instruction addr: 4199113
+ Instruction addr: 4199117
+ Instruction addr: 4199120
+ Instruction addr: 4198325
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ Instruction addr: 4199223
+ Instruction addr: 4199228
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4199065
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4199076
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540867 and i_addr: 0x4199072
+ CAP: RobTimer::accessMem uop's d_addr: 0x6541880 and i_addr: 0x4199092
+ Instruction addr: 4198424
+ Instruction addr: 4198427
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ Instruction addr: 4198436
+ Instruction addr: 4198437
+ Instruction addr: 4198439
+ Instruction addr: 4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x7072176 and i_addr: 0x4198427
+ Instruction addr: 4199696
+ Instruction addr: 4199699
+ Instruction addr: 4199701
+ Instruction addr: 4199703
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4198437
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4198439
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4198443
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4198445
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199790
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199799
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938314 and i_addr: 0x4199682
+ Instruction addr: 4199705
+ Instruction addr: 4199709
+ Instruction addr: 4199713
+ Instruction addr: 4199716
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ Instruction addr: 4199725
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199760
+ Instruction addr: 4199763
+ Instruction addr: 4199765
+ Instruction addr: 4199768
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243204 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938315 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242944 and i_addr: 0x4199691
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ Instruction addr: 4197993
+ Instruction addr: 4197996
+ Instruction addr: 4198000
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ Instruction addr: 4198019
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938314 and i_addr: 0x4197993
+ Instruction addr: 4198021
+ Instruction addr: 4198024
+ Instruction addr: 4198032
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ Instruction addr: 4198118
+ Instruction addr: 4199194
+ Instruction addr: 4199198
+ Instruction addr: 4199205
+ Instruction addr: 4199213
+ Instruction addr: 4199218
+ Instruction addr: 4198524
+ Instruction addr: 4198529
+ Instruction addr: 4198531
+ Instruction addr: 4198534
+ Instruction addr: 4199233
+ Instruction addr: 4199240
+ Instruction addr: 4199243
+ Instruction addr: 4198540
+ Instruction addr: 4198544
+ Instruction addr: 4198546
+ Instruction addr: 4198552
+ Instruction addr: 4198557
+ Instruction addr: 4198561
+ Instruction addr: 4198564
+ Instruction addr: 4198568
+ Instruction addr: 4198575
+ Instruction addr: 4198579
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4198095
+ Instruction addr: 4198586
+ Instruction addr: 4198592
+ Instruction addr: 4198597
+ Instruction addr: 4198600
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198540
+ Instruction addr: 4198603
+ Instruction addr: 4198610
+ Instruction addr: 4198614
+ Instruction addr: 4198621
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198524
+ Instruction addr: 4199185
+ Instruction addr: 4199189
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938314 and i_addr: 0x4198552
+ Instruction addr: 4198673
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198557
+ Instruction addr: 4198678
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938315 and i_addr: 0x4198592
+ Instruction addr: 4198682
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4198568
+ Instruction addr: 4198689
+ Instruction addr: 4199134
+ Instruction addr: 4199138
+ Instruction addr: 4199142
+ Instruction addr: 4199146
+ Instruction addr: 4199150
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198673
+ Instruction addr: 4199154
+ CAP: RobTimer::accessMem uop's d_addr: 0x7072176 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938314 and i_addr: 0x4199703
+ Instruction addr: 4199158
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938315 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938315 and i_addr: 0x4199771
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ Instruction addr: 4199162
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ Instruction addr: 4199166
+ Instruction addr: 4199170
+ Instruction addr: 4199174
+ Instruction addr: 4199061
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ Instruction addr: 4199065
+ Instruction addr: 4199072
+ Instruction addr: 4199076
+ Instruction addr: 4199083
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ Instruction addr: 4199086
+ Instruction addr: 4199088
+ Instruction addr: 4199092
+ Instruction addr: 4199099
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ Instruction addr: 4199102
+ Instruction addr: 4199106
+ Instruction addr: 4199109
+ Instruction addr: 4199113
+ Instruction addr: 4199117
+ Instruction addr: 4199120
+ Instruction addr: 4198325
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4199205
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4198603
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4199213
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ Instruction addr: 4199223
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4199233
+ Instruction addr: 4199228
+ Instruction addr: 4198424
+ CAP: RobTimer::accessMem uop's d_addr: 0x6304004 and i_addr: 0x4198564
+ Instruction addr: 4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4198579
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ CAP: RobTimer::accessMem uop's d_addr: 0x6304005 and i_addr: 0x4198600
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ Instruction addr: 4198436
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4198614
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198437
+ Instruction addr: 4198439
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4198682
+ Instruction addr: 4198441
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4198437
+ Instruction addr: 4199694
+ Instruction addr: 4199696
+ Instruction addr: 4199699
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4198439
+ Instruction addr: 4199701
+ Instruction addr: 4199703
+ Instruction addr: 4199705
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4198441
+ Instruction addr: 4199709
+ Instruction addr: 4199713
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4198443
+ Instruction addr: 4199716
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4198445
+ Instruction addr: 4199725
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4199065
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4199076
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x6304019 and i_addr: 0x4199072
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199790
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199799
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938316 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x6305032 and i_addr: 0x4199092
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938317 and i_addr: 0x4199682
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243212 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938318 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x7012512 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243232 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243284 and i_addr: 0x4199691
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938319 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938320 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243212 and i_addr: 0x4199691
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938321 and i_addr: 0x4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243232 and i_addr: 0x4199691
+ Instruction addr: 4199760
+ Instruction addr: 4199763
+ Instruction addr: 4199765
+ Instruction addr: 4199768
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938322 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242944 and i_addr: 0x4199691
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ Instruction addr: 4197993
+ CAP: RobTimer::accessMem uop's d_addr: 0x7012512 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938316 and i_addr: 0x4199703
+ Instruction addr: 4197996
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938317 and i_addr: 0x4199659
+ Instruction addr: 4198000
+ Instruction addr: 4198002
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938318 and i_addr: 0x4199659
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ Instruction addr: 4198019
+ Instruction addr: 4198021
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938319 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938316 and i_addr: 0x4197993
+ Instruction addr: 4198024
+ Instruction addr: 4198026
+ Instruction addr: 4198029
+ Instruction addr: 4198032
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938320 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938317 and i_addr: 0x4198002
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938321 and i_addr: 0x4199659
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938322 and i_addr: 0x4199659
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938322 and i_addr: 0x4199771
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ Instruction addr: 4198118
+ OMG look the inst addr is 80 and the load inst addr is 80
+ OMG look the inst addr is 80 and the load inst addr is 80
+Stash: Searches(2), Comp/Mask(128)
+WC[0]:(59,1):(16837632,4096->64)
+WC[0]:(59,1):(16837632,4544->64)
+ Instruction addr: 4198124
+ Instruction addr: 4198130
+ Instruction addr: 4198138
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ Instruction addr: 4198141
+ Instruction addr: 4198145
+ Instruction addr: 4198148
+ Instruction addr: 4198154
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198095
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ Instruction addr: 4198158
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303952 and i_addr: 0x4198124
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198130
+ Instruction addr: 4198161
+ Instruction addr: 4198166
+ Instruction addr: 4198169
+ Instruction addr: 4198172
+ Instruction addr: 4198175
+ Instruction addr: 4198179
+ Instruction addr: 4198182
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943464 and i_addr: 0x4198141
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365832 and i_addr: 0x4198145
+ Instruction addr: 4198186
+ Instruction addr: 4198190
+ Instruction addr: 4198196
+ Instruction addr: 4198203
+ Instruction addr: 4198210
+ Instruction addr: 80
+ Instruction addr: 96
+ Instruction addr: 112
+ CAP: RobTimer::accessMem uop's d_addr: 0x7012456 and i_addr: 0x4198148
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198161
+ CAP: RobTimer::accessMem uop's d_addr: 0x7012460 and i_addr: 0x4198190
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 80
+ Instruction addr: 96
+ Instruction addr: 112
+ CAP: RobTimer::accessMem uop's d_addr: 0x4096 and i_addr: 0x80
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 4198292
+ Instruction addr: 4198295
+ CAP: RobTimer::accessMem uop's d_addr: 0x4544 and i_addr: 0x80
+ Instruction addr: 4198299
+ Instruction addr: 4198303
+ Instruction addr: 4198306
+ Instruction addr: 4198312
+ Instruction addr: 4198318
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943464 and i_addr: 0x4198295
+ Instruction addr: 4198323
+ Instruction addr: 4198325
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198299
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198318
+ Instruction addr: 4199223
+ Instruction addr: 4199228
+ Instruction addr: 4198424
+ Instruction addr: 4198427
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ Instruction addr: 4198436
+ Instruction addr: 4198437
+ Instruction addr: 4198439
+ Instruction addr: 4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x7028088 and i_addr: 0x4198427
+ Instruction addr: 4199696
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ Instruction addr: 4199699
+ Instruction addr: 4199701
+ Instruction addr: 4199703
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4198437
+ Instruction addr: 4199705
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4198439
+ Instruction addr: 4199709
+ Instruction addr: 4199713
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4198443
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4198445
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199790
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199799
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938323 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199716
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ Instruction addr: 4199725
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243212 and i_addr: 0x4199691
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938324 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938325 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243232 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243284 and i_addr: 0x4199691
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938326 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938327 and i_addr: 0x4199682
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243212 and i_addr: 0x4199691
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243232 and i_addr: 0x4199691
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938328 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199680
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303952 and i_addr: 0x4198306
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198318
+ CAP: RobTimer::accessMem uop's d_addr: 0x7028088 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938323 and i_addr: 0x4199703
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938324 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938325 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938326 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938327 and i_addr: 0x4199659
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938328 and i_addr: 0x4199659
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199760
+ Instruction addr: 4199763
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938329 and i_addr: 0x4199682
+ Instruction addr: 4199765
+ Instruction addr: 4199768
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ Instruction addr: 4197993
+ Instruction addr: 4197996
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242944 and i_addr: 0x4199691
+ Instruction addr: 4198000
+ Instruction addr: 4198002
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ Instruction addr: 4198019
+ Instruction addr: 4198021
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938323 and i_addr: 0x4197993
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938324 and i_addr: 0x4198002
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938329 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938329 and i_addr: 0x4199771
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ Instruction addr: 4198024
+ Instruction addr: 4198026
+ Instruction addr: 4198029
+ Instruction addr: 4198032
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ Instruction addr: 4198118
+WC[0]:(59,1):(16837632,4992->64)
+WC[0]:(59,1):(16837632,5440->64)
+ Instruction addr: 4198124
+ Instruction addr: 4198130
+ Instruction addr: 4198138
+ Instruction addr: 4198141
+ Instruction addr: 4198145
+ Instruction addr: 4198148
+ Instruction addr: 4198154
+ CAP: RobTimer::accessMem uop's d_addr: 0x6366864 and i_addr: 0x4198095
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ Instruction addr: 4198158
+ Instruction addr: 4198161
+ Instruction addr: 4198166
+ Instruction addr: 4198169
+ Instruction addr: 4198172
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303952 and i_addr: 0x4198124
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198130
+ Instruction addr: 4198175
+ Instruction addr: 4198179
+ Instruction addr: 4198182
+ Instruction addr: 4198186
+ CAP: RobTimer::accessMem uop's d_addr: 0x6365832 and i_addr: 0x4198145
+ Instruction addr: 4198190
+ Instruction addr: 4198196
+ Instruction addr: 4198203
+ Instruction addr: 4198210
+ Instruction addr: 80
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 80
+ Instruction addr: 96
+ Instruction addr: 112
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943464 and i_addr: 0x4198141
+ CAP: RobTimer::accessMem uop's d_addr: 0x4992 and i_addr: 0x80
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 96
+ Instruction addr: 112
+ CAP: RobTimer::accessMem uop's d_addr: 0x7012456 and i_addr: 0x4198148
+ Instruction addr: 96
+ Instruction addr: 112
+ Instruction addr: 4198292
+ Instruction addr: 4198295
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198161
+ CAP: RobTimer::accessMem uop's d_addr: 0x5440 and i_addr: 0x80
+ Instruction addr: 4198299
+ Instruction addr: 4198303
+ Instruction addr: 4198306
+ CAP: RobTimer::accessMem uop's d_addr: 0x7012460 and i_addr: 0x4198190
+ Instruction addr: 4198312
+ Instruction addr: 4198318
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943464 and i_addr: 0x4198295
+ Instruction addr: 4198323
+ Instruction addr: 4198325
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198299
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198318
+ Instruction addr: 4199223
+ Instruction addr: 4199228
+ Instruction addr: 4198424
+ Instruction addr: 4198427
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ Instruction addr: 4198436
+ Instruction addr: 4198437
+ Instruction addr: 4198439
+ Instruction addr: 4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x7028088 and i_addr: 0x4198427
+ Instruction addr: 4199696
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ Instruction addr: 4199699
+ Instruction addr: 4199701
+ Instruction addr: 4199703
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4198437
+ Instruction addr: 4199705
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4198439
+ Instruction addr: 4199709
+ Instruction addr: 4199713
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4198443
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4198445
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199790
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199799
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938330 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199716
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ Instruction addr: 4199725
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938331 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938332 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243272 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243272 and i_addr: 0x4199691
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938333 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938334 and i_addr: 0x4199682
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243280 and i_addr: 0x4199691
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938335 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199680
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243204 and i_addr: 0x4199691
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x6303952 and i_addr: 0x4198306
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198318
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ CAP: RobTimer::accessMem uop's d_addr: 0x7028088 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938330 and i_addr: 0x4199703
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938331 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938336 and i_addr: 0x4199682
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938332 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938333 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938334 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938335 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243280 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938336 and i_addr: 0x4199659
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938337 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938338 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938339 and i_addr: 0x4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938337 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243256 and i_addr: 0x4199691
+ Instruction addr: 4199760
+ Instruction addr: 4199763
+ Instruction addr: 4199765
+ Instruction addr: 4199768
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938340 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243228 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938338 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938339 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242944 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938340 and i_addr: 0x4199659
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938340 and i_addr: 0x4199771
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ Instruction addr: 4197993
+ Instruction addr: 4197996
+ Instruction addr: 4198000
+ Instruction addr: 4198002
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ Instruction addr: 4198019
+ Instruction addr: 4198021
+ Instruction addr: 4198024
+ Instruction addr: 4198026
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938330 and i_addr: 0x4197993
+ Instruction addr: 4198029
+ Instruction addr: 4198032
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938331 and i_addr: 0x4198002
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ Instruction addr: 4198118
+ Instruction addr: 4199194
+ Instruction addr: 4199198
+ Instruction addr: 4199205
+ Instruction addr: 4199213
+ Instruction addr: 4199218
+ Instruction addr: 4198524
+ Instruction addr: 4198529
+ Instruction addr: 4198531
+ Instruction addr: 4198534
+ Instruction addr: 4199233
+ Instruction addr: 4199240
+ Instruction addr: 4199243
+ Instruction addr: 4198540
+ Instruction addr: 4198544
+ Instruction addr: 4198546
+ Instruction addr: 4198552
+ Instruction addr: 4198557
+ Instruction addr: 4198561
+ Instruction addr: 4198564
+ Instruction addr: 4198568
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198095
+ Instruction addr: 4198575
+ Instruction addr: 4198579
+ Instruction addr: 4198586
+ Instruction addr: 4198592
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198540
+ Instruction addr: 4198597
+ Instruction addr: 4198600
+ Instruction addr: 4198603
+ Instruction addr: 4198610
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198524
+ Instruction addr: 4198614
+ Instruction addr: 4198621
+ Instruction addr: 4198627
+ Instruction addr: 4198632
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938330 and i_addr: 0x4198552
+ Instruction addr: 4198635
+ Instruction addr: 4198638
+ Instruction addr: 4198645
+ Instruction addr: 4198649
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198557
+ Instruction addr: 4198656
+ Instruction addr: 4198658
+ Instruction addr: 4198663
+ Instruction addr: 4198666
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4199205
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938331 and i_addr: 0x4198592
+ Instruction addr: 4198673
+ Instruction addr: 4198678
+ Instruction addr: 4198682
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4199213
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198568
+ Instruction addr: 4198689
+ Instruction addr: 4198695
+ Instruction addr: 4198700
+ Instruction addr: 4198704
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4199233
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938332 and i_addr: 0x4198627
+ Instruction addr: 4198707
+ Instruction addr: 4198711
+ Instruction addr: 4198718
+ Instruction addr: 4198722
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539804 and i_addr: 0x4198564
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938333 and i_addr: 0x4198658
+ Instruction addr: 4198729
+ Instruction addr: 4198735
+ Instruction addr: 4198740
+ Instruction addr: 4198743
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198673
+ Instruction addr: 4198746
+ Instruction addr: 4198753
+ Instruction addr: 4198757
+ Instruction addr: 4198764
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938334 and i_addr: 0x4198695
+ Instruction addr: 4198770
+ Instruction addr: 4198775
+ Instruction addr: 4198778
+ Instruction addr: 4198781
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198579
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198603
+ Instruction addr: 4198788
+ Instruction addr: 4198792
+ Instruction addr: 4198799
+ Instruction addr: 4198805
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539805 and i_addr: 0x4198600
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198700
+ Instruction addr: 4198810
+ Instruction addr: 4198813
+ Instruction addr: 4198816
+ Instruction addr: 4198823
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938335 and i_addr: 0x4198735
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938336 and i_addr: 0x4198770
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198614
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198638
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539806 and i_addr: 0x4198635
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198649
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198666
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539807 and i_addr: 0x4198663
+ Instruction addr: 4198827
+ Instruction addr: 4198834
+ Instruction addr: 4198840
+ Instruction addr: 4198845
+ Instruction addr: 4198848
+ Instruction addr: 4198851
+ Instruction addr: 4198858
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198682
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198711
+ Instruction addr: 4198862
+ Instruction addr: 4198869
+ Instruction addr: 4198875
+ Instruction addr: 4198880
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539808 and i_addr: 0x4198707
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938337 and i_addr: 0x4198805
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938338 and i_addr: 0x4198840
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198722
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198746
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539809 and i_addr: 0x4198743
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198757
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198781
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539810 and i_addr: 0x4198778
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198792
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198816
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539811 and i_addr: 0x4198813
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198827
+ Instruction addr: 4198883
+ Instruction addr: 4198886
+ Instruction addr: 4198893
+ Instruction addr: 4198897
+ Instruction addr: 4198904
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539812 and i_addr: 0x4198848
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198851
+ Instruction addr: 4198910
+ Instruction addr: 4198915
+ Instruction addr: 4198918
+ Instruction addr: 4198921
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938339 and i_addr: 0x4198875
+ Instruction addr: 4198928
+ Instruction addr: 4198932
+ Instruction addr: 4198939
+ Instruction addr: 4199162
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198862
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198886
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539813 and i_addr: 0x4198883
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198897
+ Instruction addr: 4199166
+ Instruction addr: 4199170
+ Instruction addr: 4199174
+ Instruction addr: 4199061
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938340 and i_addr: 0x4198910
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198921
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539814 and i_addr: 0x4198918
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4198932
+ Instruction addr: 4199065
+ Instruction addr: 4199072
+ Instruction addr: 4199076
+ Instruction addr: 4199083
+ Instruction addr: 4199086
+ Instruction addr: 4199088
+ Instruction addr: 4199092
+ Instruction addr: 4199099
+ Instruction addr: 4199102
+ Instruction addr: 4199106
+ Instruction addr: 4199109
+ Instruction addr: 4199113
+ Instruction addr: 4199117
+ Instruction addr: 4199120
+ Instruction addr: 4198325
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ Instruction addr: 4199223
+ Instruction addr: 4199228
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4199065
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4199076
+ Instruction addr: 4198424
+ Instruction addr: 4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x6539819 and i_addr: 0x4199072
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ Instruction addr: 4198436
+ Instruction addr: 4198437
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198439
+ Instruction addr: 4198441
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x6540832 and i_addr: 0x4199092
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199696
+ Instruction addr: 4199699
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4198437
+ Instruction addr: 4199701
+ Instruction addr: 4199703
+ Instruction addr: 4199705
+ Instruction addr: 4199709
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4198439
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4198443
+ CAP: RobTimer::accessMem uop's d_addr: 0x7071912 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4198445
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199790
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199799
+ Instruction addr: 4199713
+ Instruction addr: 4199716
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938341 and i_addr: 0x4199682
+ Instruction addr: 4199718
+ Instruction addr: 4199722
+ Instruction addr: 4199725
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199705
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938342 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243204 and i_addr: 0x4199691
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938343 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243256 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243256 and i_addr: 0x4199691
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938344 and i_addr: 0x4199682
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938345 and i_addr: 0x4199682
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243260 and i_addr: 0x4199691
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938346 and i_addr: 0x4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243300 and i_addr: 0x4199691
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ Instruction addr: 4199686
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938347 and i_addr: 0x4199682
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243236 and i_addr: 0x4199691
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199665
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938348 and i_addr: 0x4199682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243256 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351243228 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x7071912 and i_addr: 0x4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938341 and i_addr: 0x4199703
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938342 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938343 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938344 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938345 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938346 and i_addr: 0x4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938347 and i_addr: 0x4199659
+ Instruction addr: 4199689
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938348 and i_addr: 0x4199659
+ Instruction addr: 4199691
+ Instruction addr: 4199694
+ Instruction addr: 4199656
+ Instruction addr: 4199659
+ CAP: RobTimer::accessMem uop's d_addr: 0x14778384 and i_addr: 0x4199665
+ Instruction addr: 4199661
+ Instruction addr: 4199663
+ Instruction addr: 4199760
+ Instruction addr: 4199763
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938349 and i_addr: 0x4199682
+ Instruction addr: 4199765
+ Instruction addr: 4199768
+ Instruction addr: 4199771
+ Instruction addr: 4199774
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669349631696 and i_addr: 0x4199686
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669351242856 and i_addr: 0x4199691
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938349 and i_addr: 0x4199659
+ Instruction addr: 4199777
+ Instruction addr: 4199782
+ Instruction addr: 4199785
+ Instruction addr: 4197968
+ Instruction addr: 4197970
+ Instruction addr: 4197975
+ Instruction addr: 4197977
+ Instruction addr: 4197979
+ Instruction addr: 4197982
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938349 and i_addr: 0x4199771
+ Instruction addr: 4197984
+ Instruction addr: 4197985
+ Instruction addr: 4197986
+ Instruction addr: 4197990
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943544 and i_addr: 0x4199777
+ Instruction addr: 4197993
+ Instruction addr: 4197996
+ Instruction addr: 4198000
+ Instruction addr: 4198002
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943528 and i_addr: 0x4199785
+ Instruction addr: 4198006
+ Instruction addr: 4198008
+ Instruction addr: 4198014
+ Instruction addr: 4198017
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943520 and i_addr: 0x4197968
+ Instruction addr: 4198019
+ Instruction addr: 4198021
+ Instruction addr: 4198024
+ Instruction addr: 4198026
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943512 and i_addr: 0x4197975
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938341 and i_addr: 0x4197993
+ Instruction addr: 4198029
+ Instruction addr: 4198032
+ Instruction addr: 4198035
+ Instruction addr: 4198041
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943504 and i_addr: 0x4197977
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938342 and i_addr: 0x4198002
+ Instruction addr: 4198044
+ Instruction addr: 4198050
+ Instruction addr: 4198052
+ Instruction addr: 4198055
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943496 and i_addr: 0x4197982
+ Instruction addr: 4198062
+ Instruction addr: 4198069
+ Instruction addr: 4198076
+ Instruction addr: 4198084
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4197984
+ Instruction addr: 4198087
+ Instruction addr: 4198091
+ Instruction addr: 4198095
+ Instruction addr: 4198102
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4197985
+ Instruction addr: 4198110
+ Instruction addr: 4198113
+ Instruction addr: 4198118
+ Instruction addr: 4199194
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4197996
+ Instruction addr: 4199198
+ Instruction addr: 4199205
+ Instruction addr: 4199213
+ Instruction addr: 4199218
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198095
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4198113
+ Instruction addr: 4198524
+ Instruction addr: 4198529
+ Instruction addr: 4198531
+ Instruction addr: 4198534
+ Instruction addr: 4199233
+ Instruction addr: 4199240
+ Instruction addr: 4199243
+ Instruction addr: 4198540
+ Instruction addr: 4198544
+ Instruction addr: 4198546
+ Instruction addr: 4198552
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4199205
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4198524
+ Instruction addr: 4198557
+ Instruction addr: 4198561
+ Instruction addr: 4198564
+ Instruction addr: 4198568
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943456 and i_addr: 0x4199213
+ Instruction addr: 4198575
+ Instruction addr: 4198579
+ Instruction addr: 4198586
+ Instruction addr: 4198592
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198540
+ Instruction addr: 4198597
+ Instruction addr: 4198600
+ Instruction addr: 4198603
+ Instruction addr: 4198610
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938341 and i_addr: 0x4198552
+ Instruction addr: 4198614
+ Instruction addr: 4198621
+ Instruction addr: 4198627
+ Instruction addr: 4198632
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4199233
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198557
+ Instruction addr: 4198635
+ Instruction addr: 4198638
+ Instruction addr: 4198645
+ Instruction addr: 4198649
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198568
+ Instruction addr: 4198656
+ Instruction addr: 4198658
+ Instruction addr: 4198663
+ Instruction addr: 4198666
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938342 and i_addr: 0x4198592
+ Instruction addr: 4198673
+ Instruction addr: 4198678
+ Instruction addr: 4198682
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938343 and i_addr: 0x4198627
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317628 and i_addr: 0x4198564
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198579
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198603
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317629 and i_addr: 0x4198600
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198614
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198638
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317630 and i_addr: 0x4198635
+ Instruction addr: 4198689
+ Instruction addr: 4198695
+ Instruction addr: 4198700
+ Instruction addr: 4198704
+ Instruction addr: 4198707
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938344 and i_addr: 0x4198658
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198673
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198649
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198666
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317631 and i_addr: 0x4198663
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198682
+ Instruction addr: 4198711
+ Instruction addr: 4198718
+ Instruction addr: 4198722
+ Instruction addr: 4198729
+ Instruction addr: 4198735
+ Instruction addr: 4198740
+ Instruction addr: 4198743
+ Instruction addr: 4198746
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938345 and i_addr: 0x4198695
+ Instruction addr: 4198753
+ Instruction addr: 4198757
+ Instruction addr: 4198764
+ Instruction addr: 4198770
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943468 and i_addr: 0x4198700
+ Instruction addr: 4198775
+ Instruction addr: 4198778
+ Instruction addr: 4198781
+ Instruction addr: 4198788
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198711
+ Instruction addr: 4198792
+ Instruction addr: 4198799
+ Instruction addr: 4198805
+ Instruction addr: 4198810
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938346 and i_addr: 0x4198735
+ Instruction addr: 4198813
+ Instruction addr: 4198816
+ Instruction addr: 4198823
+ Instruction addr: 4198827
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938347 and i_addr: 0x4198770
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317632 and i_addr: 0x4198707
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198722
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198746
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317633 and i_addr: 0x4198743
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198757
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198781
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317634 and i_addr: 0x4198778
+ Instruction addr: 4198834
+ Instruction addr: 4198840
+ Instruction addr: 4198845
+ Instruction addr: 4198848
+ Instruction addr: 4198851
+ Instruction addr: 4198858
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938348 and i_addr: 0x4198805
+ Instruction addr: 4198862
+ Instruction addr: 4198869
+ Instruction addr: 4199154
+ Instruction addr: 4199158
+ CAP: RobTimer::accessMem uop's d_addr: 0x139669347938349 and i_addr: 0x4198840
+ Instruction addr: 4199162
+ Instruction addr: 4199166
+ Instruction addr: 4199170
+ Instruction addr: 4199174
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198792
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198816
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317635 and i_addr: 0x4198813
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198827
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198851
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317636 and i_addr: 0x4198848
+ Instruction addr: 4199061
+ Instruction addr: 4199065
+ Instruction addr: 4199072
+ Instruction addr: 4199076
+ Instruction addr: 4199083
+ Instruction addr: 4199086
+ Instruction addr: 4199088
+ Instruction addr: 4199092
+ Instruction addr: 4199099
+ Instruction addr: 4199102
+ Instruction addr: 4199106
+ Instruction addr: 4199109
+ Instruction addr: 4199113
+ Instruction addr: 4199117
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4198862
+ Instruction addr: 4199120
+ Instruction addr: 4198325
+ Instruction addr: 4198328
+ Instruction addr: 4198334
+ Instruction addr: 4198338
+ Instruction addr: 4198340
+ Instruction addr: 4198376
+ Instruction addr: 4198379
+ Instruction addr: 4199223
+ Instruction addr: 4199228
+ Instruction addr: 4198424
+ Instruction addr: 4198427
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943444 and i_addr: 0x4198334
+ Instruction addr: 4198431
+ Instruction addr: 4198435
+ Instruction addr: 4198436
+ Instruction addr: 4198437
+ Instruction addr: 4198439
+ Instruction addr: 4198441
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943448 and i_addr: 0x4199223
+ Instruction addr: 4198443
+ Instruction addr: 4198445
+ Instruction addr: 4199790
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4199065
+ CAP: RobTimer::accessMem uop's d_addr: 0x6318656 and i_addr: 0x4199076
+ Instruction addr: 4199794
+ Instruction addr: 4199799
+ Instruction addr: 4199804
+ Instruction addr: 4199669
+ CAP: RobTimer::accessMem uop's d_addr: 0x6317643 and i_addr: 0x4199072
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943480 and i_addr: 0x4198435
+ Instruction addr: 4199673
+ Instruction addr: 4199677
+ Instruction addr: 4199680
+ Instruction addr: 4199727
+ CAP: RobTimer::accessMem uop's d_addr: 0x140733885943488 and i_addr: 0x4198436
+ Instruction addr: 4199729[SNIPER] Disabling performance models
+[SNIPER] Leaving ROI after 0.12 seconds
+[SNIPER] Simulated 0.0M instructions, 0.0M cycles, 0.20 IPC
+[SNIPER] Simulation speed 34.3 KIPS (4.3 KIPS / target core - 233288.1ns/instr)
+[SNIPER] Setting instrumentation mode to FAST_FORWARD
+Wordcount: Running...
+Wordcount Serial: Running
+Additional CAMs created: 0, total CAMs:676
+Number of CAM searches:2
+[SNIPER] End
+[SNIPER] Elapsed time: 0.84 seconds
+#../../run-sniper -n 1 -c ../pic_configs/sim_cur_pic_l3 --no-cache-warming --roi -s markers:stats -- ./wordcount_pic word_10MB.txt

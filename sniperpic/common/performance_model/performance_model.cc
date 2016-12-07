@@ -43,8 +43,10 @@ PerformanceModel* PerformanceModel::create(Core* core)
    else if (type == "rob")
    {
       uint32_t smt_threads = Sim()->getCfg()->getIntArray("perf_model/core/logical_cpus", core->getId());
-      if (smt_threads == 1)
+      if (smt_threads == 1) {
+         printf("Created Rob Perf model");
          return new RobPerformanceModel(core);
+      }   
       else
          return new RobSmtPerformanceModel(core);
    }
@@ -312,12 +314,17 @@ void PerformanceModel::handleIdleInstruction(Instruction *instruction)
 //#ifdef PIC_IS_MICROBENCH
 void PerformanceModel::psuedo_iterate(
 	bool is_last_loop, int target_instruction_cnt) {
+
+  printf("CAP: Outside Perf Mdl Pseudo Iterate \n");
 	if (Sim()->getCfg()->getBool("general/microbench_run")) {
    	while (m_instruction_queue.size() > 0) {
     	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       while(m_hold)
          sched_yield();
       #endif
+
+      printf("CAP: Inside Perf Mdl Pseudo Iterate \n");
+
 
       Instruction *ins = m_instruction_queue.front();
       bool res = handleInstruction(ins);
@@ -372,6 +379,8 @@ void PerformanceModel::psuedo_iterate(
 
 void PerformanceModel::iterate()
 {
+   printf("CAP: Perf Mdl Iterate \n");
+
    while (m_instruction_queue.size() > 0)
    {
       // While the functional thread is waiting because of clock skew minimization, wait here as well

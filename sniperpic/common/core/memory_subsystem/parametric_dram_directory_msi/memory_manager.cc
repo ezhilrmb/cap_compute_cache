@@ -506,7 +506,9 @@ void MemoryManager::processAppMagic(UInt64 argument) {
       //CAP: initial cache program
       if (marker.compare("cprg") == 0) {
         Byte * cap_pgm_file = (Byte*) (args_in-> arg0);
-        init_cacheprogram(cap_pgm_file); 
+        printf("CAP: Mem manager - Cache pgm file ptr :0x%p, content: %d", cap_pgm_file, *(cap_pgm_file+3));
+        init_cacheprogram(cap_pgm_file);
+
       } 
       if(marker.compare("ssprg") == 0) {
         Byte * ss_pgm_file =  (Byte*) (args_in-> arg0);
@@ -563,9 +565,9 @@ void  MemoryManager::init_wordcount(UInt64 cam_id, UInt64 num_words) {
 	IntPtr multiple = ceil(((float)m_app_search_size)/64);
 	m_app_search_size = 64 * multiple;
 
-	//int data_home = (m_app_data_addr % 8);
-	//printf("\nWC[%d]:(%lu,%lu):(%lu,%lu->%lu)", data_home, 
-	//cam_id, num_words,m_app_data_addr, m_app_key_addr, m_app_search_size);
+	int data_home = (m_app_data_addr % 8);
+	printf("\nWC[%d]:(%lu,%lu):(%lu,%lu->%lu)", data_home, 
+	cam_id, num_words,m_app_data_addr, m_app_key_addr, m_app_search_size);
 
 	//Search instructions first
   IntPtr m_app_key_addr_prev = m_app_key_addr;
@@ -613,6 +615,7 @@ void  MemoryManager::create_app_search_instructions_stash(
 																													"", true));
   		Instruction *load_inst = new GenericInstruction(load_list);
   		load_inst->setAddress(m_app_search_inst_addr);
+      printf("\n OMG look the inst addr is %lu and the load inst addr is %lu", m_app_search_inst_addr, load_inst->getAddress());
   		load_inst->setSize(4); //Possible sizes seen (L:1-9, S:1-8)
   		load_inst->setAtomic(false);
   		load_inst->setDisassembly("");
@@ -862,42 +865,47 @@ void  MemoryManager::create_cache_program_instructions(
 	unsigned int cur_subarray = 0;
   unsigned int cur_cache_line = 0;
   UInt32 address; 
-  UInt32 block_size = getCacheBlockSize(); 
+  UInt32 block_size = getCacheBlockSize();
+//  UInt32 block_size = 8;
   UInt32 subarray_size = CACHE_LINES_PER_SUBARRAY * getCacheBlockSize();
   UInt32 m_log_blocksize = floorLog2(getCacheBlockSize());
-  UInt32 cache_subblocks = block_size/8;
-
-  UInt64 temp_data_buf;
+//  UInt32 cache_subblocks = block_size/8;
+  UInt32 cache_subblocks = 1;
+//  UInt64 temp_data_buf;
+  Byte* temp_data_buf = new Byte;
   int cur_byte_pos;
+
+  //printf("CAP: create inst - Cache pgm file ptr :0x%p, content: %d", cap_file, *(cap_file+3));
 
   if(m_cap_ins.size() == 0) {
     while(cur_subarray < NUM_SUBARRAYS) {
       cur_cache_line = 0;
       while(cur_cache_line < CACHE_LINES_PER_SUBARRAY) {
         int sub_block = 0;
-        while(sub_block < cache_subblocks) {
+       // while(sub_block < cache_subblocks) 
+          while(sub_block < block_size) {
           address = (cur_subarray<<(8+m_log_blocksize)) | (cur_cache_line<<m_log_blocksize) | sub_block;
           cur_byte_pos = (cur_subarray * subarray_size) + (cur_cache_line * block_size) + sub_block;
-          memcpy(&temp_data_buf, cap_file + (cur_byte_pos), 8); 
-          printf("Address: 0x%x, Value: %d\n", address, temp_data_buf);
+          memcpy(temp_data_buf, cap_file + (cur_byte_pos), 1); 
+          printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
           OperandList store_list;
           store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
-          store_list.push_back(Operand(Operand::REG, temp_data_buf, Operand::READ, "", true));
+          store_list.push_back(Operand(Operand::REG, (unsigned long)(*temp_data_buf), Operand::READ, "", true));
           Instruction *store_inst = new GenericInstruction(store_list);
-          store_inst->setAddress(address);
+          store_inst->setAddress(m_mbench_dest_addr); //TODO: To check where inst addr is used
           store_inst->setSize(4); //Possible sizes seen (L:1-9, S:1-8)
           store_inst->setAtomic(false);
           store_inst->setDisassembly("");
           std::vector<const MicroOp *> *store_uops 
                                   = new std::vector<const MicroOp*>();
           MicroOp *currentSMicroOp = new MicroOp();
-          currentSMicroOp->setInstructionPointer(Memory::make_access(address));
+          currentSMicroOp->setInstructionPointer(Memory::make_access(m_mbench_dest_addr));
           currentSMicroOp->makeStore(
             0
             , 0
             , XED_ICLASS_MOVQ //TODO: xed_decoded_inst_get_iclass(ins)
             , "" //xed_iclass_enum_t2str(xed_decoded_inst_get_iclass(ins))
-            , 8
+            , 1
            );
           currentSMicroOp->setOperandSize(64); 
           currentSMicroOp->setInstruction(store_inst);
@@ -911,7 +919,7 @@ void  MemoryManager::create_cache_program_instructions(
           //CAP: Dynamic Instructions Info creation
           DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(m_mbench_dest_addr,//ins address 
 			                                true, //False if instruction will not be executed because of predication
-			                                SubsecondTime::Zero(), address, 64, Operand::WRITE, 0, 
+			                                SubsecondTime::Zero(), address, 8, Operand::WRITE, 0, 
 			                                HitWhere::UNKNOWN);
 		      m_cap_dyn_ins_info.push_back(sinfo);
           // TODO: FIXME: What the hell is this?
@@ -930,15 +938,14 @@ void  MemoryManager::create_cache_program_instructions(
 
 void  MemoryManager::schedule_cap_instructions() {
   int num_prg = m_cap_ins.size();
-  int count = 0;
   while(num_prg) {
     getCore()->getPerformanceModel()->pushDynamicInstructionInfo(m_cap_dyn_ins_info[0], true);
     getCore()->getPerformanceModel()->queueInstruction(m_cap_ins[0]);
    	m_cap_dyn_ins_info.erase(m_cap_dyn_ins_info.begin());
+    m_cap_ins.erase(m_cap_ins.begin());
     --num_prg;
-    count++;
   } 
-  assert(count == m_cap_ins.size());
+  //assert(count == m_cap_ins.size());
 
 }  
 
@@ -987,7 +994,7 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
           //CAP: Dynamic Instructions Info creation
           DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(address,//ins address 
 			                                true, //False if instruction will not be executed because of predication
-			                                SubsecondTime::Zero(), m_mbench_dest_addr, 64, Operand::WRITE, 0, 
+			                                SubsecondTime::Zero(), address, 64, Operand::WRITE, 0, 
 			                                HitWhere::UNKNOWN);
 		      m_cap_dyn_ins_info.push_back(sinfo);
 

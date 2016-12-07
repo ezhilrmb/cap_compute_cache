@@ -250,7 +250,7 @@ RobTimer::RobEntry *RobTimer::findEntryBySequenceNumber(UInt64 sequenceNumber)
 }
 
 boost::tuple<uint64_t,SubsecondTime> RobTimer::simulate(const std::vector<DynamicMicroOp*>& insts)
-{
+{  printf("\n CAP: Simulate");
    uint64_t totalInsnExec = 0;
    SubsecondTime totalLat = SubsecondTime::Zero();
 
@@ -567,10 +567,11 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
 {
    RobEntry *entry = &rob[idx];
    DynamicMicroOp &uop = *entry->uop;
-
+  
+   printf("\n outside CHU isStore: %d, dcache hit where: %d", uop.getMicroOp()->isStore(), uop.getDCacheHitWhere());
    if ((uop.getMicroOp()->isLoad() || uop.getMicroOp()->isStore())
       && uop.getDCacheHitWhere() == HitWhere::UNKNOWN)
-   {
+   {  printf("\nCHU");
       MemoryResult res = m_core->accessMemory(
          Core::NONE,
          uop.getMicroOp()->isLoad() ? Core::READ : Core::WRITE,
@@ -581,6 +582,9 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
          uop.getMicroOp()->getInstruction() ? uop.getMicroOp()->getInstruction()->getAddress() : static_cast<uint64_t>(NULL),
          now.getElapsedTime()
       );
+  
+     printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%lu and i_addr: 0x%lu", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress());
+
       uint64_t latency = SubsecondTime::divideRounded(res.latency, now.getPeriod());
 
       uop.setExecLatency(uop.getExecLatency() + latency); // execlatency already contains bypass latency
@@ -695,6 +699,7 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
 
 SubsecondTime RobTimer::doIssue()
 {
+   printf("CAP: DO issue");
    uint64_t num_issued = 0;
    SubsecondTime next_event = SubsecondTime::MaxTime();
    bool head_of_queue = true, no_more_load = false, no_more_store = false, have_unresolved_store = false;
@@ -871,7 +876,7 @@ SubsecondTime RobTimer::doCommit(uint64_t& instructionsExecuted)
 }
 
 void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
-{
+{  printf("\n CAP: execute");
    latency = SubsecondTime::Zero();
    instructionsExecuted = 0;
    SubsecondTime *cpiComponent = NULL;

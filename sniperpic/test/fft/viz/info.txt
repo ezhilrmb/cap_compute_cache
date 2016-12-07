@@ -1,5 +1,5 @@
 title = 'fft';
-num_intervals = '175';
+num_intervals = '194';
 interval = '1000000000';
 use_level2 = 1;
 use_mcpat = 0;
