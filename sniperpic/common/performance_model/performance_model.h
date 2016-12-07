@@ -32,7 +32,7 @@ public:
    virtual ~PerformanceModel();
 
    void queueDynamicInstruction(Instruction *i);
-   void queueInstruction(Instruction *i, bool is_pic_ins = false);
+   void queueInstruction(Instruction *i, bool is_pic_ins = false, bool is_cap_ins = false);
    void handleIdleInstruction(Instruction *instruction);
    void iterate();
    virtual void synchronize();
@@ -46,7 +46,7 @@ public:
    void handleMemoryLatency(SubsecondTime latency, HitWhere::where_t hit_where);
    void handleBranchMispredict();
 
-   void pushDynamicInstructionInfo(DynamicInstructionInfo &i, bool is_pic_ins = false);
+   void pushDynamicInstructionInfo(DynamicInstructionInfo &i, bool is_pic_ins = false, bool is_cap_ins = false);
    void popDynamicInstructionInfo();
    DynamicInstructionInfo* getDynamicInstructionInfo(const Instruction &instruction, bool exec_loads = true);
 

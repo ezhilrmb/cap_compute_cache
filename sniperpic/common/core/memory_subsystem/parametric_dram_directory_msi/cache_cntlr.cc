@@ -1105,6 +1105,11 @@ CacheCntlr::processMemOpFromCore(
              lock_signal, mem_op_type, ca_address);
 MYLOG("----------------------------------------------");
 MYLOG("%c%c %lx+%u..+%u", mem_op_type == Core::WRITE ? 'W' : 'R', mem_op_type == Core::READ_EX ? 'X' : ' ', ca_address, offset, data_length);
+
+printf("processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data length(%d), offset(%d)", mem_op_type, ca_address, data_length, offset);
+
+
+
 LOG_ASSERT_ERROR((ca_address & (getCacheBlockSize() - 1)) == 0, "address at cache line + %x", ca_address & (getCacheBlockSize() - 1));
 LOG_ASSERT_ERROR(offset + data_length <= getCacheBlockSize(), "access until %u > %u", offset + data_length, getCacheBlockSize());
 

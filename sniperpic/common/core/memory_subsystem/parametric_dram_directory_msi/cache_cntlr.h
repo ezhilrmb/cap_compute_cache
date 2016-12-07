@@ -47,7 +47,7 @@ class ShmemPerf;
 #define SWIZZLE_SWITCH_Y 128
 
 // CAP: declare number of subarrays
-#define NUM_SUBARRAYS 4
+#define NUM_SUBARRAYS 1
 
 namespace ParametricDramDirectoryMSI
 {

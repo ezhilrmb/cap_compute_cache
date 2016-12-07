@@ -464,7 +464,7 @@ MemoryManager::MemoryManager(Core* core,
 
 		//Begin- pic-apps
 		//For stringmatch application
-    Sim()->getHooksManager()->registerHook(HookType::HOOK_MAGIC_MARKER, MemoryManager::hookProcessAppMagic, (UInt64)this, HooksManager::ORDER_NOTIFY_PRE);
+    //Sim()->getHooksManager()->registerHook(HookType::HOOK_MAGIC_MARKER, MemoryManager::hookProcessAppMagic, (UInt64)this, HooksManager::ORDER_NOTIFY_PRE);
 		m_app_regs.push_back(76);
 		m_app_regs.push_back(77);
 		m_app_regs.push_back(78);
@@ -485,6 +485,7 @@ MemoryManager::MemoryManager(Core* core,
 
 //Begin- pic-apps
 void MemoryManager::processAppMagic(UInt64 argument) {
+  printf("\nCAP: Memory Manager::processAppMagic\n");
 	MagicServer::MagicMarkerType *args_in = 
 		(MagicServer::MagicMarkerType *) argument;
 	if(getCore()->getId() == 0) {
@@ -530,8 +531,8 @@ void  MemoryManager::init_cacheprogram(Byte* cap_file) {
 
 //CAP: Programming the SS in the Cache Ctlr
 void  MemoryManager::init_ssprogram(Byte* ss_file) {
-  create_cap_ss_instructions(ss_file);
-  schedule_cap_instructions();
+ // create_cap_ss_instructions(ss_file);
+ // schedule_cap_instructions();
 } 
 
 
@@ -866,16 +867,15 @@ void  MemoryManager::create_cache_program_instructions(
   unsigned int cur_cache_line = 0;
   UInt32 address; 
   UInt32 block_size = getCacheBlockSize();
-//  UInt32 block_size = 8;
   UInt32 subarray_size = CACHE_LINES_PER_SUBARRAY * getCacheBlockSize();
   UInt32 m_log_blocksize = floorLog2(getCacheBlockSize());
-//  UInt32 cache_subblocks = block_size/8;
-  UInt32 cache_subblocks = 1;
-//  UInt64 temp_data_buf;
+  UInt32 cache_subblocks = block_size/8;
   Byte* temp_data_buf = new Byte;
   int cur_byte_pos;
 
   //printf("CAP: create inst - Cache pgm file ptr :0x%p, content: %d", cap_file, *(cap_file+3));
+
+  printf("\n CAP: Num_subarrays :%d, Cache lines/SA :%d, Blk size :%d",NUM_SUBARRAYS, CACHE_LINES_PER_SUBARRAY, block_size);
 
   if(m_cap_ins.size() == 0) {
     while(cur_subarray < NUM_SUBARRAYS) {
@@ -938,9 +938,10 @@ void  MemoryManager::create_cache_program_instructions(
 
 void  MemoryManager::schedule_cap_instructions() {
   int num_prg = m_cap_ins.size();
+  printf("\n The num of cap inst is %d", m_cap_ins.size());
   while(num_prg) {
-    getCore()->getPerformanceModel()->pushDynamicInstructionInfo(m_cap_dyn_ins_info[0], true);
-    getCore()->getPerformanceModel()->queueInstruction(m_cap_ins[0]);
+    getCore()->getPerformanceModel()->pushDynamicInstructionInfo(m_cap_dyn_ins_info[0], false, true);
+    getCore()->getPerformanceModel()->queueInstruction(m_cap_ins[0], false, true);
    	m_cap_dyn_ins_info.erase(m_cap_dyn_ins_info.begin());
     m_cap_ins.erase(m_cap_ins.begin());
     --num_prg;
@@ -3344,6 +3345,8 @@ MemoryManager::coreInitiateMemoryAccess(
 			}
 	 }
 
+   printf("Inside coreInitiateMemoryAccess: ADDR(%x), SIZE(%d) OP(%d)", address, data_length, mem_op_type);
+  
    //CAP: Forward CAP operation to Cache Ctlr 
    if(m_cap_on) {
       if(capInsInfoMap.find(address) != capInsInfoMap.end()) {
@@ -3424,7 +3427,7 @@ return m_cache_cntlrs[mem_component]->processPicVOpFromCoreLOGICAL(CacheCntlr::P
 			}
 		}
 
-   if(m_cap_on) mem_component = MemComponent::L3_CACHE;
+ //  if(mem_component != MemComponent::L1_ICACHE) mem_component = MemComponent::L3_CACHE;
 
    return m_cache_cntlrs[mem_component]->processMemOpFromCore(
          lock_signal,

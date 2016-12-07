@@ -215,11 +215,11 @@ void PerformanceModel::queueDynamicInstruction(Instruction *i)
    }
 }
 
-void PerformanceModel::queueInstruction(Instruction *ins, bool is_pic_ins)
+void PerformanceModel::queueInstruction(Instruction *ins, bool is_pic_ins, bool is_cap_ins)
 {
-   printf("CAP: Inside PerformanceModel::queueInstruction\n");
-	 if(!m_ignore_functional_model || is_pic_ins) {
-   printf("CAP: Inside PerformanceModel::queueInstruction: IF condition\n");
+   printf("\n CAP: Inside PerformanceModel::queueInstruction: Outside IF ");
+	 if(!m_ignore_functional_model || is_pic_ins || is_cap_ins) {
+   printf("\n CAP: Inside PerformanceModel::queueInstruction: IF condition");
 
    	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_instruction_queue.push_wait(ins);
@@ -387,7 +387,7 @@ void PerformanceModel::psuedo_iterate(
 
 void PerformanceModel::iterate()
 {
-   printf("CAP: PerformanceModel::iterate \n");
+   printf("CAP: PerformanceModel::iterate with Q size = %d\n", m_instruction_queue.size());
 
    while (m_instruction_queue.size() > 0)
    {
@@ -423,11 +423,11 @@ void PerformanceModel::synchronize()
       client->synchronize(SubsecondTime::Zero(), false);
 }
 
-void PerformanceModel::pushDynamicInstructionInfo(DynamicInstructionInfo &i, bool is_pic_ins)
+void PerformanceModel::pushDynamicInstructionInfo(DynamicInstructionInfo &i, bool is_pic_ins, bool is_cap_ins)
 {
-   printf("CAP: Inside PerformanceModel::pushDynamicInstructionInfo\n");
-	 if(!m_ignore_functional_model || is_pic_ins) {
-   printf("CAP: Inside PerformanceModel::pushDynamicInstructionInfo: IF condition\n");
+   printf("\n CAP: Inside PerformanceModel::pushDynamicInstructionInfo: Outside IF");
+	 if(!m_ignore_functional_model || is_pic_ins || is_cap_ins) {
+   printf("\n CAP: Inside PerformanceModel::pushDynamicInstructionInfo: IF condition");
    	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_dynamic_info_queue.push_wait(i);
    	#else

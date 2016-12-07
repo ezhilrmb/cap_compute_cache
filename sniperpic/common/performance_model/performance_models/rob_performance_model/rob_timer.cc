@@ -576,10 +576,11 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
    RobEntry *entry = &rob[idx];
    DynamicMicroOp &uop = *entry->uop;
   
-   printf("\n outside CHU isStore: %d, dcache hit where: %d", uop.getMicroOp()->isStore(), uop.getDCacheHitWhere());
    if ((uop.getMicroOp()->isLoad() || uop.getMicroOp()->isStore())
       && uop.getDCacheHitWhere() == HitWhere::UNKNOWN)
-   {  printf("\nCHU");
+   {  
+       printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%lu and i_addr: 0x%lu and size = %d", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress(), uop.getMicroOp()->getMemoryAccessSize());
+
       MemoryResult res = m_core->accessMemory(
          Core::NONE,
          uop.getMicroOp()->isLoad() ? Core::READ : Core::WRITE,
@@ -591,7 +592,7 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
          now.getElapsedTime()
       );
   
-     printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%lu and i_addr: 0x%lu", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress());
+  //   printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%lu and i_addr: 0x%lu", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress());
 
       uint64_t latency = SubsecondTime::divideRounded(res.latency, now.getPeriod());
 
