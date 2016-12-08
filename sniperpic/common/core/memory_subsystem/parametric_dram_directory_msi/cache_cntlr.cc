@@ -1106,7 +1106,7 @@ CacheCntlr::processMemOpFromCore(
 MYLOG("----------------------------------------------");
 MYLOG("%c%c %lx+%u..+%u", mem_op_type == Core::WRITE ? 'W' : 'R', mem_op_type == Core::READ_EX ? 'X' : ' ', ca_address, offset, data_length);
 
-printf("processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data length(%d), offset(%d)", mem_op_type, ca_address, data_length, offset);
+printf("\n processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data length(%d), offset(%d)", mem_op_type, ca_address, data_length, offset);
 
 
 

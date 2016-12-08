@@ -162,7 +162,7 @@ void MicroOpPerformanceModel::doSquashing(uint32_t first_squashed)
 bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
 {
 
-   printf("\n CAP: MicroOpPerformanceModel::handleInstruction: Instruction addr: %lu", instruction->getAddress());
+   printf("\n CAP: MicroOpPerformanceModel::handleInstruction: Instruction addr: 0x%x", instruction->getAddress());
 
    if (m_state_instruction == NULL)
    {
@@ -346,7 +346,7 @@ bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
                m_current_uops[store_index]->setAddress(addr);
                m_current_uops[store_index]->setDCacheHitWhere(info->memory_info.hit_where);
                ++m_state_num_writes_done;
-               printf("\n CAP STORE details : %s, addr: %lu",m_current_uops[store_index]->getMicroOp()->toString().c_str(), info->memory_info.addr);
+               printf("\n CAP: For Inst at 0x%x, MEM STORE microop to addr: 0x%x", instruction->getAddress(), info->memory_info.addr);
 
 
 							 /*#ifdef PIC_USE_VPIC

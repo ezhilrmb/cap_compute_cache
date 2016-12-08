@@ -579,7 +579,7 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
    if ((uop.getMicroOp()->isLoad() || uop.getMicroOp()->isStore())
       && uop.getDCacheHitWhere() == HitWhere::UNKNOWN)
    {  
-       printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%lu and i_addr: 0x%lu and size = %d", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress(), uop.getMicroOp()->getMemoryAccessSize());
+       printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%x and i_addr: 0x%x and size = %d", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress(), uop.getMicroOp()->getMemoryAccessSize());
 
       MemoryResult res = m_core->accessMemory(
          Core::NONE,

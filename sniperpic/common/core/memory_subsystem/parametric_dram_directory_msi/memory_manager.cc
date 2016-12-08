@@ -3345,7 +3345,7 @@ MemoryManager::coreInitiateMemoryAccess(
 			}
 	 }
 
-   printf("Inside coreInitiateMemoryAccess: ADDR(%x), SIZE(%d) OP(%d)", address, data_length, mem_op_type);
+   printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), SIZE(%d) OP(%d)", MemComponentString(mem_component), address, data_length, mem_op_type);
   
    //CAP: Forward CAP operation to Cache Ctlr 
    if(m_cap_on) {
