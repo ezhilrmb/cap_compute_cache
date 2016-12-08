@@ -18,7 +18,7 @@
 #include <iomanip>
 
 // Define to get per-cycle printout of dispatch, issue, writeback stages
-//#define DEBUG_PERCYCLE
+#define DEBUG_PERCYCLE
 
 // Define to not skip any cycles, but assert that the skip logic is working fine
 //#define ASSERT_SKIP
@@ -847,6 +847,8 @@ SubsecondTime RobTimer::doCommit(uint64_t& instructionsExecuted)
 {
    uint64_t num_committed = 0;
 
+   printf("\n CAP: doCommit");
+
    while(rob.size() && (rob.front().done <= now))
    {
       RobEntry *entry = &rob.front();
@@ -898,18 +900,22 @@ void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
    #endif
 
 
+    printf("\n CAP: execute: Time Now: %s frontend stalled: %s rob size: %d, m_num_in_rob: %d, dispatchWidth: %d \n", itostr(now).c_str(), itostr(frontend_stalled_until).c_str(), rob.size(), m_num_in_rob, dispatchWidth);
+   
+
    // If frontend not stalled
    if (frontend_stalled_until <= now)
    {
       if (rob.size() < m_num_in_rob + 2*dispatchWidth)
       {
          // We don't have enough instructions to dispatch <dispatchWidth> new ones. Ask for more before doing anything this cycle.
-         printf("CAP: execute: Time Now: %s frontend stalled: %s rob size: %d, m_num_in_rob: %d, dispatchWidth: %d \n", itostr(now).c_str(), itostr(frontend_stalled_until).c_str(), rob.size(), m_num_in_rob, dispatchWidth);
+         // printf("\n CAP: execute: Time Now: %s frontend stalled: %s rob size: %d, m_num_in_rob: %d, dispatchWidth: %d \n", itostr(now).c_str(), itostr(frontend_stalled_until).c_str(), rob.size(), m_num_in_rob, dispatchWidth);
          return;
       }
    }
 
 
+   printf("\n EXECUTE -> DISPATCH");
    // Model dispatch, issue and commit stages
    // Decode stage is not modeled, assumes the decoders can keep up with (up to) dispatchWidth uops per cycle
 

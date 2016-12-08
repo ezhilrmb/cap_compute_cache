@@ -123,9 +123,13 @@ void PerformanceModel::processAppMagic(UInt64 argument) {
 			   m_ignore_functional_model = true;
                printf("CAP: PerformanceModel::processAppMagic: %lld\n", argument);
 
-         } 
-	}
-	}
+         }
+      if (marker.compare("dcprg") == 0) {
+         m_ignore_functional_model = false;
+
+         }
+	  }
+  }
 }
 
 PerformanceModel::~PerformanceModel()
