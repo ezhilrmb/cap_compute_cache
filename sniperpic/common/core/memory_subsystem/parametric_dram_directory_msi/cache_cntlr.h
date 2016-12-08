@@ -43,8 +43,8 @@ class ShmemPerf;
 #define PREFETCH_INTERVAL SubsecondTime::NS(1)
 
 // CAP: Swizzle switch X (curr state) and Y (next state) dimensions (in Bytes)
-#define SWIZZLE_SWITCH_X 64
-#define SWIZZLE_SWITCH_Y 128
+#define SWIZZLE_SWITCH_X 20 //64
+#define SWIZZLE_SWITCH_Y 20 //128
 
 // CAP: declare number of subarrays
 #define NUM_SUBARRAYS 1
@@ -235,6 +235,7 @@ namespace ParametricDramDirectoryMSI
 				    NUM_PIC_MAP_POLICY
 				 	};
 				 //#endif
+
       private:
          // Data Members
          MemComponent::component_t m_mem_component;
@@ -316,6 +317,7 @@ namespace ParametricDramDirectoryMSI
 
          core_id_t m_core_id;
          UInt32 m_cache_block_size;
+         ComponentLatency m_ss_program_time;
          bool m_cache_writethrough;
          ComponentLatency m_writeback_time;
          ComponentBandwidthPerCycle m_next_level_read_bandwidth;
@@ -420,6 +422,7 @@ namespace ParametricDramDirectoryMSI
          bool m_cap_on;
          int m_cap_cache_level; //l1:0, l2:1, else last level
 
+
          enum cap_ops_t {
            CAP_NONE = 0,
            CAP_MATCH,
@@ -434,6 +437,7 @@ namespace ParametricDramDirectoryMSI
                Semaphore* user_thread_sem,
                Semaphore* network_thread_sem,
                UInt32 cache_block_size,
+               ComponentLatency ss_program_time,
                CacheParameters & cache_params,
                ShmemPerfModel* shmem_perf_model,
                bool is_last_level_cache);
@@ -545,7 +549,10 @@ namespace ParametricDramDirectoryMSI
          void updateCAPLatency();
 
          // CAP: Program the swizzle switch
-         void updateSwizzleSwitch(UInt32 STEnum, Byte* nextStateInfo);
+         void updateSwizzleSwitch(UInt32 steNum_BytePos, Byte* nextStateInfo, UInt32 data_length);
+
+         // CAP: show the contents of the swizzle switch
+         void showSwizzleSwitch();
 
          // CAP: Look up next state from current state using swizzle switch 
          void retrieveNextStateInfo(Byte* inDataBuf, Byte* outDataBuf);
@@ -555,7 +562,8 @@ namespace ParametricDramDirectoryMSI
          void processPatternMatch (UInt32 inputChar);
 
          //CAP: 
-         HitWhere::where_t processCAPSOpFromCore(CacheCntlr::cap_ops_t cap_op, IntPtr addr);
+         HitWhere::where_t processCAPSOpFromCore(CacheCntlr::cap_ops_t cap_op,
+                                             IntPtr addr, Byte* data_buf, UInt32 data_length);
  
          
    };

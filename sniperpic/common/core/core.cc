@@ -517,7 +517,7 @@ Core::accessMemory(lock_signal_t lock_signal, mem_op_t mem_op_type, IntPtr d_add
    if (modeled == MEM_MODELED_DYNINFO)
       LOG_ASSERT_ERROR(eip != 0, "modeled == MEM_MODELED_DYNINFO but no eip given");
 
-   // In PINTOOL mode, if the data is requested, copy it to/from real memory
+   // In PINTOOL mode, if the data is requested, copy it to/from real memory  // TODO: CAP: bypass the check below
    if (data_buffer && !is_fault_mask)
    {
       if (Sim()->getConfig()->getSimulationMode() == Config::PINTOOL)
