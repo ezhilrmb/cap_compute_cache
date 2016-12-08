@@ -50,6 +50,8 @@ namespace ParametricDramDirectoryMSI
          AddressHomeLookup* m_dram_controller_home_lookup;
          TLB *m_itlb, *m_dtlb, *m_stlb;
          ComponentLatency m_tlb_miss_penalty;
+         ComponentLatency m_ss_program_time; 
+
          bool m_tlb_miss_parallel;
 
          core_id_t m_core_id_master;
@@ -77,6 +79,7 @@ namespace ParametricDramDirectoryMSI
          struct CAPInsInfo {
 						CacheCntlr::cap_ops_t op;
 						IntPtr addr;	
+                        Byte* cap_data_buf;
 					};
 
          //CAP 
@@ -250,6 +253,7 @@ namespace ParametricDramDirectoryMSI
 					//End- pic-apps
 
       public:
+
          MemoryManager(Core* core, Network* network, ShmemPerfModel* shmem_perf_model);
          ~MemoryManager();
 
@@ -290,6 +294,8 @@ namespace ParametricDramDirectoryMSI
 
          void enableModels();
          void disableModels();
+
+         void showCapInsInfoMap();
 
          core_id_t getShmemRequester(const void* pkt_data)
          { return ((PrL1PrL2DramDirectoryMSI::ShmemMsg*) pkt_data)->getRequester(); }

@@ -44,6 +44,7 @@ MemoryManager::MemoryManager(Core* core,
    m_itlb(NULL), m_dtlb(NULL), m_stlb(NULL),
    m_tlb_miss_penalty(NULL,0),
    m_tlb_miss_parallel(false),
+   m_ss_program_time(NULL,0),
    m_tag_directory_present(false),
    m_dram_cntlr_present(false),
    m_enabled(false)
@@ -105,6 +106,8 @@ MemoryManager::MemoryManager(Core* core,
                objectName = "L" + level;
                break;
          }
+
+   m_ss_program_time = ComponentLatency(core->getDvfsDomain(), Sim()->getCfg()->getInt("perf_model/swizzle_switch/program_time"));
 
          const ComponentPeriod *clock_domain = NULL;
          String domain_name = Sim()->getCfg()->getStringArray("perf_model/" + configName + "/dvfs_domain", core->getId());
@@ -288,6 +291,7 @@ MemoryManager::MemoryManager(Core* core,
          m_user_thread_sem,
          m_network_thread_sem,
          getCacheBlockSize(),
+         m_ss_program_time,
          cache_parameters[(MemComponent::component_t)i],
          getShmemPerfModel(),
          i == (UInt32)m_last_level_cache
@@ -509,10 +513,10 @@ void MemoryManager::processAppMagic(UInt64 argument) {
         Byte * cap_pgm_file = (Byte*) (args_in-> arg0);
         printf("CAP: Mem manager - Cache pgm file ptr :0x%p, content: %d", cap_pgm_file, *(cap_pgm_file+3));
         init_cacheprogram(cap_pgm_file);
-
       } 
       if(marker.compare("ssprg") == 0) {
         Byte * ss_pgm_file =  (Byte*) (args_in-> arg0);
+        printf("CAP: Mem manager - Swizzle Switch pgm file ptr :0x%p, content: %d", ss_pgm_file, *(ss_pgm_file+3));
         init_ssprogram(ss_pgm_file);
       }  
       if(marker.compare("match") == 0) {
@@ -531,8 +535,8 @@ void  MemoryManager::init_cacheprogram(Byte* cap_file) {
 
 //CAP: Programming the SS in the Cache Ctlr
 void  MemoryManager::init_ssprogram(Byte* ss_file) {
- // create_cap_ss_instructions(ss_file);
- // schedule_cap_instructions();
+  create_cap_ss_instructions(ss_file);
+  schedule_cap_instructions();
 } 
 
 
@@ -861,11 +865,13 @@ void  MemoryManager::schedule_app_search_instructions(
 //TBD: Ans: Done 
 //TBD: Que:How to read one line of that cap_file and initiate a store with the right operand
 //TBD: Ans:Using memcpy and temp_data_buf
-void  MemoryManager::create_cache_program_instructions(
-  Byte* cap_file) {
+void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
 	unsigned int cur_subarray = 0;
   unsigned int cur_cache_line = 0;
-  UInt32 address; 
+
+  UInt32 address;
+  IntPtr addr = (IntPtr)(address);
+
   UInt32 block_size = getCacheBlockSize();
   UInt32 subarray_size = CACHE_LINES_PER_SUBARRAY * getCacheBlockSize();
   UInt32 m_log_blocksize = floorLog2(getCacheBlockSize());
@@ -886,7 +892,9 @@ void  MemoryManager::create_cache_program_instructions(
           while(sub_block < block_size) {
           address = (cur_subarray<<(8+m_log_blocksize)) | (cur_cache_line<<m_log_blocksize) | sub_block;
           cur_byte_pos = (cur_subarray * subarray_size) + (cur_cache_line * block_size) + sub_block;
-          memcpy(temp_data_buf, cap_file + (cur_byte_pos), 1); 
+          memcpy(temp_data_buf, cap_file + cur_byte_pos, 1); 
+          printf("create_cache_program_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
+          addr = (IntPtr)(address);
           //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
           OperandList store_list;
           store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
@@ -919,15 +927,17 @@ void  MemoryManager::create_cache_program_instructions(
           //CAP: Dynamic Instructions Info creation
           DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(m_mbench_dest_addr,//ins address 
 			                                true, //False if instruction will not be executed because of predication
-			                                SubsecondTime::Zero(), address, 8, Operand::WRITE, 0, 
+			                                SubsecondTime::Zero(), addr, 8, Operand::WRITE, 0, 
 			                                HitWhere::UNKNOWN);
 		      m_cap_dyn_ins_info.push_back(sinfo);
           // TODO: FIXME: What the hell is this?
 
           struct CAPInsInfo cii;
-          cii.addr	= address;
+          cii.addr	= addr;
           cii.op		= CacheCntlr::CAP_NONE;	
-          capInsInfoMap[address] 	= cii;
+          cii.cap_data_buf = new Byte;
+          memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
+          capInsInfoMap[addr] 	= cii;
        } 
        cur_cache_line++;
       }
@@ -938,7 +948,7 @@ void  MemoryManager::create_cache_program_instructions(
 
 void  MemoryManager::schedule_cap_instructions() {
   int num_prg = m_cap_ins.size();
-  printf("\n The num of cap inst is %d", m_cap_ins.size());
+  printf("\n schedule_cap_instructions: The num of cap inst is %d", m_cap_ins.size());
   while(num_prg) {
     getCore()->getPerformanceModel()->pushDynamicInstructionInfo(m_cap_dyn_ins_info[0], false, true);
     getCore()->getPerformanceModel()->queueInstruction(m_cap_ins[0], false, true);
@@ -947,61 +957,80 @@ void  MemoryManager::schedule_cap_instructions() {
     --num_prg;
   } 
   //assert(count == m_cap_ins.size());
-
 }  
+
+void MemoryManager::showCapInsInfoMap() {
+   for (CAPInsInfoMap::iterator it = capInsInfoMap.begin(); it!=capInsInfoMap.end(); it++)
+   {
+      printf("address: %d, data: %d op_type: %d\n", 
+            (UInt32)(it->first), (UInt32)(*((it->second).cap_data_buf)), (UInt32)((it->second).op));
+   }
+}
 
 void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
   UInt32 cur_ste = 0;
   UInt32 ste_num;
   UInt32 ss_subblocks = SWIZZLE_SWITCH_Y/8;
-  UInt64 temp_data_buf;
+  Byte* temp_data_buf = new Byte;
   UInt32 address;
-  
+  IntPtr addr = (IntPtr)(address);
+
+  printf("Inside create_cap_ss_instructions: SWIZZLE_SWITCH_X: %d, SWIZZLE_SWITCH_Y: %d\n", 
+        SWIZZLE_SWITCH_X, SWIZZLE_SWITCH_Y);
+
   if(m_cap_ins.size() == 0) {
     while(cur_ste < SWIZZLE_SWITCH_X) {
         int sub_block = 0;
         while(sub_block < ss_subblocks) {
           address = cur_ste*SWIZZLE_SWITCH_X + sub_block;
-          memcpy(&temp_data_buf, ss_file + address, 8); 
-          printf("STE no: 0x%x, Value: %d\n", address, temp_data_buf);
+          memcpy(temp_data_buf, ss_file + address, 1); 
+          addr = (IntPtr)(address);        
+
+          printf("create_cap_ss_instructions STE no: 0x%x, Value: %d\n", address, *temp_data_buf);
+
           OperandList store_list;
           store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
-          store_list.push_back(Operand(Operand::REG, temp_data_buf, Operand::READ, "", true));
+          store_list.push_back(Operand(Operand::REG, (UInt32)(*temp_data_buf), Operand::READ, "", true));
+
           Instruction *store_inst = new GenericInstruction(store_list);
-          store_inst->setAddress(address);
+          store_inst->setAddress(m_mbench_dest_addr);
           store_inst->setSize(4); //Possible sizes seen (L:1-9, S:1-8)
           store_inst->setAtomic(false);
           store_inst->setDisassembly("");
-          std::vector<const MicroOp *> *store_uops 
-                                  = new std::vector<const MicroOp*>();
+
+          std::vector<const MicroOp *> *store_uops = new std::vector<const MicroOp*>();
           MicroOp *currentSMicroOp = new MicroOp();
-          currentSMicroOp->setInstructionPointer(Memory::make_access(address));
+          currentSMicroOp->setInstructionPointer(Memory::make_access(m_mbench_dest_addr));
           currentSMicroOp->makeStore(
             0
             , 0
             , XED_ICLASS_MOVQ //TODO: xed_decoded_inst_get_iclass(ins)
             , "" //xed_iclass_enum_t2str(xed_decoded_inst_get_iclass(ins))
-            , 8
+            , 1
            );
           currentSMicroOp->setOperandSize(64); 
           currentSMicroOp->setInstruction(store_inst);
           currentSMicroOp->setFirst(true);
           currentSMicroOp->setLast(true);
+
           store_uops->push_back(currentSMicroOp);
           store_inst->setMicroOps(store_uops);
+
           m_cap_ins.push_back(store_inst);
           sub_block++;
 
           //CAP: Dynamic Instructions Info creation
-          DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(address,//ins address 
+          DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(m_mbench_dest_addr,//ins address 
 			                                true, //False if instruction will not be executed because of predication
-			                                SubsecondTime::Zero(), address, 64, Operand::WRITE, 0, 
+			                                SubsecondTime::Zero(), addr, 64, Operand::WRITE, 0, 
 			                                HitWhere::UNKNOWN);
-		      m_cap_dyn_ins_info.push_back(sinfo);
+          m_cap_dyn_ins_info.push_back(sinfo);
 
           struct CAPInsInfo cii;
-          cii.addr	              = address;
-          cii.op		              = CacheCntlr::CAP_SS;	
+          cii.addr  = addr;
+          cii.op    = CacheCntlr::CAP_SS;	
+          cii.cap_data_buf = new Byte;
+          memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
           capInsInfoMap[address] 	= cii;
        } 
        cur_ste++;
@@ -3330,6 +3359,7 @@ MemoryManager::coreInitiateMemoryAccess(
       Byte* data_buf, UInt32 data_length,
       Core::MemModeled modeled)
 {
+   data_buf = new Byte[data_length];
    LOG_ASSERT_ERROR(mem_component <= m_last_level_cache,
       "Error: invalid mem_component (%d) for coreInitiateMemoryAccess", mem_component);
 
@@ -3345,16 +3375,29 @@ MemoryManager::coreInitiateMemoryAccess(
 			}
 	 }
 
-   printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), SIZE(%d) OP(%d)", MemComponentString(mem_component), address, data_length, mem_op_type);
+   printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), offset: %d, data: %d, data_length(%d) OP(%d)\n", MemComponentString(mem_component), address, offset, (UInt32)(*data_buf), data_length, mem_op_type);
   
    //CAP: Forward CAP operation to Cache Ctlr 
+
+   // showCapInsInfoMap();
    if(m_cap_on) {
-      if(capInsInfoMap.find(address) != capInsInfoMap.end()) {
-				struct CAPInsInfo cii = capInsInfoMap[address];
-				capInsInfoMap.erase(address);
-        if(cii.op != CacheCntlr::CAP_NONE) 
-   			  return m_cache_cntlrs[MemComponent::L3_CACHE]->processCAPSOpFromCore(cii.op, address);
-			}
+      UInt32 log_block_size = floorLog2(getCacheBlockSize());
+      IntPtr capAddr = (IntPtr)((UInt64)(address) | offset);  
+      if(capInsInfoMap.find(capAddr) != capInsInfoMap.end()) {
+         struct CAPInsInfo cii = capInsInfoMap[capAddr];
+         capInsInfoMap.erase(capAddr);
+         
+         if(cii.op != CacheCntlr::CAP_NONE) {
+            if(cii.op == CacheCntlr::CAP_SS) {
+               memcpy(data_buf, cii.cap_data_buf, 1);
+               return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length for ss=1
+            }
+         }
+         else {
+            memcpy(data_buf, cii.cap_data_buf, 1);
+            printf("coreInitiateMemoryAccess: reading!!! addr: %d  data: %d\n", (UInt32)(capAddr), *data_buf);
+         }
+      }
    }  
  
    
@@ -3427,7 +3470,7 @@ return m_cache_cntlrs[mem_component]->processPicVOpFromCoreLOGICAL(CacheCntlr::P
 			}
 		}
 
- //  if(mem_component != MemComponent::L1_ICACHE) mem_component = MemComponent::L3_CACHE;
+//   if((mem_component == MemComponent::L1_DCACHE) || (mem_component == MemComponent::L2_CACHE))      mem_component = MemComponent::LAST_LEVEL_CACHE;
 
    return m_cache_cntlrs[mem_component]->processMemOpFromCore(
          lock_signal,

@@ -48,31 +48,6 @@
 
 
 
-int getnextline(char* output, int max_len, char* file)
-{
-	int i=0;
-	while(i<max_len-1)
-	{
-		if( file[i] == '\0')
-		{
-			if(i==0)
-				return -1;
-			else
-				return i;
-		}
-		if( file[i] == '\r')
-			return (i+2);
-
-		if( file[i] == '\n' )
-			return (i+1);
-
-		output[i] = file[i];
-		i++;
-	}
-	file+=i;
-	return i;
-}
-
 void cap_cache_init(Byte* cap_file)
 {
    
@@ -87,28 +62,45 @@ void cap_cache_init(Byte* cap_file)
 
 }
 
+void cap_ss_init(Byte* cap_file)
+{
+   
+  assert(cap_file);
+
+  //CAP: Read the file line/line and load the ss inputs
+  
+  SimRoiStart();
+  SimNamedMarker((unsigned long)cap_file,"ssprg");
+  SimRoiEnd();
+
+
+}
 
 int main(int argc, char *argv[]) 
 {   
-   int fd_cap;
-   Byte* fdata_cap;
-   struct stat finfo_cap;
-   char * InputMatchFile, *CacheProgramFile;
+   int fd_cap, fd_cap2;
+   Byte * fdata_cap, * fdata_cap2;
+   struct stat finfo_cap, finfo_cap2;
+   char * InputMatchFile, *CacheProgramFile, *SSProgramFile;
 
    //CAP: If the input text file or the cache program image file is not specified, then exit
-   if (argv[1] == NULL || argv[2] == NULL)
+   if (argv[1] == NULL || argv[2] == NULL || argv[3] == NULL)
    {
-      printf("USAGE: %s <Input match filename> <Cache Program Image file>\n", argv[0]);
+      printf("USAGE: %s <Input match filename> <Cache Program Image file> <SS program Image file>\n", argv[0]);
       exit(1);
    }
    InputMatchFile = argv[1];
    CacheProgramFile = argv[2];
+   SSProgramFile = argv[3];
      
-   struct timeval starttime,endtime;
+   struct timeval starttime,endtime,starttime2,endtime2;
    srand( (unsigned)time( NULL ) );
 
    printf("CAP: Program the Cache with STEs...\n");
 
+   // ******************************************
+   // Program the cache
+   // ******************************************
    // Read in the Cache Program file
    CHECK_ERROR((fd_cap = open(CacheProgramFile,O_RDONLY)) < 0);
    // Get the file length
@@ -123,8 +115,30 @@ int main(int argc, char *argv[])
 	 gettimeofday(&endtime,0);
    printf("CAP: Cache STE Programming Completed %ld\n",(endtime.tv_sec - starttime.tv_sec));
 
-
    CHECK_ERROR(munmap(fdata_cap, finfo_cap.st_size + 1) < 0);
    CHECK_ERROR(close(fd_cap) < 0);
+
+   // ******************************************
+   // Program the swizzle switch
+   // ******************************************
+   printf("CAP: Program the Swizzle Switch with STEs...\n");
+
+   // Read in the Cache Program file
+   CHECK_ERROR((fd_cap2 = open(SSProgramFile,O_RDONLY)) < 0);
+   // Get the file length
+   CHECK_ERROR(fstat(fd_cap2, &finfo_cap2) < 0);
+   // Memory map the file
+   CHECK_ERROR((fdata_cap2= mmap(0, finfo_cap2.st_size + 1,
+      PROT_READ | PROT_WRITE, MAP_PRIVATE, fd_cap2, 0)) == NULL);
+
+   printf("CAP: Swizzle switch pgm file ptr :0x%p, content: %d", fdata_cap2, *(fdata_cap2+3));
+	 gettimeofday(&starttime2,0);
+   cap_ss_init(fdata_cap2);
+	 gettimeofday(&endtime2,0);
+   printf("CAP: Swizzle Switch STE Programming Completed %ld\n",(endtime2.tv_sec - starttime2.tv_sec));
+
+
+   CHECK_ERROR(munmap(fdata_cap2, finfo_cap2.st_size + 1) < 0);
+   CHECK_ERROR(close(fd_cap2) < 0);
    return 0;
 }

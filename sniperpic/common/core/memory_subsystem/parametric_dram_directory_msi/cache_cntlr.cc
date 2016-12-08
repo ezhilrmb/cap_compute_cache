@@ -129,6 +129,7 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
       Semaphore* user_thread_sem,
       Semaphore* network_thread_sem,
       UInt32 cache_block_size,
+      ComponentLatency ss_program_time,
       CacheParameters & cache_params,
       ShmemPerfModel* shmem_perf_model,
       bool is_last_level_cache):
@@ -144,6 +145,7 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
    m_l1_mshr(cache_params.outstanding_misses > 0),
    m_core_id(core_id),
    m_cache_block_size(cache_block_size),
+   m_ss_program_time(ss_program_time),
    m_cache_writethrough(cache_params.writethrough),
    m_writeback_time(cache_params.writeback_time),
    m_next_level_read_bandwidth(cache_params.next_level_read_bandwidth),
@@ -1106,7 +1108,7 @@ CacheCntlr::processMemOpFromCore(
 MYLOG("----------------------------------------------");
 MYLOG("%c%c %lx+%u..+%u", mem_op_type == Core::WRITE ? 'W' : 'R', mem_op_type == Core::READ_EX ? 'X' : ' ', ca_address, offset, data_length);
 
-printf("\n processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data length(%d), offset(%d)", mem_op_type, ca_address, data_length, offset);
+printf("\n processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data(%d) data length(%d), offset(%d)", mem_op_type, ca_address, (UInt32)(*data_buf), data_length, offset);
 
 
 
@@ -2579,11 +2581,28 @@ void CacheCntlr::updateCAPLatency()
  * CAP: Program the swizzle switch for the current state with corresponding 
  *      next_state vectors
  *****************************************************************************/
-void CacheCntlr::updateSwizzleSwitch(UInt32 STEnum, Byte* nextStateInfo)
+void CacheCntlr::updateSwizzleSwitch(UInt32 steNum_BytePos, Byte* nextStateInfo, UInt32 data_length)
 {
-   UInt32 nextStateVecLength = SWIZZLE_SWITCH_Y; 
-   memcpy((m_swizzleSwitch+(nextStateVecLength*STEnum)), nextStateInfo, nextStateVecLength);
+   //UInt32 nextStateVecLength = SWIZZLE_SWITCH_Y; 
+   memcpy((m_swizzleSwitch+steNum_BytePos), nextStateInfo, data_length);
 }
+
+/*****************************************************************************
+ * CAP: Display the content of the swizzle switch
+ *****************************************************************************/
+
+void CacheCntlr::showSwizzleSwitch()  
+{
+   Byte singleByte;
+   for (int i=0; i<SWIZZLE_SWITCH_X; i++)  {
+      for (int j=0; j<SWIZZLE_SWITCH_Y; j++)  {
+         singleByte = *(m_swizzleSwitch + (i*SWIZZLE_SWITCH_X + j));
+         printf("%d ", (UInt32)(singleByte));
+      }
+      printf("\n");
+   }
+}
+
 
 /*****************************************************************************
  * CAP: Perform a swizle switch lookup using curr_state and output next_state vector
@@ -2692,77 +2711,73 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar)
 HitWhere::where_t
 CacheCntlr::processCAPSOpFromCore(
 			CacheCntlr::cap_ops_t cap_op,
-      IntPtr addr)
-{
-  /*
-	printf("\n CAP OPCODE :%d, STE Num: 0x%x", (int)cap_op, addr);
-  SubsecondTime t_start = getShmemPerfModel()->getElapsedTime(
-																		ShmemPerfModel::_USER_THREAD);
+            IntPtr addr,
+            Byte* data_buf, 
+            UInt32 data_length)  {
+
+   UInt32 steNum = (UInt32)(addr) & (getCacheBlockSize()-1);
+   UInt32 bytePos = (UInt32)(addr) - steNum;
+
+   printf("\n processCAPSOpFromCore: CAP OPCODE :%d, STE Num: %d, byte position: %d", (int)cap_op, steNum, bytePos);
+
+   if (cap_op == CacheCntlr::CAP_SS)  {  // call the updateSwizzleSwitch function. I know this is redundant.
+      UInt32 steNum_BytePos = (UInt32)(addr);
+      updateSwizzleSwitch(steNum_BytePos, data_buf, data_length);
+
+      // Add time
+      getMemoryManager()->incrElapsedTime(m_ss_program_time.getLatency(), ShmemPerfModel::_USER_THREAD);
+   }
+
+   return HitWhere::L1_OWN;  // TODO: HACK: always return hit in L1
+   
+
+/*   SubsecondTime t_start = getShmemPerfModel()->getElapsedTime(
+         ShmemPerfModel::_USER_THREAD);
+
 	//CAP : First check if cache is LLC 
-	if(isLastLevel()) {
-  	HitWhere::where_t	hit_where1 = picProcessMemOpFromCore(
-      Core::NONE, Core::READ,
-      addr, 0, NULL, 64, true, true);
-  	SubsecondTime t_load_end = getShmemPerfModel()->getElapsedTime
-																				(ShmemPerfModel::_USER_THREAD);
-		//remember this loaded value
-		//Check if during processing of store you throw the loaded value out
-		pic_other_load_address = addr;
+//	if(isLastLevel()) { TODO: turning this check off for now and do everything in the L1D
+       HitWhere::where_t	hit_where1 = picProcessMemOpFromCore(
+                                                               Core::NONE, Core::READ,
+                                                               addr, 0, NULL, 64, true, true);
+       SubsecondTime t_load_end = getShmemPerfModel()->getElapsedTime(ShmemPerfModel::_USER_THREAD);
+       //Start the store at the end of load processing not its *completion*
+       getShmemPerfModel()->setElapsedTime(ShmemPerfModel::_USER_THREAD, t_start) ;
 
-  	//Start the store at the end of load processing not its *completion*
- 		getShmemPerfModel()->setElapsedTime(ShmemPerfModel::_USER_THREAD, 
-									t_start) ;
-  	getMemoryManager()->incrElapsedTime(m_mem_component, 
-			CachePerfModel::ACCESS_CACHE_TAGS, ShmemPerfModel::_USER_THREAD);
+       getMemoryManager()->incrElapsedTime(m_mem_component, 
+                                       CachePerfModel::ACCESS_CACHE_TAGS, ShmemPerfModel::_USER_THREAD);
 
-		HitWhere::where_t hit_where2 = HitWhere::UNKNOWN;
-		if(cap_op == PIC_COPY) 
-  		hit_where2 = picProcessMemOpFromCore(
-      Core::NONE, Core::WRITE,
-      , 0, NULL, 64, true, true);
-		else
-		//else if(cap_op == PIC_CMP)
-  		hit_where2 = picProcessMemOpFromCore(
-      Core::NONE, Core::READ,
-      , 0, NULL, 64, true, true);
+       HitWhere::where_t hit_where2 = HitWhere::UNKNOWN;
+       if(cap_op == PIC_COPY) 
+          hit_where2 = picProcessMemOpFromCore(
+                                       Core::NONE, Core::WRITE,
+                                       , 0, NULL, 64, true, true);
+       else
+          //else if(cap_op == PIC_CMP)
+          hit_where2 = picProcessMemOpFromCore(
+                                       Core::NONE, Core::READ,
+                                       , 0, NULL, 64, true, true);
+       pic_other_load_address = 0;
 
-		pic_other_load_address = 0;
+       SubsecondTime t_store_end = getShmemPerfModel()->getElapsedTime(ShmemPerfModel::_USER_THREAD);
+       
+       if(t_load_end > t_store_end)
+          getShmemPerfModel()->setElapsedTime(ShmemPerfModel::_USER_THREAD, t_load_end);
 
-  	SubsecondTime t_store_end = getShmemPerfModel()->getElapsedTime
-																				(ShmemPerfModel::_USER_THREAD);
-		if(t_load_end > t_store_end)
- 			getShmemPerfModel()->setElapsedTime(ShmemPerfModel::_USER_THREAD, 
-									t_load_end);
+       LOG_PRINT("\nL1%d+%lx..+%lx, %s,%s", (int)cap_op, 
+               addr, HitWhereString(hit_where1), 
+               HitWhereString(hit_where2));
 
-	 	//If any one was a miss, account for more TAG access
-	 	if ((hit_where1 != (HitWhere::where_t)m_mem_component) || 
-	  	(hit_where2 != (HitWhere::where_t)m_mem_component)) {
-      	getMemoryManager()->incrElapsedTime(m_mem_component, 
-					CachePerfModel::ACCESS_CACHE_TAGS, ShmemPerfModel::_USER_THREAD);
-      	getMemoryManager()->incrElapsedTime(m_mem_component, 
-				CachePerfModel::ACCESS_CACHE_TAGS, ShmemPerfModel::_USER_THREAD);
-	 	}
-
-		picUpdateCounters(cap_op, addr, hit_where1, 
-										, hit_where2);
-		LOG_PRINT("\nL1%d+%lx..+%lx, %s,%s", (int)cap_op, 
-				addr, HitWhereString(hit_where1), 
-				HitWhereString(hit_where2));
-
-	 	//Finally account for PIC operation 1.75 * DATA
-	 	//TODO: Make this 1.75
-   	getMemoryManager()->incrElapsedTime(m_mem_component, 
-				CachePerfModel::ACCESS_CACHE_DATA, ShmemPerfModel::_USER_THREAD);
-   	getMemoryManager()->incrElapsedTime(m_mem_component, 
-				CachePerfModel::ACCESS_CACHE_DATA, ShmemPerfModel::_USER_THREAD);
-	 	//max hierarchy of the two?
-   	return ((hit_where1 > hit_where2) ? hit_where1 : hit_where2);
-	}
-	else {
-    printf("ERROR! Transaction reached L1/L2...\n");
-    assert(0);
-	}
-    */
+       //Finally account for PIC operation 1.75 * DATA
+       //TODO: Make this 1.75
+       getMemoryManager()->incrElapsedTime(m_mem_component, 
+                   CachePerfModel::ACCESS_CACHE_DATA, ShmemPerfModel::_USER_THREAD);
+       return ((hit_where1 > hit_where2) ? hit_where1 : hit_where2);
+//	}
+//	else {
+//       printf("ERROR! Transaction reached L1/L2...\n");
+//       assert(0);
+//	}
+*/
 }
 
 
