@@ -982,6 +982,7 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
         int sub_block = 0;
         while(sub_block < SWIZZLE_SWITCH_Y) {
           address = cur_ste*SWIZZLE_SWITCH_X + sub_block;
+
           memcpy(temp_data_buf, ss_file + address, 1); 
           addr = (IntPtr)(address);        
 
@@ -1039,16 +1040,25 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
 
 
 void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
-  UInt32 cur_ste = 0;
-  UInt32 ste_num;
-  Byte* temp_data_buf = new Byte;
-  UInt32 address;
+  UInt32 address; 
   IntPtr addr = (IntPtr)(address);
+  Byte* temp_data_buf = new Byte;
+  UInt32 byte_pos = 0;
 
-  printf("Inside create_cap_match_instructions: SWIZZLE_SWITCH_X: %d, SWIZZLE_SWITCH_Y: %d\n", 
-        SWIZZLE_SWITCH_X, SWIZZLE_SWITCH_Y);
+
+  printf("Inside create_cap_match_instructions: \n");
 
   if(m_cap_ins.size() == 0) {
+     while ((char)(*(ss_file+byte_pos)) != '\n')  { // detect end of input pattern this way.
+        processPatternMatch((char)(*(ss_file+byte_pos)));
+
+
+        byte_pos++; 
+     }
+
+     // push a special pattern here to indicate end of pattern reached
+
+
     while(cur_ste < SWIZZLE_SWITCH_X) {
         int sub_block = 0;
         while(sub_block < SWIZZLE_SWITCH_Y) {
@@ -1105,7 +1115,7 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
        } 
        cur_ste++;
       }
-  }
+  }  
 }  
 
 
