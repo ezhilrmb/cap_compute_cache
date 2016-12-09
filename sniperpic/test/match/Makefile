@@ -37,6 +37,10 @@ $(TARGET): $(STR_MATCH_PIC_OBJS)
 run:
 	../../run-sniper -n 1 -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt ssp.txt repSTE.txt
 
+debug_run:
+	../../run-sniper -n 1 -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt debug_cachep.txt debug_ssp.txt debug_repSTE.txt
+
+
 run_app:
 	../../run-sniper -n 1 --gdb -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt ssp.txt repSTE.txt
 

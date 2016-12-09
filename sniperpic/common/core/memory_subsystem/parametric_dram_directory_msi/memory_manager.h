@@ -21,7 +21,7 @@ class DramCache;
 class ShmemPerf;
 
 // CAP: another way to extract cache size/number of rows per sub-array
-#define CACHE_LINES_PER_SUBARRAY 1
+#define CACHE_LINES_PER_SUBARRAY 256
 #define NUM_SUBARRAYS 1
 
 #define PIC_IS_MICROBENCH_COPY 0 
@@ -52,6 +52,8 @@ namespace ParametricDramDirectoryMSI
          ComponentLatency m_tlb_miss_penalty;
          ComponentLatency m_ss_program_time; 
          UInt32 m_min_dummy_inst;
+
+         Instruction *dummy_inst;
 
          bool m_tlb_miss_parallel;
 
@@ -102,6 +104,7 @@ namespace ParametricDramDirectoryMSI
           void create_cap_match_instructions(Byte* match_file);
           void create_cap_rep_ste_instructions(Byte* ste_file);
           void schedule_cap_instructions();
+          void create_schedule_dummy_instructions();
 
           std::vector< Instruction *> m_cap_ins;
           //CAP: TODO Do you need this? Why was it there in PIC?

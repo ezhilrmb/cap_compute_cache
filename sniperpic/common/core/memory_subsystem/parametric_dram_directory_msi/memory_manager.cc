@@ -77,6 +77,8 @@ MemoryManager::MemoryManager(Core* core,
 
       m_min_dummy_inst = Sim()->getCfg()->getIntArray("perf_model/core/interval_timer/dispatch_width", core->getId());
 
+      dummy_inst = NULL;
+
       m_last_level_cache = (MemComponent::component_t)(Sim()->getCfg()->getInt("perf_model/cache/levels") - 2 + MemComponent::L2_CACHE);
 
       UInt32 stlb_size = Sim()->getCfg()->getInt("perf_model/stlb/size");
@@ -554,6 +556,7 @@ void  MemoryManager::init_ssprogram(Byte* ss_file) {
 void  MemoryManager::init_pattern_match(Byte* match_file) {
   create_cap_match_instructions(match_file);
   schedule_cap_instructions();
+  create_schedule_dummy_instructions();
 }
 
 //CAP: Providing patterns to the cache to be matched 
@@ -882,8 +885,12 @@ void  MemoryManager::schedule_app_search_instructions(
 //TBD: Que:How to read one line of that cap_file and initiate a store with the right operand
 //TBD: Ans:Using memcpy and temp_data_buf
 void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
+
 	unsigned int cur_subarray = 0;
   unsigned int cur_cache_line = 0;
+  int i = 38;
+
+  printf("the char version of %d is %c",i,(char)i);
 
   UInt32 address;
   IntPtr addr = (IntPtr)(address);
@@ -893,6 +900,7 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
   UInt32 m_log_blocksize = floorLog2(getCacheBlockSize());
   UInt32 cache_subblocks = block_size/8;
   Byte* temp_data_buf = new Byte;
+  
   int cur_byte_pos;
 
   //printf("CAP: create inst - Cache pgm file ptr :0x%p, content: %d", cap_file, *(cap_file+3));
@@ -909,7 +917,8 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
           address = (cur_subarray<<(8+m_log_blocksize)) | (cur_cache_line<<m_log_blocksize) | sub_block;
           cur_byte_pos = (cur_subarray * subarray_size) + (cur_cache_line * block_size) + sub_block;
           memcpy(temp_data_buf, cap_file + cur_byte_pos, 1); 
-          printf("create_cache_program_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
+          if(*temp_data_buf == 199) *temp_data_buf = 0;
+          printf("create_cache_program_instructions writing!!! addr: 0x%x  data: %d\n", address, *temp_data_buf);
           addr = (IntPtr)(address);
           //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
           OperandList store_list;
@@ -962,7 +971,7 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
   }
 }  
 
-
+//NOTE: Representing Byte value of 0 with $ - symbol/char representation of 36. 
 void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
 	unsigned int cur_subarray = 0;
   unsigned int cur_cache_line = 0;
@@ -982,10 +991,21 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
     while(cur_subarray < NUM_SUBARRAYS) {
 
         int sub_block = 0;
-        while(sub_block < block_size) {    
+        while(sub_block < block_size) {  
+        //while(sub_block < 3) {
           cur_byte_pos = cur_subarray * block_size + sub_block;
           address = cur_byte_pos;
-          memcpy(temp_data_buf, ste_file + cur_byte_pos, 1); 
+          memcpy(temp_data_buf, ste_file + cur_byte_pos, 1);
+
+          if(*temp_data_buf == 36) *temp_data_buf = 0;  //Refer to the NOTE
+          else if(*temp_data_buf == 32) *temp_data_buf = 32;
+          else if(*temp_data_buf == 42) *temp_data_buf = 16;
+          else if(*temp_data_buf == 33) *temp_data_buf = 8;
+          else if(*temp_data_buf == 61) *temp_data_buf = 4;
+          else if(*temp_data_buf == 35) *temp_data_buf = 2;
+
+
+
           printf("create_cap_rep_ste_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
           addr = (IntPtr)(address);
           //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
@@ -1035,6 +1055,8 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
       cur_subarray++;
     }  
   }
+  printf("\nCAP: After RepSTE CAPInsInfoMap Display\n");
+  showCapInsInfoMap();
 }
 
 void  MemoryManager::schedule_cap_instructions() {
@@ -1073,12 +1095,23 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
     while(cur_ste < SWIZZLE_SWITCH_X) {
         int sub_block = 0;
         while(sub_block < SWIZZLE_SWITCH_Y) {
-          address = cur_ste*SWIZZLE_SWITCH_X + sub_block;
+          address = cur_ste*SWIZZLE_SWITCH_Y + sub_block;
 
           memcpy(temp_data_buf, ss_file + address, 1); 
-          addr = (IntPtr)(address);        
 
-          printf("create_cap_ss_instructions STE no: 0x%x, Value: %d\n", address, *temp_data_buf);
+          //Hack for COLOR  
+          if(*temp_data_buf == 36) *temp_data_buf = 0;  //Refer to the NOTE
+          else if(*temp_data_buf == 32) *temp_data_buf = 32;
+          else if(*temp_data_buf == 42) *temp_data_buf = 16;
+          else if(*temp_data_buf == 33) *temp_data_buf = 8;
+          else if(*temp_data_buf == 61) *temp_data_buf = 4;
+          else if(*temp_data_buf == 35) *temp_data_buf = 2;
+
+
+
+
+          addr = (IntPtr)(address);        
+          printf("\n create_cap_ss_instructions STE no: 0x%x, Value: %d\n", address, *temp_data_buf);
 
           OperandList store_list;
           store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
@@ -1123,16 +1156,22 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
           cii.op    = CacheCntlr::CAP_SS;	
           cii.cap_data_buf = new Byte;
           memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
+          printf("\n CAP: SS data = %d", *(cii.cap_data_buf));
           capInsInfoMap[address] 	= cii;
        } 
        cur_ste++;
       }
   }
+
+  printf("\nCAP: After SS CAPInsInfoMap Display\n");
+  showCapInsInfoMap();
+
 }  
 
 
 void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
   UInt32 address = 0; 
+  //UInt32 address = 0;
   IntPtr addr = (IntPtr)(address);
   Byte* temp_data_buf = new Byte;
   UInt32 byte_pos = 0;
@@ -1143,7 +1182,7 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
   if(m_cap_ins.size() == 0) {
      while ((char)(*(match_file+byte_pos)) != '\n')  { // detect end of input pattern this way.
       EXECUTE:
-          printf("create_cap_match_instructions address: 0x%x, Input char: (char)%c, (int)%d\n", address, (char)(*(match_file+byte_pos)), (UInt32)(*(match_file+byte_pos)));
+          printf("\n CAP: create_cap_match_instructions address: 0x%x, Input char: (char)%c, (int)%d\n", address, (char)(*(match_file+byte_pos)), (UInt32)(*(match_file+byte_pos)));
 
           memcpy(temp_data_buf, match_file+byte_pos, 1);
 
@@ -1191,6 +1230,7 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
           cii.op    = patternEnded ? CacheCntlr::CAP_END : CacheCntlr::CAP_MATCH;	
           cii.cap_data_buf = new Byte;
           memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
+          printf("\n CAP: Character at address %d is %c",addr,*(cii.cap_data_buf));
           capInsInfoMap[address] 	= cii;
 
         address++;
@@ -1202,16 +1242,25 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
         }
      }
 
+     printf("\n CAP: Came out of loop %d", patternEnded);
+
      if (patternEnded != 2) {   // to tag the end of input pattern stream
          patternEnded = 1;
          goto EXECUTE;
      }
-  }  
+  } 
 
+  printf("\nCAP: After Match CAPInsInfoMap Display\n");
+  showCapInsInfoMap();
+
+}
+
+
+void MemoryManager::create_schedule_dummy_instructions() {
    // for dummy instruction updation to make the ROb full
    //CAP: adding dummy instructions for terminal ROB condition
    #ifdef CAP_ROB_DRAIN
-   Instruction *dummy_inst = NULL;
+   //dummy_inst = NULL;
    int i = 0, dummy_reg = 0;
      //if(m_instruction_queue.size() == 0)
      //{ printf("\n CAP: q becomes 0 finally");  
@@ -1252,6 +1301,8 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
 
 
 }  
+
+
 
 
 //#ifdef PIC_IS_MICROBENCH
@@ -3591,24 +3642,28 @@ MemoryManager::coreInitiateMemoryAccess(
 			}
 	 }
 
-   printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), offset: %d, data: %d, data_length(%d) OP(%d)\n", MemComponentString(mem_component), address, offset, (UInt32)(*data_buf), data_length, mem_op_type);
+   printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), offset: %d, data: %c, data_length(%d) OP(%d)\n", MemComponentString(mem_component), address, offset, (char)(*data_buf), data_length, mem_op_type);
   
    //CAP: Forward CAP operation to Cache Ctlr 
-
-   // showCapInsInfoMap();
+   //showCapInsInfoMap();
    if(m_cap_on) {
+      printf("\n Going to display CAPINSFINFO for %s\n", MemComponentString(mem_component));
+     
       UInt32 log_block_size = floorLog2(getCacheBlockSize());
-      IntPtr capAddr = (IntPtr)((UInt64)(address) | offset);  
+      IntPtr capAddr = (IntPtr)((UInt64)(address) | offset);
+     
       if(capInsInfoMap.find(capAddr) != capInsInfoMap.end()) {
          struct CAPInsInfo cii = capInsInfoMap[capAddr];
          capInsInfoMap.erase(capAddr);
-         
+
          if(cii.op == CacheCntlr::CAP_SS) {
             memcpy(data_buf, cii.cap_data_buf, 1);
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length for ss=1
          }
          else if (cii.op == CacheCntlr::CAP_MATCH) {
             memcpy(data_buf, cii.cap_data_buf, 1);
+             printf("\n CAP_MATCH: Inside coreInitiateMemoryAccess for %s: CAP_ADDR(%x), offset: %d, data: %d, data_length(%d) OP(%d)\n", MemComponentString(mem_component), capAddr,  offset, (UInt32)(*data_buf), data_length, mem_op_type);
+
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length = 1
          }
          else if (cii.op == CacheCntlr::CAP_END) {
@@ -3617,12 +3672,13 @@ MemoryManager::coreInitiateMemoryAccess(
          }
          else if  (cii.op == CacheCntlr::CAP_REP_STE) {
             memcpy(data_buf, cii.cap_data_buf, 1);
+
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length = 1
          }
 
          else {
             memcpy(data_buf, cii.cap_data_buf, 1);
-            printf("coreInitiateMemoryAccess: reading!!! addr: %d  data: %d\n", (UInt32)(capAddr), *data_buf);
+            printf("CAP_NONE: coreInitiateMemoryAccess: reading!!! addr: %d  data: %d\n", (UInt32)(capAddr), *data_buf);
          }
       }
    }  

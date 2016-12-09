@@ -36,15 +36,14 @@ namespace ParametricDramDirectoryMSI
 }
 class FaultInjector;
 class ShmemPerf;
-
 // Maximum size of the list of addresses to prefetch
 #define PREFETCH_MAX_QUEUE_LENGTH 32
 // Time between prefetches
 #define PREFETCH_INTERVAL SubsecondTime::NS(1)
 
 // CAP: Swizzle switch X (curr state) and Y (next state) dimensions (in Bytes)
-#define SWIZZLE_SWITCH_X 20 //64
-#define SWIZZLE_SWITCH_Y 20 //128
+#define SWIZZLE_SWITCH_X 24 //64
+#define SWIZZLE_SWITCH_Y 3 //128
 
 // CAP: declare number of subarrays
 #define NUM_SUBARRAYS 1
@@ -568,7 +567,7 @@ namespace ParametricDramDirectoryMSI
 
          // CAP: parent function which gets the input character, accesses the cache subarrays and concatenates the curr_state vectors from each,
          // performs a lookup in the swizzle switch and estimates next_state vectors and writes back into the curr_state mask register
-         void processPatternMatch (UInt32 inputChar);
+         void processPatternMatch (UInt32 inputChar, UInt32 byte_pos);
 
          //CAP: 
          HitWhere::where_t processCAPSOpFromCore(CacheCntlr::cap_ops_t cap_op,
