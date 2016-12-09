@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
    CHECK_ERROR((fdata_cap= mmap(0, finfo_cap.st_size + 1,
       PROT_READ | PROT_WRITE, MAP_PRIVATE, fd_cap, 0)) == NULL);
 
-   printf("CAP: Cache pgm file ptr :0x%p, content: %d", fdata_cap, *(fdata_cap+3));
+   printf("CAP: Cache pgm file ptr :0x%p, content: %d\n", fdata_cap, *(fdata_cap+3));
 	 gettimeofday(&starttime,0);
    cap_cache_init(fdata_cap);
 	 gettimeofday(&endtime,0);
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
    CHECK_ERROR((fdata_cap2= mmap(0, finfo_cap2.st_size + 1,
       PROT_READ | PROT_WRITE, MAP_PRIVATE, fd_cap2, 0)) == NULL);
 
-   printf("CAP: Swizzle switch pgm file ptr :0x%p, content: %d", fdata_cap2, *(fdata_cap2+3));
+   printf("CAP: Swizzle switch pgm file ptr :0x%p, content: %d\n", fdata_cap2, *(fdata_cap2+3));
 	 gettimeofday(&starttime2,0);
    cap_ss_init(fdata_cap2);
 	 gettimeofday(&endtime2,0);
