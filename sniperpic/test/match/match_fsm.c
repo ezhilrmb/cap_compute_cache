@@ -54,7 +54,6 @@ void cap_cache_init(Byte* cap_file)
   assert(cap_file);
 
   //CAP: Read the file line/line and load the cache inputs
-  
   SimRoiStart();
   SimNamedMarker((unsigned long)cap_file,"cprg");
   SimRoiEnd();

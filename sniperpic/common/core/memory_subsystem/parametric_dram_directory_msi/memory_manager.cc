@@ -950,6 +950,7 @@ void  MemoryManager::schedule_cap_instructions() {
   int num_prg = m_cap_ins.size();
   printf("\n schedule_cap_instructions: The num of cap inst is %d", m_cap_ins.size());
   while(num_prg) {
+    printf("\n MemoryManager::schedule_cap_instructions Store Inst No %d", num_prg);
     getCore()->getPerformanceModel()->pushDynamicInstructionInfo(m_cap_dyn_ins_info[0], false, true);
     getCore()->getPerformanceModel()->queueInstruction(m_cap_ins[0], false, true);
    	m_cap_dyn_ins_info.erase(m_cap_dyn_ins_info.begin());

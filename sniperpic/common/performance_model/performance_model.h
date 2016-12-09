@@ -160,6 +160,8 @@ private:
 
    UInt32 m_current_ins_index;
 
+   UInt32 m_min_dummy_inst;
+
    BranchPredictor *m_bp;
 
    InstructionTracer *m_instruction_tracer;

@@ -16,6 +16,10 @@
 #include "dvfs_manager.h"
 #include "instruction_tracer.h"
 
+#define CAP_ROB_DRAIN
+
+
+
 PerformanceModel* PerformanceModel::create(Core* core)
 {
    String type;
@@ -43,6 +47,7 @@ PerformanceModel* PerformanceModel::create(Core* core)
    else if (type == "rob")
    {
       uint32_t smt_threads = Sim()->getCfg()->getIntArray("perf_model/core/logical_cpus", core->getId());
+      //m_min_dummy_inst = Sim()->getCfg()->getIntArray("perf_model/core/interval_timer/dispatch_width", core->getId());
       if (smt_threads == 1) {
          printf("Created Rob Perf model");
          return new RobPerformanceModel(core);
@@ -75,6 +80,7 @@ PerformanceModel::PerformanceModel(Core *core)
    #endif
    , m_dynamic_info_queue(125000/*640*/) // Required for REPZ CMPSB instructions with max counts of 256 (256 * 2 memory accesses + space for other dynamic instructions)
    , m_current_ins_index(0)
+   , m_min_dummy_inst(0)
 {
    m_bp = BranchPredictor::create(core->getId());
 
@@ -99,6 +105,9 @@ PerformanceModel::PerformanceModel(Core *core)
    registerStatsMetric("performance_model", core->getId(), "cpiSyncDvfsTransition", &m_cpiSyncDvfsTransition);
 
    registerStatsMetric("performance_model", core->getId(), "cpiRecv", &m_cpiRecv);
+   
+   m_min_dummy_inst = Sim()->getCfg()->getIntArray("perf_model/core/interval_timer/dispatch_width", core->getId());
+ 
 	 if (Sim()->getCfg()->getBool("general/microbench_run")) {
 		dummy_inst	= NULL;
 	 }
@@ -122,7 +131,6 @@ void PerformanceModel::processAppMagic(UInt64 argument) {
 	    if (marker.compare("cprg") == 0) {
 			   m_ignore_functional_model = true;
                printf("CAP: PerformanceModel::processAppMagic: cache programming: %lld\n", argument);
-
          } 
 	    if (marker.compare("ssprg") == 0) {
 			   m_ignore_functional_model = true;
@@ -398,7 +406,7 @@ void PerformanceModel::psuedo_iterate(
 void PerformanceModel::iterate()
 {
    printf("CAP: PerformanceModel::iterate with Q size = %d\n", m_instruction_queue.size());
-
+   int i = 0, dummy_reg = 0;
    while (m_instruction_queue.size() > 0)
    {
       // While the functional thread is waiting because of clock skew minimization, wait here as well
@@ -421,6 +429,50 @@ void PerformanceModel::iterate()
          delete ins;
 
       m_instruction_queue.pop();
+     
+      //CAP: adding dummy instructions for terminal ROB condition
+      #ifdef CAP_ROB_DRAIN
+        dummy_inst = NULL;
+        if(m_instruction_queue.size() == 0)
+        { printf("\n CAP: q becomes 0 finally");  
+         while(i <= 2*m_min_dummy_inst+13) { 
+          if(!dummy_inst) {
+              printf("\n CAP: making first dummy inst");  
+              OperandList dummy_list;
+              dummy_list.push_back(Operand(Operand::REG, dummy_reg, Operand::READ, "", true));
+              dummy_inst 	= new GenericInstruction(dummy_list);
+              dummy_inst->setAddress(80);;
+              dummy_inst->setSize(4);
+              dummy_inst->setAtomic(false);
+              dummy_inst->setDisassembly("");
+              std::vector<const MicroOp *> *cmp_uops = new std::vector<const MicroOp*>();;
+              MicroOp *currentMicroOp 	= new MicroOp();
+              currentMicroOp->makeExecute(
+                0, 0
+                , XED_ICLASS_MOVQ //TODO: xed_decoded_inst_get_iclass(ins)
+                , "" //xed_iclass_enum_t2str(xed_decoded_inst_get_iclass(ins))
+                , false	//not conditional branch
+              );
+              currentMicroOp->setMemBarrier(true);
+              currentMicroOp->addSourceRegister((xed_reg_enum_t)dummy_reg, "");
+              currentMicroOp->setOperandSize(64); 
+              currentMicroOp->setInstruction(dummy_inst);
+              currentMicroOp->setFirst(true);
+              currentMicroOp->setLast(true);
+              cmp_uops->push_back(currentMicroOp);
+              dummy_inst->setMicroOps(cmp_uops);
+          }
+          assert(dummy_inst);
+          printf("\n On insertion of dummy inst %d",i);
+          queueInstruction(dummy_inst, false, true);
+          i++;
+        }
+
+
+       }  
+      
+      #endif
+
    }
 
    synchronize();

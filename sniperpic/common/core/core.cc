@@ -458,8 +458,9 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
             m_dyninfo_save = info;
             m_dyninfo_save_used = true;
          }
-         else
+         else {
             m_performance_model->pushDynamicInstructionInfo(info);
+         }   
          break;
       }
       case MEM_MODELED_TIME:
