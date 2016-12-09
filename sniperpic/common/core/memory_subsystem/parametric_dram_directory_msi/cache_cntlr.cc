@@ -139,6 +139,7 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
    m_last_level(NULL),
    m_tag_directory_home_lookup(tag_directory_home_lookup),
    m_swizzleSwitch(new Byte[SWIZZLE_SWITCH_X * SWIZZLE_SWITCH_Y]), // CAP: adding swizzle switch in ctrlr
+   m_reportingSteInfo(new Byte[NUM_SUBARRAYS*cache_block_size]),
    m_perfect(cache_params.perfect),
    m_coherent(cache_params.coherent),
    m_prefetch_on_prefetch_hit(false),
@@ -148,6 +149,8 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
    m_ss_program_time(ss_program_time),
    m_cache_writethrough(cache_params.writethrough),
    m_writeback_time(cache_params.writeback_time),
+   m_data_access_time(cache_params.data_access_time),
+   m_tags_access_time(cache_params.tags_access_time),
    m_next_level_read_bandwidth(cache_params.next_level_read_bandwidth),
    m_shared_cores(cache_params.shared_cores),
    m_user_thread_sem(user_thread_sem),
@@ -2573,7 +2576,10 @@ CacheCntlr::retrieveCacheBlock(IntPtr address, Byte* data_buf, ShmemPerfModel::T
 void CacheCntlr::updateCAPLatency()
 {  
    SubsecondTime latency = SubsecondTime::Zero();
-   latency += m_writeback_time.getLatency();
+
+   latency += m_data_access_time.getLatency();  
+   latency += m_tags_access_time.getLatency();  
+
    getMemoryManager()->incrElapsedTime(latency, ShmemPerfModel::_USER_THREAD);
 }
 
@@ -2585,6 +2591,14 @@ void CacheCntlr::updateSwizzleSwitch(UInt32 steNum_BytePos, Byte* nextStateInfo,
 {
    //UInt32 nextStateVecLength = SWIZZLE_SWITCH_Y; 
    memcpy((m_swizzleSwitch+steNum_BytePos), nextStateInfo, data_length);
+}
+
+/*****************************************************************************
+ * CAP: Program the reporting STE information per sub array
+ *****************************************************************************/
+void CacheCntlr::updateReportingSteInfo(UInt32 bytePos, Byte *data_buf, UInt32 data_length)
+{
+   memcpy((m_reportingSteInfo + bytePos), data_buf, data_length);
 }
 
 /*****************************************************************************
@@ -2697,6 +2711,19 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar)
       ++k;
    }
 
+   // Reporting STE detection
+   k = 0;
+   while (k<nextStateVecLength)  {
+      memcpy(&tempA_data_buf, data_buf+k, 1);
+      memcpy(&tempB_data_buf, m_reportingSteInfo+k, 1);
+      tempA_data_buf = tempA_data_buf & tempB_data_buf;
+      if (tempA_data_buf) {
+         printf("Yaay! The END!!!\n");
+         exit(0);
+      }
+      ++k;
+   }
+
    // Look up in the swizzle switch to get the next_state vector
    retrieveNextStateInfo(data_buf, out_data_buf);
   
@@ -2708,6 +2735,7 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar)
    }
 }
 
+// CAP:
 HitWhere::where_t
 CacheCntlr::processCAPSOpFromCore(
 			CacheCntlr::cap_ops_t cap_op,
@@ -2726,9 +2754,16 @@ CacheCntlr::processCAPSOpFromCore(
 
       // Add time
       getMemoryManager()->incrElapsedTime(m_ss_program_time.getLatency(), ShmemPerfModel::_USER_THREAD);
+      //showSwizzleSwitch();
    }
-   
-   //showSwizzleSwitch();
+
+   else if (cap_op == CacheCntlr::CAP_REP_STE)  { // reporting STE programming logic
+      UInt32 bytePos = (UInt32)(addr);
+      updateReportingSteInfo(bytePos, data_buf, data_length);
+   }
+   else {
+      processPatternMatch((UInt32)(*data_buf));
+   }
 
    return HitWhere::L1_OWN;  // TODO: HACK: always return hit in L1
    

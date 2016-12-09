@@ -247,6 +247,7 @@ namespace ParametricDramDirectoryMSI
          std::unordered_map<IntPtr, MemComponent::component_t> m_shmem_req_source_map;
          // CAP: define swizzle switch        
          Byte* m_swizzleSwitch;
+         Byte* m_reportingSteInfo;
          // CAP: current state mask register
          Byte* m_currStateMask;
          UInt32 m_logASCIISetIndex; 
@@ -320,6 +321,9 @@ namespace ParametricDramDirectoryMSI
          ComponentLatency m_ss_program_time;
          bool m_cache_writethrough;
          ComponentLatency m_writeback_time;
+         ComponentLatency m_data_access_time;
+         ComponentLatency m_tags_access_time;
+
          ComponentBandwidthPerCycle m_next_level_read_bandwidth;
 
          UInt32 m_shared_cores;        /**< Number of cores this cache is shared with */
@@ -426,7 +430,9 @@ namespace ParametricDramDirectoryMSI
          enum cap_ops_t {
            CAP_NONE = 0,
            CAP_MATCH,
-           CAP_SS
+           CAP_SS,
+           CAP_REP_STE, // for reporting STEs
+           CAP_END
          };
 
          CacheCntlr(MemComponent::component_t mem_component,
@@ -550,6 +556,9 @@ namespace ParametricDramDirectoryMSI
 
          // CAP: Program the swizzle switch
          void updateSwizzleSwitch(UInt32 steNum_BytePos, Byte* nextStateInfo, UInt32 data_length);
+
+         // CAP:  Program the reporting STE information per sub array
+         void updateReportingSteInfo(UInt32 bytePos, Byte *data_buf, UInt32 data_length);
 
          // CAP: show the contents of the swizzle switch
          void showSwizzleSwitch();

@@ -35,10 +35,10 @@ $(TARGET): $(STR_MATCH_PIC_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(STR_MATCH_PIC_OBJS) $(LIBS)
 
 run:
-	../../run-sniper -n 1 -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt ssp.txt
+	../../run-sniper -n 1 -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt ssp.txt repSTE.txt
 
 run_app:
-	../../run-sniper -n 1 --gdb -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt ssp.txt
+	../../run-sniper -n 1 --gdb -c ../pic_configs/sim_cur_cap_l3 --no-cache-warming --roi -- ./match_fsm inputm.txt cachep.txt ssp.txt repSTE.txt
 
 
 clean:

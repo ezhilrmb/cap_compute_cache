@@ -51,6 +51,7 @@ namespace ParametricDramDirectoryMSI
          TLB *m_itlb, *m_dtlb, *m_stlb;
          ComponentLatency m_tlb_miss_penalty;
          ComponentLatency m_ss_program_time; 
+         UInt32 m_min_dummy_inst;
 
          bool m_tlb_miss_parallel;
 
@@ -93,11 +94,13 @@ namespace ParametricDramDirectoryMSI
           void init_cacheprogram(Byte* cap_file);
           void init_ssprogram(Byte* ss_pgm_file);
           void init_pattern_match(Byte* match_file);
+          void init_rep_ste_program(Byte* ste_file);
 
 
           void create_cache_program_instructions(Byte* cap_file);
           void create_cap_ss_instructions(Byte* ss_file);
           void create_cap_match_instructions(Byte* match_file);
+          void create_cap_rep_ste_instructions(Byte* ste_file);
           void schedule_cap_instructions();
 
           std::vector< Instruction *> m_cap_ins;
