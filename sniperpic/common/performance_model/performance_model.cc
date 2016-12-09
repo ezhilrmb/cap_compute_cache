@@ -121,9 +121,19 @@ void PerformanceModel::processAppMagic(UInt64 argument) {
 			}
 	    if (marker.compare("cprg") == 0) {
 			   m_ignore_functional_model = true;
-               printf("CAP: PerformanceModel::processAppMagic: %lld\n", argument);
+               printf("CAP: PerformanceModel::processAppMagic: cache programming: %lld\n", argument);
 
          } 
+	    if (marker.compare("ssprg") == 0) {
+			   m_ignore_functional_model = true;
+               printf("CAP: PerformanceModel::processAppMagic: swizzle switch programming: %lld\n", argument);
+
+         } 
+        if(marker.compare("match") == 0) {
+			   m_ignore_functional_model = true;
+               printf("CAP: PerformanceModel::processAppMagic: input stream pattern matching: %lld\n", argument);
+      }        
+
 	}
 	}
 }

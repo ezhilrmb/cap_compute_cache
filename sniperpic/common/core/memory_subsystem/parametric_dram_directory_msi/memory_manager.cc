@@ -521,6 +521,7 @@ void MemoryManager::processAppMagic(UInt64 argument) {
       }  
       if(marker.compare("match") == 0) {
         Byte * match_file =  (Byte*) (args_in-> arg0);
+        printf("CAP: Mem manager - Input stream file ptr :0x%p, content: %d", match_file, *(match_file+3));
         init_pattern_match(match_file);
       }        
 		}
@@ -539,11 +540,10 @@ void  MemoryManager::init_ssprogram(Byte* ss_file) {
   schedule_cap_instructions();
 } 
 
-
 //CAP: Providing patterns to the cache to be matched 
 void  MemoryManager::init_pattern_match(Byte* match_file) {
-//  create_cap_match_instructions(match_file);
-//  schedule_cap_instructions();
+  create_cap_match_instructions(match_file);
+  schedule_cap_instructions();
 }
 
 void  MemoryManager::init_strmatch( UInt64 word_size) {
@@ -970,7 +970,6 @@ void MemoryManager::showCapInsInfoMap() {
 void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
   UInt32 cur_ste = 0;
   UInt32 ste_num;
-  UInt32 ss_subblocks = SWIZZLE_SWITCH_Y/8;
   Byte* temp_data_buf = new Byte;
   UInt32 address;
   IntPtr addr = (IntPtr)(address);
@@ -981,7 +980,7 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
   if(m_cap_ins.size() == 0) {
     while(cur_ste < SWIZZLE_SWITCH_X) {
         int sub_block = 0;
-        while(sub_block < ss_subblocks) {
+        while(sub_block < SWIZZLE_SWITCH_Y) {
           address = cur_ste*SWIZZLE_SWITCH_X + sub_block;
           memcpy(temp_data_buf, ss_file + address, 1); 
           addr = (IntPtr)(address);        
@@ -1037,6 +1036,78 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
       }
   }
 }  
+
+
+void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
+  UInt32 cur_ste = 0;
+  UInt32 ste_num;
+  Byte* temp_data_buf = new Byte;
+  UInt32 address;
+  IntPtr addr = (IntPtr)(address);
+
+  printf("Inside create_cap_match_instructions: SWIZZLE_SWITCH_X: %d, SWIZZLE_SWITCH_Y: %d\n", 
+        SWIZZLE_SWITCH_X, SWIZZLE_SWITCH_Y);
+
+  if(m_cap_ins.size() == 0) {
+    while(cur_ste < SWIZZLE_SWITCH_X) {
+        int sub_block = 0;
+        while(sub_block < SWIZZLE_SWITCH_Y) {
+          address = cur_ste*SWIZZLE_SWITCH_X + sub_block;
+          memcpy(temp_data_buf, ss_file + address, 1); 
+          addr = (IntPtr)(address);        
+
+          printf("create_cap_match_instructions STE no: 0x%x, Value: %d\n", address, *temp_data_buf);
+
+          OperandList store_list;
+          store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
+          store_list.push_back(Operand(Operand::REG, (UInt32)(*temp_data_buf), Operand::READ, "", true));
+
+          Instruction *store_inst = new GenericInstruction(store_list);
+          store_inst->setAddress(m_mbench_dest_addr);
+          store_inst->setSize(4); //Possible sizes seen (L:1-9, S:1-8)
+          store_inst->setAtomic(false);
+          store_inst->setDisassembly("");
+
+          std::vector<const MicroOp *> *store_uops = new std::vector<const MicroOp*>();
+          MicroOp *currentSMicroOp = new MicroOp();
+          currentSMicroOp->setInstructionPointer(Memory::make_access(m_mbench_dest_addr));
+          currentSMicroOp->makeStore(
+            0
+            , 0
+            , XED_ICLASS_MOVQ //TODO: xed_decoded_inst_get_iclass(ins)
+            , "" //xed_iclass_enum_t2str(xed_decoded_inst_get_iclass(ins))
+            , 1
+           );
+          currentSMicroOp->setOperandSize(64); 
+          currentSMicroOp->setInstruction(store_inst);
+          currentSMicroOp->setFirst(true);
+          currentSMicroOp->setLast(true);
+
+          store_uops->push_back(currentSMicroOp);
+          store_inst->setMicroOps(store_uops);
+
+          m_cap_ins.push_back(store_inst);
+          sub_block++;
+
+          //CAP: Dynamic Instructions Info creation
+          DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(m_mbench_dest_addr,//ins address 
+			                                true, //False if instruction will not be executed because of predication
+			                                SubsecondTime::Zero(), addr, 64, Operand::WRITE, 0, 
+			                                HitWhere::UNKNOWN);
+          m_cap_dyn_ins_info.push_back(sinfo);
+
+          struct CAPInsInfo cii;
+          cii.addr  = addr;
+          cii.op    = CacheCntlr::CAP_SS;	
+          cii.cap_data_buf = new Byte;
+          memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
+          capInsInfoMap[address] 	= cii;
+       } 
+       cur_ste++;
+      }
+  }
+}  
+
 
 //#ifdef PIC_IS_MICROBENCH
 IntPtr MemoryManager::microbench_target_ins_cnt() {

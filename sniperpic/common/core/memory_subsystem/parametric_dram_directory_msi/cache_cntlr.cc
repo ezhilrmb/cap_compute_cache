@@ -2715,10 +2715,10 @@ CacheCntlr::processCAPSOpFromCore(
             Byte* data_buf, 
             UInt32 data_length)  {
 
-   UInt32 steNum = (UInt32)(addr) & (getCacheBlockSize()-1);
-   UInt32 bytePos = (UInt32)(addr) - steNum;
+   UInt32 steNum = (UInt32)(addr) / SWIZZLE_SWITCH_Y;
+   UInt32 bytePos = (UInt32)(addr) % SWIZZLE_SWITCH_Y;
 
-   printf("\n processCAPSOpFromCore: CAP OPCODE :%d, STE Num: %d, byte position: %d", (int)cap_op, steNum, bytePos);
+   printf("processCAPSOpFromCore: CAP OPCODE :%d, STE (hex): 0x%x, STE Num: %d, byte position: %d\n", (int)cap_op, (UInt32)(addr), steNum, bytePos);
 
    if (cap_op == CacheCntlr::CAP_SS)  {  // call the updateSwizzleSwitch function. I know this is redundant.
       UInt32 steNum_BytePos = (UInt32)(addr);
@@ -2727,6 +2727,8 @@ CacheCntlr::processCAPSOpFromCore(
       // Add time
       getMemoryManager()->incrElapsedTime(m_ss_program_time.getLatency(), ShmemPerfModel::_USER_THREAD);
    }
+   
+   //showSwizzleSwitch();
 
    return HitWhere::L1_OWN;  // TODO: HACK: always return hit in L1
    
