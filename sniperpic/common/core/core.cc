@@ -27,6 +27,9 @@
 
 #define VERBOSE 0
 
+// To enable debug prints in CAP sims
+#define DEBUG_ENABLED 0
+
 const char * ModeledString(Core::MemModeled modeled) {
    switch(modeled)
    {
@@ -259,7 +262,7 @@ Core::readInstructionMemory(IntPtr address, UInt32 instruction_size)
 {
    LOG_PRINT("Instruction: Address(0x%x), Size(%u), Start READ",
            address, instruction_size);
-   printf("\n CAP: Reading Instruction Cache for Address(0x%x), Size(%u)",address, instruction_size);
+   if (DEBUG_ENABLED)   printf("\n CAP: Reading Instruction Cache for Address(0x%x), Size(%u)",address, instruction_size);
 
    UInt64 blockmask = ~(getMemoryManager()->getCacheBlockSize() - 1);
    bool single_cache_line = ((address & blockmask) == ((address + instruction_size - 1) & blockmask));
@@ -391,7 +394,7 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
       }
 
       LOG_PRINT("Start InitiateSharedMemReq: ADDR(0x%x), offset(%u), curr_size(%u)", curr_addr_aligned, curr_offset, curr_size);
-      printf("\n Inside InitiateMemoryAccess for %s: ADDR(0x%x), offset(%u), curr_size(%u)", MemComponentString(mem_component), curr_addr_aligned, curr_offset, curr_size);
+      if (DEBUG_ENABLED)   printf("\n Inside InitiateMemoryAccess for %s: ADDR(0x%x), offset(%u), curr_size(%u)", MemComponentString(mem_component), curr_addr_aligned, curr_offset, curr_size);
  
       HitWhere::where_t this_hit_where = getMemoryManager()->coreInitiateMemoryAccess(
                mem_component,
@@ -512,7 +515,7 @@ Core::accessMemory(lock_signal_t lock_signal, mem_op_t mem_op_type, IntPtr d_add
 
   // if(mem_op_type == Core::WRITE) 
   // {
-      printf("\n CAP accessMemory : d_addr:0x%x, data_size: %d", d_addr, data_size); 
+      if (DEBUG_ENABLED)   printf("\n CAP accessMemory : d_addr:0x%x, data_size: %d", d_addr, data_size); 
   // }
    if (modeled == MEM_MODELED_DYNINFO)
       LOG_ASSERT_ERROR(eip != 0, "modeled == MEM_MODELED_DYNINFO but no eip given");

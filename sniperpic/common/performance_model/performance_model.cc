@@ -18,6 +18,8 @@
 
 //#define CAP_ROB_DRAIN
 
+// To enable debug prints in CAP simulations
+#define DEBUG_ENABLED 0
 
 
 PerformanceModel* PerformanceModel::create(Core* core)
@@ -239,9 +241,9 @@ void PerformanceModel::queueDynamicInstruction(Instruction *i)
 
 void PerformanceModel::queueInstruction(Instruction *ins, bool is_pic_ins, bool is_cap_ins)
 {
-   printf("\n CAP: Inside PerformanceModel::queueInstruction: Outside IF ");
+   if (DEBUG_ENABLED)   printf("\n CAP: Inside PerformanceModel::queueInstruction: Outside IF ");
 	 if(!m_ignore_functional_model || is_pic_ins || is_cap_ins) {
-   printf("\n CAP: Inside PerformanceModel::queueInstruction: IF condition");
+   if (DEBUG_ENABLED)   printf("\n CAP: Inside PerformanceModel::queueInstruction: IF condition");
 
    	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_instruction_queue.push_wait(ins);
@@ -345,7 +347,7 @@ void PerformanceModel::handleIdleInstruction(Instruction *instruction)
 void PerformanceModel::psuedo_iterate(
 	bool is_last_loop, int target_instruction_cnt) {
 
-  printf("CAP: Outside Perf Mdl Pseudo Iterate \n");
+  if (DEBUG_ENABLED)   printf("CAP: Outside Perf Mdl Pseudo Iterate \n");
 	if (Sim()->getCfg()->getBool("general/microbench_run")) {
    	while (m_instruction_queue.size() > 0) {
     	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
@@ -353,7 +355,7 @@ void PerformanceModel::psuedo_iterate(
          sched_yield();
       #endif
 
-      printf("CAP: Inside Perf Mdl Pseudo Iterate \n");
+      if (DEBUG_ENABLED)   printf("CAP: Inside Perf Mdl Pseudo Iterate \n");
 
 
       Instruction *ins = m_instruction_queue.front();
@@ -409,7 +411,7 @@ void PerformanceModel::psuedo_iterate(
 
 void PerformanceModel::iterate()
 {
-   printf("CAP: PerformanceModel::iterate with Q size = %d\n", m_instruction_queue.size());
+   if (DEBUG_ENABLED)   printf("CAP: PerformanceModel::iterate with Q size = %d\n", m_instruction_queue.size());
    while (m_instruction_queue.size() > 0)
    {
       // While the functional thread is waiting because of clock skew minimization, wait here as well
@@ -448,9 +450,9 @@ void PerformanceModel::synchronize()
 
 void PerformanceModel::pushDynamicInstructionInfo(DynamicInstructionInfo &i, bool is_pic_ins, bool is_cap_ins)
 {
-   printf("\n CAP: Inside PerformanceModel::pushDynamicInstructionInfo: Outside IF");
+   if (DEBUG_ENABLED)   printf("\n CAP: Inside PerformanceModel::pushDynamicInstructionInfo: Outside IF");
 	 if(!m_ignore_functional_model || is_pic_ins || is_cap_ins) {
-   printf("\n CAP: Inside PerformanceModel::pushDynamicInstructionInfo: IF condition");
+   if (DEBUG_ENABLED)   printf("\n CAP: Inside PerformanceModel::pushDynamicInstructionInfo: IF condition");
    	#ifdef ENABLE_PERF_MODEL_OWN_THREAD
       m_dynamic_info_queue.push_wait(i);
    	#else

@@ -18,7 +18,10 @@
 #include <iomanip>
 
 // Define to get per-cycle printout of dispatch, issue, writeback stages
-#define DEBUG_PERCYCLE
+//#define DEBUG_PERCYCLE 
+
+// To enable debug prints for CAP simulations
+#define DEBUG_ENABLED 0
 
 // Define to not skip any cycles, but assert that the skip logic is working fine
 //#define ASSERT_SKIP
@@ -250,7 +253,7 @@ RobTimer::RobEntry *RobTimer::findEntryBySequenceNumber(UInt64 sequenceNumber)
 }
 
 boost::tuple<uint64_t,SubsecondTime> RobTimer::simulate(const std::vector<DynamicMicroOp*>& insts)
-{  printf("\n CAP: Simulate");
+{  if (DEBUG_ENABLED)  printf("\n CAP: Simulate");
    uint64_t totalInsnExec = 0;
    SubsecondTime totalLat = SubsecondTime::Zero();
 
@@ -440,24 +443,24 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
    SubsecondTime next_event = SubsecondTime::MaxTime();
    SubsecondTime *cpiFrontEnd = NULL;
    
-   printf("CAP: doDispatch: now: %s, frontend_stalled_until: %s\n ", itostr(now).c_str(), itostr(frontend_stalled_until).c_str());
+   if (DEBUG_ENABLED)  printf("CAP: doDispatch: now: %s, frontend_stalled_until: %s\n ", itostr(now).c_str(), itostr(frontend_stalled_until).c_str());
    if (frontend_stalled_until <= now)
    {
       uint32_t instrs_dispatched = 0, uops_dispatched = 0;
 
-      printf("before while: num_in_rob: %d, windowSize: %d\n", m_num_in_rob, windowSize);
+      if (DEBUG_ENABLED)  printf("before while: num_in_rob: %d, windowSize: %d\n", m_num_in_rob, windowSize);
       while(m_num_in_rob < windowSize)
       {
          LOG_ASSERT_ERROR(m_num_in_rob < rob.size(), "Expected sufficient uops for dispatching in pre-ROB buffer, but didn't find them");
          RobEntry *entry = &rob.at(m_num_in_rob);
          DynamicMicroOp &uop = *entry->uop;
-         printf("CAP: doDispatch: before break\n");
+         if (DEBUG_ENABLED)  printf("CAP: doDispatch: before break\n");
 
          // Dispatch up to 4 instructions
          if (uops_dispatched == dispatchWidth)
             break;
 
-         printf("CAP: doDispatch: after break\n");
+         if (DEBUG_ENABLED)  printf("CAP: doDispatch: after break\n");
          // This is actually in the decode stage, there's a buffer between decode and dispatch
          // so we shouldn't do this here.
          //// First instruction can be any size, but second and subsequent ones may only be single-uop
@@ -468,7 +471,7 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
          bool iCacheMiss = (uop.getICacheHitWhere() != HitWhere::L1I);
          if (iCacheMiss)
          {
-            printf("iCacheMiss: %d, in_icache_miss: %d \n", iCacheMiss, in_icache_miss);
+            if (DEBUG_ENABLED)  printf("iCacheMiss: %d, in_icache_miss: %d \n", iCacheMiss, in_icache_miss);
             if (in_icache_miss)
             {
                // We just took the latency for this instruction, now dispatch it
@@ -482,7 +485,7 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
                #ifdef DEBUG_PERCYCLE
                   std::cout<<"-- icache miss("<<uop.getICacheLatency()<<")"<<std::endl;
                #endif
-                  printf("CAP: doDispatch: Inside Icache\n");
+                  if (DEBUG_ENABLED)  printf("CAP: doDispatch: Inside Icache\n");
                frontend_stalled_until = now + uop.getICacheLatency();
                in_icache_miss = true;
                // Don't dispatch this instruction yet
@@ -520,7 +523,7 @@ SubsecondTime RobTimer::doDispatch(SubsecondTime **cpiComponent)
          // Mispredicted branch
          if (uop.getMicroOp()->isBranch() && uop.isBranchMispredicted())
          {
-                  printf("CAP: doDispatch: Inside branch\n");
+                  if (DEBUG_ENABLED)  printf("CAP: doDispatch: Inside branch\n");
             frontend_stalled_until = SubsecondTime::MaxTime();
             #ifdef DEBUG_PERCYCLE
                std::cout<<"-- branch mispredict"<<std::endl;
@@ -579,7 +582,7 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
    if ((uop.getMicroOp()->isLoad() || uop.getMicroOp()->isStore())
       && uop.getDCacheHitWhere() == HitWhere::UNKNOWN)
    {  
-       printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%x and i_addr: 0x%x and size = %d", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress(), uop.getMicroOp()->getMemoryAccessSize());
+       if (DEBUG_ENABLED)  printf("\n CAP: RobTimer::accessMem uop's d_addr: 0x%x and i_addr: 0x%x and size = %d", uop.getAddress().address, uop.getMicroOp()->getInstruction()->getAddress(), uop.getMicroOp()->getMemoryAccessSize());
 
       MemoryResult res = m_core->accessMemory(
          Core::NONE,
@@ -700,7 +703,7 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
    if (uop.getMicroOp()->isBranch() && uop.isBranchMispredicted())
    {
 
-      printf("CAP: doIssue: Inside branch\n");
+      if (DEBUG_ENABLED)  printf("CAP: doIssue: Inside branch\n");
       frontend_stalled_until = now + (misprediction_penalty - 2); // The frontend needs to start 2 cycles earlier to get a total penalty of <misprediction_penalty>
       #ifdef DEBUG_PERCYCLE
          std::cout<<"-- branch resolve"<<std::endl;
@@ -710,7 +713,7 @@ void RobTimer::issueInstruction(uint64_t idx, SubsecondTime &next_event)
 
 SubsecondTime RobTimer::doIssue()
 {
-   printf("CAP: DO issue");
+   if (DEBUG_ENABLED)  printf("CAP: DO issue");
    uint64_t num_issued = 0;
    SubsecondTime next_event = SubsecondTime::MaxTime();
    bool head_of_queue = true, no_more_load = false, no_more_store = false, have_unresolved_store = false;
@@ -847,7 +850,7 @@ SubsecondTime RobTimer::doCommit(uint64_t& instructionsExecuted)
 {
    uint64_t num_committed = 0;
 
-   printf("\n CAP: doCommit");
+   if (DEBUG_ENABLED)  printf("\n CAP: doCommit");
 
    while(rob.size() && (rob.front().done <= now))
    {
@@ -889,7 +892,8 @@ SubsecondTime RobTimer::doCommit(uint64_t& instructionsExecuted)
 }
 
 void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
-{  printf("\n CAP: execute");
+{  
+   if (DEBUG_ENABLED)  printf("\n CAP: execute");
    latency = SubsecondTime::Zero();
    instructionsExecuted = 0;
    SubsecondTime *cpiComponent = NULL;
@@ -900,7 +904,7 @@ void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
    #endif
 
 
-    printf("\n CAP: execute: Time Now: %s frontend stalled: %s rob size: %d, m_num_in_rob: %d, dispatchWidth: %d \n", itostr(now).c_str(), itostr(frontend_stalled_until).c_str(), rob.size(), m_num_in_rob, dispatchWidth);
+    if (DEBUG_ENABLED)  printf("\n CAP: execute: Time Now: %s frontend stalled: %s rob size: %d, m_num_in_rob: %d, dispatchWidth: %d \n", itostr(now).c_str(), itostr(frontend_stalled_until).c_str(), rob.size(), m_num_in_rob, dispatchWidth);
    
 
    // If frontend not stalled
@@ -915,7 +919,7 @@ void RobTimer::execute(uint64_t& instructionsExecuted, SubsecondTime& latency)
    }
 
 
-   printf("\n EXECUTE -> DISPATCH");
+   if (DEBUG_ENABLED)  printf("\n EXECUTE -> DISPATCH");
    // Model dispatch, issue and commit stages
    // Decode stage is not modeled, assumes the decoders can keep up with (up to) dispatchWidth uops per cycle
 

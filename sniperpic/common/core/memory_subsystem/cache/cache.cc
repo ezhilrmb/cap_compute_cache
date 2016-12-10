@@ -99,6 +99,9 @@ Cache::accessSingleLine(IntPtr addr, access_t access_type,
    if (cache_block_info == NULL)
       return NULL;
 
+   if (m_fault_injector)
+      printf("CAP: Uh oh! fault_injection is enabled!\n");
+
    if (access_type == LOAD)
    {
       // NOTE: assumes error occurs in memory. If we want to model bus errors, insert the error into buff instead

@@ -21,6 +21,9 @@
 
 #define CAP_ROB_DRAIN
 
+// To enable debug prints for CAP simulations
+#define DEBUG_ENABLED 0
+
 #if 0
    extern Lock iolock;
 #  include "core_manager.h"
@@ -29,7 +32,6 @@
 #else
 #  define MYLOG(...) {}
 #endif
-
 
 namespace ParametricDramDirectoryMSI
 {
@@ -467,7 +469,7 @@ MemoryManager::MemoryManager(Core* core,
 				m_mbench_dest_addr	= m_mbench_src2_addr 	+ m_microbench_totalsize;		
 				m_mbench_spare_addr	= m_mbench_dest_addr 	+ m_microbench_totalsize;
 			}
-			printf("\nRunning microbench(%d), total=%lu, loop=%lu, op=%lu",
+			if (DEBUG_ENABLED)  printf("\nRunning microbench(%d), total=%lu, loop=%lu, op=%lu",
 			m_microbench_type, m_microbench_totalsize, m_microbench_loopsize, 
 			m_microbench_opsize);
 		}
@@ -639,7 +641,7 @@ void  MemoryManager::create_app_search_instructions_stash(
 																													"", true));
   		Instruction *load_inst = new GenericInstruction(load_list);
   		load_inst->setAddress(m_app_search_inst_addr);
-      printf("\n OMG look the inst addr is %lu and the load inst addr is %lu", m_app_search_inst_addr, load_inst->getAddress());
+      if (DEBUG_ENABLED)  printf("\n OMG look the inst addr is %lu and the load inst addr is %lu", m_app_search_inst_addr, load_inst->getAddress());
   		load_inst->setSize(4); //Possible sizes seen (L:1-9, S:1-8)
   		load_inst->setAtomic(false);
   		load_inst->setDisassembly("");
@@ -743,7 +745,7 @@ void  MemoryManager::create_app_search_instructions_stash(
 		}
 		++keys_done;
 	}
-	printf("\nStash: Searches(%lu), Comp/Mask(%lu)",
+	if (DEBUG_ENABLED)  printf("\nStash: Searches(%lu), Comp/Mask(%lu)",
 		m_app_search_ins_stash.size(), m_app_maskcomp_ins_stash.size());
 }
 
@@ -890,7 +892,7 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
   unsigned int cur_cache_line = 0;
   int i = 38;
 
-  printf("the char version of %d is %c",i,(char)i);
+  if (DEBUG_ENABLED)  printf("the char version of %d is %c",i,(char)i);
 
   UInt32 address;
   IntPtr addr = (IntPtr)(address);
@@ -905,7 +907,7 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
 
   //printf("CAP: create inst - Cache pgm file ptr :0x%p, content: %d", cap_file, *(cap_file+3));
 
-  printf("\n CAP: Num_subarrays :%d, Cache lines/SA :%d, Blk size :%d",NUM_SUBARRAYS, CACHE_LINES_PER_SUBARRAY, block_size);
+  if (DEBUG_ENABLED)  printf("\n CAP: Num_subarrays :%d, Cache lines/SA :%d, Blk size :%d\n",NUM_SUBARRAYS, CACHE_LINES_PER_SUBARRAY, block_size);
 
   if(m_cap_ins.size() == 0) {
     while(cur_subarray < NUM_SUBARRAYS) {
@@ -914,11 +916,12 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
         int sub_block = 0;
        // while(sub_block < cache_subblocks) 
           while(sub_block < block_size) {
-          address = (cur_subarray<<(8+m_log_blocksize)) | (cur_cache_line<<m_log_blocksize) | sub_block;
+          // to prevent collision of this address, setting its 31st bit 
+          address = (1<<31) | (cur_subarray<<(8+m_log_blocksize)) | (cur_cache_line<<m_log_blocksize) | sub_block;  
           cur_byte_pos = (cur_subarray * subarray_size) + (cur_cache_line * block_size) + sub_block;
           memcpy(temp_data_buf, cap_file + cur_byte_pos, 1); 
           if(*temp_data_buf == 199) *temp_data_buf = 0;
-          printf("create_cache_program_instructions writing!!! addr: 0x%x  data: %d\n", address, *temp_data_buf);
+          if (DEBUG_ENABLED)  printf("create_cache_program_instructions writing!!! addr: 0x%x  data: %d\n", address, *temp_data_buf);
           addr = (IntPtr)(address);
           //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
           OperandList store_list;
@@ -985,7 +988,7 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
   Byte* temp_data_buf = new Byte;
   int cur_byte_pos;
 
-  printf("CAP: create_cap_rep_ste_instructions\n");
+  if (DEBUG_ENABLED)  printf("CAP: create_cap_rep_ste_instructions\n");
 
   if(m_cap_ins.size() == 0) {
     while(cur_subarray < NUM_SUBARRAYS) {
@@ -1002,11 +1005,11 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
           else if(*temp_data_buf == 42) *temp_data_buf = 16;
           else if(*temp_data_buf == 33) *temp_data_buf = 8;
           else if(*temp_data_buf == 61) *temp_data_buf = 4;
-          else if(*temp_data_buf == 35) *temp_data_buf = 2;
+          else if(*temp_data_buf == 38) *temp_data_buf = 2;
 
 
 
-          printf("create_cap_rep_ste_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
+          if (DEBUG_ENABLED)  printf("create_cap_rep_ste_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
           addr = (IntPtr)(address);
           //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
           OperandList store_list;
@@ -1055,15 +1058,15 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
       cur_subarray++;
     }  
   }
-  printf("\nCAP: After RepSTE CAPInsInfoMap Display\n");
+  if (DEBUG_ENABLED)  printf("\nCAP: After RepSTE CAPInsInfoMap Display\n");
   showCapInsInfoMap();
 }
 
 void  MemoryManager::schedule_cap_instructions() {
   int num_prg = m_cap_ins.size();
-  printf("\n schedule_cap_instructions: The num of cap inst is %d", m_cap_ins.size());
+  if (DEBUG_ENABLED)  printf("\n schedule_cap_instructions: The num of cap inst is %d", m_cap_ins.size());
   while(num_prg) {
-    printf("\n MemoryManager::schedule_cap_instructions Store Inst No %d", num_prg);
+    if (DEBUG_ENABLED)  printf("\n MemoryManager::schedule_cap_instructions Store Inst No %d", num_prg);
     getCore()->getPerformanceModel()->pushDynamicInstructionInfo(m_cap_dyn_ins_info[0], false, true);
     getCore()->getPerformanceModel()->queueInstruction(m_cap_ins[0], false, true);
    	m_cap_dyn_ins_info.erase(m_cap_dyn_ins_info.begin());
@@ -1088,16 +1091,18 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
   UInt32 address;
   IntPtr addr = (IntPtr)(address);
 
-  printf("Inside create_cap_ss_instructions: SWIZZLE_SWITCH_X: %d, SWIZZLE_SWITCH_Y: %d\n", 
+  if (DEBUG_ENABLED)  printf("Inside create_cap_ss_instructions: SWIZZLE_SWITCH_X: %d, SWIZZLE_SWITCH_Y: %d\n", 
         SWIZZLE_SWITCH_X, SWIZZLE_SWITCH_Y);
 
   if(m_cap_ins.size() == 0) {
     while(cur_ste < SWIZZLE_SWITCH_X) {
-        int sub_block = 0;
+        UInt32 sub_block = 0;
         while(sub_block < SWIZZLE_SWITCH_Y) {
-          address = cur_ste*SWIZZLE_SWITCH_Y + sub_block;
-
+          // set bits 31 and 30 to prevent collision of these instruction with other inst
+          address =  (UInt32)(cur_ste*SWIZZLE_SWITCH_Y + sub_block);
           memcpy(temp_data_buf, ss_file + address, 1); 
+
+          address =  address | (1<<31) | (1<<30);
 
           //Hack for COLOR  
           if(*temp_data_buf == 36) *temp_data_buf = 0;  //Refer to the NOTE
@@ -1105,13 +1110,13 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
           else if(*temp_data_buf == 42) *temp_data_buf = 16;
           else if(*temp_data_buf == 33) *temp_data_buf = 8;
           else if(*temp_data_buf == 61) *temp_data_buf = 4;
-          else if(*temp_data_buf == 35) *temp_data_buf = 2;
+          else if(*temp_data_buf == 38) *temp_data_buf = 2;
 
 
 
 
           addr = (IntPtr)(address);        
-          printf("\n create_cap_ss_instructions STE no: 0x%x, Value: %d\n", address, *temp_data_buf);
+          if (DEBUG_ENABLED)  printf("\n create_cap_ss_instructions STE no: 0x%x, Value: %d\n", address, *temp_data_buf);
 
           OperandList store_list;
           store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
@@ -1156,33 +1161,36 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
           cii.op    = CacheCntlr::CAP_SS;	
           cii.cap_data_buf = new Byte;
           memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
-          printf("\n CAP: SS data = %d", *(cii.cap_data_buf));
+          if (DEBUG_ENABLED)  printf("\n CAP: SS data = %d", *(cii.cap_data_buf));
           capInsInfoMap[address] 	= cii;
        } 
        cur_ste++;
       }
   }
 
-  printf("\nCAP: After SS CAPInsInfoMap Display\n");
-  showCapInsInfoMap();
+  if (DEBUG_ENABLED)  {
+     printf("\nCAP: After SS CAPInsInfoMap Display\n");
+     showCapInsInfoMap();
+  }
 
 }  
 
 
 void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
-  UInt32 address = 0; 
-  //UInt32 address = 0;
+  UInt32 address1 = 0, address = 0; 
   IntPtr addr = (IntPtr)(address);
   Byte* temp_data_buf = new Byte;
   UInt32 byte_pos = 0;
   int patternEnded = 0;
 
-  printf("Inside create_cap_match_instructions: \n");
+  if (DEBUG_ENABLED)  printf("Inside create_cap_match_instructions: \n");
 
   if(m_cap_ins.size() == 0) {
      while ((char)(*(match_file+byte_pos)) != '\n')  { // detect end of input pattern this way.
       EXECUTE:
-          printf("\n CAP: create_cap_match_instructions address: 0x%x, Input char: (char)%c, (int)%d\n", address, (char)(*(match_file+byte_pos)), (UInt32)(*(match_file+byte_pos)));
+          // set bit 30 of address to uniquely identify inst and prevent inst collision
+          address1 = (1<<30) | address;
+          if (DEBUG_ENABLED)  printf("\n CAP: create_cap_match_instructions address: 0x%x, Input char: (char)%c, (int)%d\n", address, (char)(*(match_file+byte_pos)), (UInt32)(*(match_file+byte_pos)));
 
           memcpy(temp_data_buf, match_file+byte_pos, 1);
 
@@ -1215,7 +1223,7 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
           store_inst->setMicroOps(store_uops);
 
           m_cap_ins.push_back(store_inst);
-          addr = (IntPtr)(address);
+          addr = (IntPtr)(address1);
 
           //CAP: Dynamic Instructions Info creation
           DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(m_mbench_dest_addr,//ins address 
@@ -1230,8 +1238,8 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
           cii.op    = patternEnded ? CacheCntlr::CAP_END : CacheCntlr::CAP_MATCH;	
           cii.cap_data_buf = new Byte;
           memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
-          printf("\n CAP: Character at address %d is %c",addr,*(cii.cap_data_buf));
-          capInsInfoMap[address] 	= cii;
+          if (DEBUG_ENABLED)  printf("\n CAP: Character at address %d is %c",addr,*(cii.cap_data_buf));
+          capInsInfoMap[address1] 	= cii;
 
         address++;
         byte_pos++; 
@@ -1242,7 +1250,7 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
         }
      }
 
-     printf("\n CAP: Came out of loop %d", patternEnded);
+     if (DEBUG_ENABLED)  printf("\n CAP: Came out of loop %d", patternEnded);
 
      if (patternEnded != 2) {   // to tag the end of input pattern stream
          patternEnded = 1;
@@ -1250,8 +1258,10 @@ void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
      }
   } 
 
-  printf("\nCAP: After Match CAPInsInfoMap Display\n");
-  showCapInsInfoMap();
+  if (DEBUG_ENABLED)  {
+     printf("\nCAP: After Match CAPInsInfoMap Display\n");
+     showCapInsInfoMap();
+  }
 
 }
 
@@ -1266,7 +1276,7 @@ void MemoryManager::create_schedule_dummy_instructions() {
      //{ printf("\n CAP: q becomes 0 finally");  
       while(i <= 2*m_min_dummy_inst+35) { 
        if(!dummy_inst) {
-           printf("\n CAP: making first dummy inst");  
+           if (DEBUG_ENABLED)  printf("\n CAP: making first dummy inst");  
            OperandList dummy_list;
            dummy_list.push_back(Operand(Operand::REG, dummy_reg, Operand::READ, "", true));
            dummy_inst 	= new GenericInstruction(dummy_list);
@@ -1292,17 +1302,13 @@ void MemoryManager::create_schedule_dummy_instructions() {
            dummy_inst->setMicroOps(cmp_uops);
        }
        assert(dummy_inst);
-       printf("\n On insertion of dummy inst %d",i);
+       if (DEBUG_ENABLED)  printf("\n On insertion of dummy inst %d",i);
        getCore()->getPerformanceModel()->queueInstruction(dummy_inst, false, true);
        i++;
      }
     //}  
    #endif
-
-
 }  
-
-
 
 
 //#ifdef PIC_IS_MICROBENCH
@@ -3642,12 +3648,12 @@ MemoryManager::coreInitiateMemoryAccess(
 			}
 	 }
 
-   printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), offset: %d, data: %c, data_length(%d) OP(%d)\n", MemComponentString(mem_component), address, offset, (char)(*data_buf), data_length, mem_op_type);
+   if (DEBUG_ENABLED)  printf("\n Inside coreInitiateMemoryAccess for %s: ADDR(%x), offset: %d, data: %c, data_length(%d) OP(%d)\n", MemComponentString(mem_component), address, offset, (char)(*data_buf), data_length, mem_op_type);
   
    //CAP: Forward CAP operation to Cache Ctlr 
    //showCapInsInfoMap();
    if(m_cap_on) {
-      printf("\n Going to display CAPINSFINFO for %s\n", MemComponentString(mem_component));
+      if (DEBUG_ENABLED)  printf("\n Going to display CAPINSFINFO for %s\n", MemComponentString(mem_component));
      
       UInt32 log_block_size = floorLog2(getCacheBlockSize());
       IntPtr capAddr = (IntPtr)((UInt64)(address) | offset);
@@ -3657,17 +3663,25 @@ MemoryManager::coreInitiateMemoryAccess(
          capInsInfoMap.erase(capAddr);
 
          if(cii.op == CacheCntlr::CAP_SS) {
+            // Unset the 31st and 30th bits set for CAP_SS identification
+            UInt32 maskBits = ~((1<<31) | (1<<30));
+            capAddr = (IntPtr)((UInt32)(capAddr) & maskBits);
+
             memcpy(data_buf, cii.cap_data_buf, 1);
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length for ss=1
          }
          else if (cii.op == CacheCntlr::CAP_MATCH) {
+            // Unset the 30th bit set for CAP_MATCH identification
+            UInt32 maskBits = ~(1<<30);
+            capAddr = (IntPtr)((UInt32)(capAddr) & maskBits);
+
             memcpy(data_buf, cii.cap_data_buf, 1);
-             printf("\n CAP_MATCH: Inside coreInitiateMemoryAccess for %s: CAP_ADDR(%x), offset: %d, data: %d, data_length(%d) OP(%d)\n", MemComponentString(mem_component), capAddr,  offset, (UInt32)(*data_buf), data_length, mem_op_type);
+             if (DEBUG_ENABLED)  printf("\n CAP_MATCH: Inside coreInitiateMemoryAccess for %s: CAP_ADDR(%x), offset: %d, data: %d, data_length(%d) OP(%d)\n", MemComponentString(mem_component), capAddr,  offset, (UInt32)(*data_buf), data_length, mem_op_type);
 
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length = 1
          }
          else if (cii.op == CacheCntlr::CAP_END) {
-            printf("End of input pattern detected! \nExiting!!!\n");
+            if (DEBUG_ENABLED)  printf("End of input pattern detected! \nExiting!!!\n");
             exit(0);
          }
          else if  (cii.op == CacheCntlr::CAP_REP_STE) {
@@ -3678,7 +3692,10 @@ MemoryManager::coreInitiateMemoryAccess(
 
          else {
             memcpy(data_buf, cii.cap_data_buf, 1);
-            printf("CAP_NONE: coreInitiateMemoryAccess: reading!!! addr: %d  data: %d\n", (UInt32)(capAddr), *data_buf);
+            if (DEBUG_ENABLED)  printf("CAP_NONE: coreInitiateMemoryAccess: reading!!! addr: %d  data: %d\n", (UInt32)(capAddr), *data_buf);
+            // Unset the 31st bit set for CAP_NONE identification
+            UInt32 maskBits = ~(1<<31);
+            address = (IntPtr)((UInt32)(address) & maskBits);
          }
       }
    }  

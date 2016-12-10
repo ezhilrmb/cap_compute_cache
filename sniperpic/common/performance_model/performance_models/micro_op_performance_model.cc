@@ -14,6 +14,9 @@
 #include <cstdio>
 #include <algorithm>
 
+// to enable debug prints in CAP sim
+#define DEBUG_ENABLED 0
+
 MicroOp* MicroOpPerformanceModel::m_serialize_uop = NULL;
 MicroOp* MicroOpPerformanceModel::m_mfence_uop = NULL;
 MicroOp* MicroOpPerformanceModel::m_memaccess_uop = NULL;
@@ -162,7 +165,7 @@ void MicroOpPerformanceModel::doSquashing(uint32_t first_squashed)
 bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
 {
 
-   printf("\n CAP: MicroOpPerformanceModel::handleInstruction: Instruction addr: 0x%x", instruction->getAddress());
+   if(DEBUG_ENABLED)  printf("\n CAP: MicroOpPerformanceModel::handleInstruction: Instruction addr: 0x%x", instruction->getAddress());
 
    if (m_state_instruction == NULL)
    {
@@ -250,10 +253,10 @@ bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
       const Operand &o = ops[i];
 
       if (o.m_type == Operand::MEMORY)
-      {  printf("\n CAP: Handle Instr Before Dyn Info");
+      {  if(DEBUG_ENABLED)  printf("\n CAP: Handle Instr Before Dyn Info");
          // For each memory operand, there exists a dynamic instruction to process
          DynamicInstructionInfo *info = getDynamicInstructionInfo(*instruction, m_issue_memops);
-         printf("\n CAP: Handle Instr After Dyn Info %d", info);
+         if(DEBUG_ENABLED)  printf("\n CAP: Handle Instr After Dyn Info %d", info);
          if (!info)
             return false;
 
@@ -346,7 +349,7 @@ bool MicroOpPerformanceModel::handleInstruction(Instruction const* instruction)
                m_current_uops[store_index]->setAddress(addr);
                m_current_uops[store_index]->setDCacheHitWhere(info->memory_info.hit_where);
                ++m_state_num_writes_done;
-               printf("\n CAP: For Inst at 0x%x, MEM STORE microop to addr: 0x%x", instruction->getAddress(), info->memory_info.addr);
+               if(DEBUG_ENABLED)  printf("\n CAP: For Inst at 0x%x, MEM STORE microop to addr: 0x%x", instruction->getAddress(), info->memory_info.addr);
 
 
 							 /*#ifdef PIC_USE_VPIC

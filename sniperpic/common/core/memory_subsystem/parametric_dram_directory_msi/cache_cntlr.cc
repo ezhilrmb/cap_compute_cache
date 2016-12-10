@@ -32,6 +32,9 @@ Lock iolock;
 #  define MYLOG(...) {}
 #endif
 
+// To enable debug prints for CAP
+#define DEBUG_ENABLED 0
+
 namespace ParametricDramDirectoryMSI
 {
 
@@ -139,7 +142,7 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
    m_last_level(NULL),
    m_tag_directory_home_lookup(tag_directory_home_lookup),
    m_swizzleSwitch(new Byte[SWIZZLE_SWITCH_X * SWIZZLE_SWITCH_Y]), // CAP: adding swizzle switch in ctrlr
-   m_currStateMask(new Byte[cache_block_size]),
+   m_currStateMask(new Byte[SWIZZLE_SWITCH_Y]),
    m_reportingSteInfo(new Byte[NUM_SUBARRAYS*cache_block_size]),
    m_perfect(cache_params.perfect),
    m_coherent(cache_params.coherent),
@@ -355,10 +358,6 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
    	registerStatsMetric(name, core_id, "dirty_backinval", &stats.dirty_backinval);
    	registerStatsMetric(name, core_id, "writebacks", &stats.writebacks);
 
-
-    //CAP TODO: HAcks
-    //Initializing Start STE
-    
 }
 
 CacheCntlr::~CacheCntlr()
@@ -1117,7 +1116,7 @@ CacheCntlr::processMemOpFromCore(
 MYLOG("----------------------------------------------");
 MYLOG("%c%c %lx+%u..+%u", mem_op_type == Core::WRITE ? 'W' : 'R', mem_op_type == Core::READ_EX ? 'X' : ' ', ca_address, offset, data_length);
 
-printf("\n processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data(%d) data length(%d), offset(%d)", mem_op_type, ca_address, (UInt32)(*data_buf), data_length, offset);
+if(DEBUG_ENABLED)  printf("\n processMemOpFromCore(), mem_op_type(%u), ca_address(0x%x), data(%d) data length(%d), offset(%d)", mem_op_type, ca_address, (UInt32)(*data_buf), data_length, offset);
 
 
 
@@ -2639,21 +2638,28 @@ void CacheCntlr::retrieveNextStateInfo(Byte* inDataBuf, Byte* outDataBuf)
    UInt32 currStateVecLength = SWIZZLE_SWITCH_X; 
    UInt32 nextStateVecLength = SWIZZLE_SWITCH_Y; 
 
-   UInt32 i=0, j=0, k=0;
+   UInt32 i=0, j=0, k=0, l=0;
    Byte* tempOutDataBuf = new Byte[nextStateVecLength];
    Byte trueOutByte, tempOutByte;
    bool activeStateFound = 0;
 
 
-   for (i=0; i<currStateVecLength; i++) {
+   for (i=0; i<nextStateVecLength; i++) {
       Byte dataByte;  // temp var to store each byte from input currState vector
       memcpy(&dataByte, inDataBuf+i, 1);
 
       while (j<8) {
-         if ((dataByte>>j) & 0x1) {   // check if last bit is 1
-            int byteToReadFrom = nextStateVecLength*(8*i + j);  // skip every 128B chunk
+         if ((Byte)(dataByte>>(7-j)) & 0x1) {   // check if last bit is 1
+            int byteToReadFrom = (i*8+j)*nextStateVecLength;  // skip every 128B chunk
 
             memcpy(tempOutDataBuf, m_swizzleSwitch+byteToReadFrom, nextStateVecLength);  // swizzle switch look-up
+
+            if(DEBUG_ENABLED)  {
+               printf("Found next state vector at STE:%d \n", byteToReadFrom);
+               for (l=0; l<nextStateVecLength; l++)  
+                  printf("%d\t", (Byte)(*(tempOutDataBuf+l)));
+               printf ("\n");
+            }
 
             if (activeStateFound) { // this means more than one active curr_state bit in input
                while (k<nextStateVecLength)  {
@@ -2678,7 +2684,7 @@ void CacheCntlr::retrieveNextStateInfo(Byte* inDataBuf, Byte* outDataBuf)
    }
 
    delete tempOutDataBuf;
-   LOG_ASSERT_ERROR(activeStateFound != 1, "No next_states were found for currently active state!");
+   LOG_ASSERT_ERROR(activeStateFound == 1, "No next_states were found for currently active state!");
 }
 
 /*****************************************************************************
@@ -2689,7 +2695,7 @@ void CacheCntlr::retrieveNextStateInfo(Byte* inDataBuf, Byte* outDataBuf)
  *****************************************************************************/
 void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
 {
-   UInt32 subarrayIndexBits = 0, k=0;
+   UInt32 subarrayIndexBits = 0, k=0, i=0;
    UInt32 address;
    IntPtr addr;
    Byte* temp_data_buf = new Byte[m_cache_block_size];
@@ -2702,17 +2708,43 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
    while(subarrayIndexBits<NUM_SUBARRAYS){
       // encode the single input character into N addresses for lookup in N subarrays
       address = (subarrayIndexBits<<(m_logASCIISetIndex+m_log_blocksize)) | (inputChar<<m_log_blocksize);
-      addr = (IntPtr)address;
+      UInt32 offset = address & (m_log_blocksize-1);
+      UInt32 addrAligned = address & (~(m_log_blocksize-1));
+      addr = (IntPtr)addrAligned;
+
+      printf("processPatternMatch: Value read from Cache at full addr 0x%x addr_aligned: 0x%x offset: 0x%x for input (int)%d (char)%c \n", address, addrAligned, offset, (char)(inputChar), (UInt32)(inputChar));
+
       accessCache(Core::READ, addr, 0, temp_data_buf, m_cache_block_size, 1);
 
       //Byte_pos = 0 means it's the first character. If its first character, then load the curr state mask
-      if(!byte_pos) 
-        memcpy(m_currStateMask,temp_data_buf, m_cache_block_size);
+      if(!byte_pos)   
+         memcpy(m_currStateMask,temp_data_buf, SWIZZLE_SWITCH_Y);
 
-      printf("Value read from Cache at addr 0x%x is %d", addr, *temp_data_buf);
+      if(DEBUG_ENABLED)  {
+         // print the cache line
+         for (i=0; i<m_cache_block_size; i++)  
+            printf("%d\t", (Byte)(*(temp_data_buf+i)));
+         printf ("\n");
+      }
+
       memcpy((data_buf+(subarrayIndexBits*m_cache_block_size)), temp_data_buf, m_cache_block_size);
       ++subarrayIndexBits;
       updateCAPLatency();
+   }
+
+   if(DEBUG_ENABLED)  {
+      // print the reporting STE info
+      printf ("Reporting STE info:\n");
+      for (i=0; i<SWIZZLE_SWITCH_Y; i++)  
+         printf("%d\t", (Byte)(*(m_reportingSteInfo+i)));
+      printf("\n");
+
+
+      // print the current state info before masking
+      printf ("Current state info before masking: \n");
+      for (i=0; i<m_cache_block_size; i++)  
+         printf("%d\t", (Byte)(*(data_buf+i)));
+      printf("\n");
    }
    
    // Mask curr state vectors read from cache subarrays with the current state Mask
@@ -2724,6 +2756,14 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
       ++k;
    }
 
+   if(DEBUG_ENABLED)  {
+      // print the current state info after masking
+      printf ("Current state info after masking: \n");
+      for (i=0; i<m_cache_block_size; i++)  
+         printf("%d\t", (Byte)(*(data_buf+i)));
+      printf("\n");
+   }
+   
    // Reporting STE detection
    k = 0;
    while (k<nextStateVecLength)  {
@@ -2736,10 +2776,18 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
       }
       ++k;
    }
-
+   
    // Look up in the swizzle switch to get the next_state vector
    retrieveNextStateInfo(data_buf, out_data_buf);
   
+   if(DEBUG_ENABLED)  {
+      // print the next state info
+      printf ("Overall next state info: \n");
+      for (i=0; i<m_cache_block_size; i++)  
+         printf("%d\t", (Byte)(*(out_data_buf+i)));
+      printf("\n");
+   }
+
    // Update the mask register with next state bits 
    k=0;
    while (k<nextStateVecLength)  {
@@ -2755,21 +2803,25 @@ CacheCntlr::processCAPSOpFromCore(
             IntPtr addr,
             Byte* data_buf, 
             UInt32 data_length)  {
-  static int m_gl_count = 0;
-
-   UInt32 steNum = (UInt32)(addr) / SWIZZLE_SWITCH_Y;
-   UInt32 bytePos = (UInt32)(addr) % SWIZZLE_SWITCH_Y;
-
-   printf("processCAPSOpFromCore: CAP OPCODE :%d, STE (hex): 0x%x, STE Num: %d, byte position: %d\n", (int)cap_op, (UInt32)(addr), steNum, bytePos);
+   static int m_gl_count = 0;
+   if(DEBUG_ENABLED)  printf("processCAPSOpFromCore: CAP OPCODE :%d, addr (hex): 0x%x data: (int)%d (char)%c\n", (int)cap_op, (UInt32)(addr), (Byte)(*data_buf), (char)(*data_buf));
 
    if (cap_op == CacheCntlr::CAP_SS)  {  // call the updateSwizzleSwitch function. I know this is redundant.
+      UInt32 steNum = (UInt32)(addr) / SWIZZLE_SWITCH_Y;
+      UInt32 bytePos = (UInt32)(addr) % SWIZZLE_SWITCH_Y;
+
+      if(DEBUG_ENABLED)  printf("processCAPSOpFromCore: CAP OPCODE :%d, STE (hex): 0x%x, STE Num: %d, byte position: %d\n", (int)cap_op, (UInt32)(addr), steNum, bytePos);
+
       UInt32 steNum_BytePos = (UInt32)(addr);
       updateSwizzleSwitch(steNum_BytePos, data_buf, data_length);
 
       // Add time
       getMemoryManager()->incrElapsedTime(m_ss_program_time.getLatency(), ShmemPerfModel::_USER_THREAD);
       m_gl_count++;
-      showSwizzleSwitch();
+      
+      // printf("gl_count=%d\n",m_gl_count);
+      if (m_gl_count == SWIZZLE_SWITCH_X*SWIZZLE_SWITCH_Y)  // print SS contents after all programming
+         showSwizzleSwitch();
    }
 
    else if (cap_op == CacheCntlr::CAP_REP_STE)  { // reporting STE programming logic
@@ -2778,59 +2830,11 @@ CacheCntlr::processCAPSOpFromCore(
    }
    else {
       UInt32 bytePos = (UInt32)(addr);
-      processPatternMatch((UInt32)(*data_buf), bytePos);
+      processPatternMatch((Byte)(*data_buf), bytePos);
    }
 
    return HitWhere::L1_OWN;  // TODO: HACK: always return hit in L1
    
-
-/*   SubsecondTime t_start = getShmemPerfModel()->getElapsedTime(
-         ShmemPerfModel::_USER_THREAD);
-
-	//CAP : First check if cache is LLC 
-//	if(isLastLevel()) { TODO: turning this check off for now and do everything in the L1D
-       HitWhere::where_t	hit_where1 = picProcessMemOpFromCore(
-                                                               Core::NONE, Core::READ,
-                                                               addr, 0, NULL, 64, true, true);
-       SubsecondTime t_load_end = getShmemPerfModel()->getElapsedTime(ShmemPerfModel::_USER_THREAD);
-       //Start the store at the end of load processing not its *completion*
-       getShmemPerfModel()->setElapsedTime(ShmemPerfModel::_USER_THREAD, t_start) ;
-
-       getMemoryManager()->incrElapsedTime(m_mem_component, 
-                                       CachePerfModel::ACCESS_CACHE_TAGS, ShmemPerfModel::_USER_THREAD);
-
-       HitWhere::where_t hit_where2 = HitWhere::UNKNOWN;
-       if(cap_op == PIC_COPY) 
-          hit_where2 = picProcessMemOpFromCore(
-                                       Core::NONE, Core::WRITE,
-                                       , 0, NULL, 64, true, true);
-       else
-          //else if(cap_op == PIC_CMP)
-          hit_where2 = picProcessMemOpFromCore(
-                                       Core::NONE, Core::READ,
-                                       , 0, NULL, 64, true, true);
-       pic_other_load_address = 0;
-
-       SubsecondTime t_store_end = getShmemPerfModel()->getElapsedTime(ShmemPerfModel::_USER_THREAD);
-       
-       if(t_load_end > t_store_end)
-          getShmemPerfModel()->setElapsedTime(ShmemPerfModel::_USER_THREAD, t_load_end);
-
-       LOG_PRINT("\nL1%d+%lx..+%lx, %s,%s", (int)cap_op, 
-               addr, HitWhereString(hit_where1), 
-               HitWhereString(hit_where2));
-
-       //Finally account for PIC operation 1.75 * DATA
-       //TODO: Make this 1.75
-       getMemoryManager()->incrElapsedTime(m_mem_component, 
-                   CachePerfModel::ACCESS_CACHE_DATA, ShmemPerfModel::_USER_THREAD);
-       return ((hit_where1 > hit_where2) ? hit_where1 : hit_where2);
-//	}
-//	else {
-//       printf("ERROR! Transaction reached L1/L2...\n");
-//       assert(0);
-//	}
-*/
 }
 
 

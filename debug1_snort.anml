@@ -1,0 +1,22 @@
+<anml version="1.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <automata-network id="an1">
+    <state-transition-element id="__2__" symbol-set="[c]" start="start-of-data">
+      <activate-on-match element="__3__"/>
+    </state-transition-element>
+    <state-transition-element id="__3__" symbol-set="[o]">
+      <activate-on-match element="__4__"/>
+    </state-transition-element>
+    <state-transition-element id="__4__" symbol-set="[l]">
+      <activate-on-match element="__5__"/>
+    </state-transition-element>
+    <state-transition-element id="__5__" symbol-set="[o]">
+      <activate-on-match element="__6__"/>
+    </state-transition-element>
+    <state-transition-element id="__6__" symbol-set="[r]">
+      <activate-on-match element="__7__"/>
+    </state-transition-element>
+    <or id="__7__">
+      <report-on-high reportcode="1"/>
+    </or>
+  </automata-network>
+</anml>

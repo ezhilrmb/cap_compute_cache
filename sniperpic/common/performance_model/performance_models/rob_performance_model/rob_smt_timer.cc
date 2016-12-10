@@ -20,7 +20,10 @@
 #include <iomanip>
 
 // Define to get per-cycle printout of dispatch, issue, writeback stages
-//#define DEBUG_PERCYCLE
+//#define DEBUG_PERCYCLE 
+
+// enabled debug prints for CAP simulations
+#define DEBUG_ENABLED 0
 
 // Define to not skip any cycles, but assert that the skip logic is working fine
 //#define ASSERT_SKIP
@@ -1243,7 +1246,7 @@ void RobSmtTimer::printRob(smtthread_id_t thread_num)
       std::cout<<std::endl;
    #endif
 
-   std::cout<<"** ROB state size("<<thread->m_num_in_rob<<") total("<<thread->rob.size()<<")";
+   if(DEBUG_ENABLED)   std::cout<<"** ROB state size("<<thread->m_num_in_rob<<") total("<<thread->rob.size()<<")";
    if (thread->frontend_stalled_until == SubsecondTime::MaxTime())
       std::cout<<" stalled(---)";
    else if (thread->frontend_stalled_until > now)

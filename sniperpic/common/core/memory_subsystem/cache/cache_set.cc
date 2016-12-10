@@ -23,11 +23,12 @@ CacheSet::CacheSet(CacheBase::cache_t cache_type,
       m_cache_block_info_array[i] = CacheBlockInfo::create(cache_type);
    }
 
-   if (Sim()->getFaultinjectionManager())
+   if (/*Sim()->getFaultinjectionManager()*/1)
    {
       m_blocks = new char[m_associativity * m_blocksize];
       memset(m_blocks, 0x00, m_associativity * m_blocksize);
    } else {
+      printf("CAP: Uh oh! m_blocks is NULL!!\n");
       m_blocks = NULL;
    }
 }
@@ -47,7 +48,10 @@ CacheSet::read_line(UInt32 line_index, UInt32 offset, Byte *out_buff, UInt32 byt
    //assert((out_buff == NULL) == (bytes == 0));
 
    if (out_buff != NULL && m_blocks != NULL)
+   {
+      // CAP: printf("cache_set: reading a cache line\n");
       memcpy((void*) out_buff, &m_blocks[line_index * m_blocksize + offset], bytes);
+   }
 
    if (update_replacement)
       updateReplacementIndex(line_index);
@@ -60,7 +64,10 @@ CacheSet::write_line(UInt32 line_index, UInt32 offset, Byte *in_buff, UInt32 byt
    //assert((in_buff == NULL) == (bytes == 0));
 
    if (in_buff != NULL && m_blocks != NULL)
+   {
+      // CAP: printf("cache_set: writing a cache line\n");
       memcpy(&m_blocks[line_index * m_blocksize + offset], (void*) in_buff, bytes);
+   }
 
    if (update_replacement)
       updateReplacementIndex(line_index);

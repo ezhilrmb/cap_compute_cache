@@ -1,12 +1,14 @@
+#!/usr/bin/perl
 use strict;
+use warnings;
 
-my $file = 'debug_snort1.anml';
+my $file = 'debug1_snort.anml';
 my @STE_id;
 my $STE_id_ctr = 0;
 my @symbol_set;
 my $symbol_set_ctr = 0;
 my @start_of_data;
-my $start_of_data_ctr;
+my $start_of_data_ctr = 0;
 
 my %symbol_to_STE_map;
 my %swizzle_map;
@@ -31,11 +33,11 @@ while(my $line = <$info>){
 
 	# creating a list of all STE ids #
 	if($line =~ /(state-transition-element id="__)(.*)(__")/){
-		@STE_id[$STE_id_ctr] = $2;
+		$STE_id[$STE_id_ctr] = $2;
 		$STE_id_ctr++;
 	}
 	if($line =~ /(or id="__)(.*)(__")/){
-		@STE_id[$STE_id_ctr] = $2;
+		$STE_id[$STE_id_ctr] = $2;
 		$STE_id_ctr++;
 	}
 
@@ -47,13 +49,13 @@ while(my $line = <$info>){
 	# symbol sets #
 	# assuming a one to one mapping of symbol set to STE id(not true for "or id") #
 	if ($line =~ /(symbol-set="\[)(.*)(\]")/){
-		@symbol_set[$symbol_set_ctr] = "\Q$2\E";
+		$symbol_set[$symbol_set_ctr] = "\Q$2\E";
 		$symbol_set_ctr++;
 	}
 
 	# marker to indicate if an STE id is a start STE #
 	if($line =~ /("start-of-data")/){
-		@start_of_data[$start_of_data_ctr] = @STE_id[$STE_id_ctr-1];
+		$start_of_data[$start_of_data_ctr] = $STE_id[$STE_id_ctr-1];
 		$start_of_data_ctr++;
 	}
 
@@ -152,7 +154,8 @@ while ($random_ctr<$symbol_set_ctr){
 
  	$random_ctr++;
 }
-
+ 
+print "Symbol to STE map:\n";
  foreach $id (keys %symbol_to_STE_map)
  {
    @temp_array =  @{$symbol_to_STE_map{$id}};
@@ -174,7 +177,46 @@ foreach $id (keys %symbol_to_STE_map)
 		$cache_array[$id][$loop_ctr] = '1';
 	}
 }
+=pods
+my $filenameTemp = 'temp_del.txt';
+open(my $fhTemp, '>', $filenameTemp);
 
+my $id, $id1;
+for ($id=0; $id<256; $id++) {
+   for ($id1=0; $id1<512; $id1++) {
+      print $fhTemp $cache_array[$id][$id1];
+   }
+   print $fhTemp "\n";
+}
+=cut
+
+my $decimal = 0;
+my $character;
+my $filename = 'debug_cachep.txt';
+my $dummy = 199;
+open(my $fh, '>', $filename);
+for ($id=0;$id<256;$id++){
+	for ($random_ctr=0;$random_ctr<512/8;$random_ctr++){
+		for ($loop_ctr=0;$loop_ctr<8;$loop_ctr++){
+			# print $fh "$cache_array[$id][8*$random_ctr + $loop_ctr]";
+            $decimal = $decimal | ($cache_array[$id][8*$random_ctr + $loop_ctr] << (7-$loop_ctr));
+            #$decimal = $decimal + (2**(7-$loop_ctr))*(ord($cache_array[$id][8*$random_ctr + $loop_ctr])-48);
+		}		
+        if($decimal==0){
+			$character = sprintf("%c",$dummy);	
+		}
+		else{
+			$character = sprintf("%c",$decimal);	
+		}
+        print $fh $character;
+		#print $fh "\n";
+		$decimal = 0;
+	}
+    #print $fh "\n";
+}
+close $fh;
+
+=pods
 my $decimal = 0;
 my $character;
 my $filename = 'debug_cachep.txt';
@@ -199,6 +241,7 @@ for ($id=0;$id<256;$id++){
 	#print $fh "\n";
 }
 close $fh;
+=cut
 
 #$decimal = 0;
 #my $filename = 'cache2.txt';
