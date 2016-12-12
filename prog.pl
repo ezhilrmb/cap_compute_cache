@@ -5,7 +5,7 @@ use warnings;
 # cache parameters
 my $cache_line_bit_width = 512;
 my $single_SA_num_lines = 256;
-my $num_subarrays = 2;
+my $num_subarrays = 1;
 
 # swizzle switch parameters
 my $swizzle_switch_x = 512*$num_subarrays;

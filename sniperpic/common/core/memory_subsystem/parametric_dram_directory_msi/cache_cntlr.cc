@@ -2721,7 +2721,9 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar)
       UInt32 addrAligned = address & (~(m_log_blocksize-1));
       addr = (IntPtr)addrAligned;
 
-      printf("processPatternMatch: Value read from Cache at full addr 0x%x addr_aligned: 0x%x offset: 0x%x for input (int)%d (char)%c \n", address, addrAligned, offset, (char)(inputChar), (UInt32)(inputChar));
+      if (DEBUG_ENABLED)  printf("processPatternMatch: Value read from Cache at full addr 0x%x addr_aligned: 0x%x offset: 0x%x for input (int)%d (char)%c \n", address, addrAligned, offset, (char)(inputChar), (UInt32)(inputChar));
+
+      printf ("Reading input char: %c\n", (char)(inputChar));
 
       accessCache(Core::READ, addr, 0, temp_data_buf, m_cache_block_size, 1);
 
@@ -2819,9 +2821,11 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar)
          memcpy(&tempB_data_buf, m_reportingSteInfo+k, 1);
          tempA_data_buf = tempA_data_buf & tempB_data_buf;
          if (tempA_data_buf) {
-            printf("Yaay! FSM Match found! The END!!!\n");
+            printf("Yaay! FSM Match found! \n");
             m_numFSMmatches++;
-            //exit(0);
+             // update the start state mask
+            memcpy(m_currStateMask, m_startSTEMask, (NUM_SUBARRAYS*m_cache_block_size));
+           //exit(0);
          }
          ++k;
       }
@@ -2837,6 +2841,7 @@ CacheCntlr::processCAPSOpFromCore(
             Byte* data_buf, 
             UInt32 data_length)  {
    static int m_gl_count = 0;
+   static int first_print = 0;
    if(DEBUG_ENABLED)  printf("processCAPSOpFromCore: CAP OPCODE :%d, addr (hex): 0x%x data: (int)%d (char)%c\n", (int)cap_op, (UInt32)(addr), (Byte)(*data_buf), (char)(*data_buf));
 
    if (cap_op == CacheCntlr::CAP_SS)  {  // call the updateSwizzleSwitch function. I know this is redundant.
@@ -2853,8 +2858,10 @@ CacheCntlr::processCAPSOpFromCore(
       m_gl_count++;
       
       // printf("gl_count=%d\n",m_gl_count);
-      if (m_gl_count == SWIZZLE_SWITCH_X*SWIZZLE_SWITCH_Y)  // print SS contents after all programming
-         showSwizzleSwitch();
+      if(DEBUG_ENABLED) {
+         if (m_gl_count == SWIZZLE_SWITCH_X*SWIZZLE_SWITCH_Y)  // print SS contents after all programming
+            showSwizzleSwitch();
+      }
    }
 
    else if (cap_op == CacheCntlr::CAP_REP_STE)  { // reporting STE programming logic
@@ -2866,6 +2873,10 @@ CacheCntlr::processCAPSOpFromCore(
       updateStartStateMask(bytePos, data_buf, data_length);
    }
    else {
+      if (!first_print) {
+         printf ("\n\n Reading input pattern...\n\n");
+         first_print++;
+      }
       UInt32 bytePos = (UInt32)(addr);
       processPatternMatch((Byte)(*data_buf));
    }

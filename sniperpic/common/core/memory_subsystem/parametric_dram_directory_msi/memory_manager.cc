@@ -495,7 +495,7 @@ MemoryManager::MemoryManager(Core* core,
 
 //Begin- pic-apps
 void MemoryManager::processAppMagic(UInt64 argument) {
-  printf("\nCAP: Memory Manager::processAppMagic\n");
+  if (DEBUG_ENABLED) printf("\nCAP: Memory Manager::processAppMagic\n");
 	MagicServer::MagicMarkerType *args_in = 
 		(MagicServer::MagicMarkerType *) argument;
 	if(getCore()->getId() == 0) {
@@ -1138,8 +1138,10 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
 
 
   }
-  if (DEBUG_ENABLED)  printf("\nCAP: After RepSTE CAPInsInfoMap Display\n");
-  showCapInsInfoMap();
+  if (DEBUG_ENABLED)  {
+     printf("\nCAP: After RepSTE CAPInsInfoMap Display\n");
+     showCapInsInfoMap();
+  }
 }
 
 void  MemoryManager::schedule_cap_instructions() {

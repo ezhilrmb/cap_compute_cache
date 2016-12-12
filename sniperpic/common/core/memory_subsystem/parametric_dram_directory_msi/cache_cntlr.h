@@ -46,7 +46,7 @@ class ShmemPerf;
 #define PREFETCH_INTERVAL SubsecondTime::NS(1)
 
 // CAP: declare number of subarrays
-#define NUM_SUBARRAYS 2
+#define NUM_SUBARRAYS 1
 
 // CAP: Swizzle switch X (curr state) and Y (next state) dimensions (in Bytes)
 #define SWIZZLE_SWITCH_X (512*NUM_SUBARRAYS) //64 - this is line number

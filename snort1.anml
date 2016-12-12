@@ -37,22 +37,22 @@
     <state-transition-element id="__18__" symbol-set="[r]">
       <activate-on-match element="__25__"/>
     </state-transition-element>
-    <state-transition-element id="__511__" symbol-set="[M]" start="start-of-data">
-      <activate-on-match element="__512__"/>
+    <state-transition-element id="__19__" symbol-set="[M]" start="start-of-data">
+      <activate-on-match element="__20__"/>
     </state-transition-element>
-    <state-transition-element id="__512__" symbol-set="[o]">
-      <activate-on-match element="__513__"/>
+    <state-transition-element id="__20__" symbol-set="[o]">
+      <activate-on-match element="__21__"/>
     </state-transition-element>
-    <state-transition-element id="__513__" symbol-set="[t]">
-      <activate-on-match element="__514__"/>
+    <state-transition-element id="__21__" symbol-set="[t]">
+      <activate-on-match element="__22__"/>
     </state-transition-element>
-    <state-transition-element id="__514__" symbol-set="[i]">
-      <activate-on-match element="__515__"/>
+    <state-transition-element id="__22__" symbol-set="[i]">
+      <activate-on-match element="__23__"/>
     </state-transition-element>
-    <state-transition-element id="__515__" symbol-set="[o]">
-      <activate-on-match element="__516__"/>
+    <state-transition-element id="__23__" symbol-set="[o]">
+      <activate-on-match element="__24__"/>
     </state-transition-element>
-    <state-transition-element id="__516__" symbol-set="[n]">
+    <state-transition-element id="__24__" symbol-set="[n]">
       <activate-on-match element="__25__"/>
     </state-transition-element>
     <counter id="__7__" target="31">

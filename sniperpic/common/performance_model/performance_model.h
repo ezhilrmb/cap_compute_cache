@@ -14,6 +14,9 @@
 #include <iostream>
 #include "magic_server.h"
 
+// To enable debug prints in CAP simulations
+#define DEBUG_ENABLED 0
+
 // Forward Decls
 class Core;
 class BranchPredictor;

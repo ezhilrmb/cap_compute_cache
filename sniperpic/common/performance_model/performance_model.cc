@@ -18,9 +18,6 @@
 
 //#define CAP_ROB_DRAIN
 
-// To enable debug prints in CAP simulations
-#define DEBUG_ENABLED 0
-
 
 PerformanceModel* PerformanceModel::create(Core* core)
 {
@@ -131,20 +128,20 @@ void PerformanceModel::processAppMagic(UInt64 argument) {
 				//printf("\nSee a marker: %lu, %s", args_in->arg0, args_in->str);
 			}
 	    if (marker.compare("cprg") == 0) {
-			   m_ignore_functional_model = true;
+			   m_ignore_functional_model = false;
                printf("CAP: PerformanceModel::processAppMagic: cache programming: %lld\n", argument);
          } 
 	    if (marker.compare("ssprg") == 0) {
-			   m_ignore_functional_model = true;
+			   m_ignore_functional_model = false;
                printf("CAP: PerformanceModel::processAppMagic: swizzle switch programming: %lld\n", argument);
 
          } 
         if(marker.compare("match") == 0) {
-			   m_ignore_functional_model = true;
+			   m_ignore_functional_model = false;
                printf("CAP: PerformanceModel::processAppMagic: input stream pattern matching: %lld\n", argument);
       }        
         if(marker.compare("repSte") == 0) {
-			   m_ignore_functional_model = true;
+			   m_ignore_functional_model = false;
                printf("CAP: PerformanceModel::processAppMagic: reporting STE programming: %lld\n", argument);
       }        
 

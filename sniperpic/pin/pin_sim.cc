@@ -67,6 +67,9 @@
 
 #include <typeinfo>
 
+// to enable debug prints for CAP simulations
+#define DEBUG_ENABLED 0
+
 // ---------------------------------------------------------------
 // FIXME:
 // There should be a better place to keep these globals
@@ -281,14 +284,18 @@ VOID traceCallback(TRACE trace, void *v)
          {
             if (INS_HasFallThrough(ins))
             {
-               printf("CAP: pin_sim HasFallThrough:%d\n", inst_mode);
-               showInstructionInfo(ins);
+               if (DEBUG_ENABLED) {
+                  printf("CAP: pin_sim HasFallThrough:%d\n", inst_mode);
+                  showInstructionInfo(ins);
+               }
                INSTRUMENT(INSTR_IF_DETAILED(inst_mode), trace, ins, IPOINT_AFTER, AFUNPTR(InstructionModeling::handleBasicBlock), IARG_THREAD_ID, IARG_END);
             }
             if (INS_IsBranch(ins))
             {
-               printf("CAP: pin_sim IsBranch:%d \n", inst_mode);
-               showInstructionInfo(ins);
+               if (DEBUG_ENABLED) {
+                  printf("CAP: pin_sim IsBranch:%d \n", inst_mode);
+                  showInstructionInfo(ins);
+               }
                INSTRUMENT(INSTR_IF_DETAILED(inst_mode), trace, ins, IPOINT_TAKEN_BRANCH, AFUNPTR(InstructionModeling::handleBasicBlock), IARG_THREAD_ID, IARG_END);
             }
             icount = 0;
