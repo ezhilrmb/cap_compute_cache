@@ -21,9 +21,6 @@
 
 #define CAP_ROB_DRAIN
 
-// To enable debug prints for CAP simulations
-#define DEBUG_ENABLED 0
-
 #if 0
    extern Lock iolock;
 #  include "core_manager.h"
@@ -526,6 +523,7 @@ void MemoryManager::processAppMagic(UInt64 argument) {
       if (marker.compare("repSte") == 0) {
         Byte * rep_ste_file = (Byte*) (args_in-> arg0);
         printf("CAP: Mem manager - Reporting STE file ptr :0x%p, content: %d", rep_ste_file, *(rep_ste_file+3));
+        // note that the rep_ste file contains both the start mask and the reporting STE mask
         init_rep_ste_program(rep_ste_file);
       } 
       if(marker.compare("ssprg") == 0) {
@@ -975,9 +973,11 @@ void  MemoryManager::create_cache_program_instructions(Byte* cap_file) {
 }  
 
 //NOTE: Representing Byte value of 0 with $ - symbol/char representation of 36. 
+//NOTE: ASSUMPTION: The first section of the rep ste file has the start state mask and 
+//the second section has the reporting STE mask. The following function reads the file
+//this way.
 void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
-	unsigned int cur_subarray = 0;
-  unsigned int cur_cache_line = 0;
+  UInt32 cur_subarray = 0;
 
   UInt32 address;
   IntPtr addr = (IntPtr)(address);
@@ -986,27 +986,105 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
   UInt32 subarray_size = CACHE_LINES_PER_SUBARRAY * getCacheBlockSize();
   UInt32 m_log_blocksize = floorLog2(getCacheBlockSize());
   Byte* temp_data_buf = new Byte;
-  int cur_byte_pos;
+  UInt32 cur_byte_pos;
 
-  if (DEBUG_ENABLED)  printf("CAP: create_cap_rep_ste_instructions\n");
+  if (DEBUG_ENABLED)  printf("CAP: create_cap_rep_ste_instructions. Now reading start STE info\n");
 
   if(m_cap_ins.size() == 0) {
     while(cur_subarray < NUM_SUBARRAYS) {
 
-        int sub_block = 0;
+        UInt32 sub_block = 0;
         while(sub_block < block_size) {  
-        //while(sub_block < 3) {
           cur_byte_pos = cur_subarray * block_size + sub_block;
           address = cur_byte_pos;
           memcpy(temp_data_buf, ste_file + cur_byte_pos, 1);
-
+         
+          // below is a global hack, since the ASCII of 0 is NULL, which does not exist as a char
+          if(*temp_data_buf == 199) 
+            *temp_data_buf = 0; 
+/*
           if(*temp_data_buf == 36) *temp_data_buf = 0;  //Refer to the NOTE
           else if(*temp_data_buf == 32) *temp_data_buf = 32;
           else if(*temp_data_buf == 42) *temp_data_buf = 16;
           else if(*temp_data_buf == 33) *temp_data_buf = 8;
           else if(*temp_data_buf == 61) *temp_data_buf = 4;
           else if(*temp_data_buf == 38) *temp_data_buf = 2;
+*/
 
+
+          if (DEBUG_ENABLED)  printf("create_cap_rep_ste_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
+          addr = (IntPtr)(address);
+          //printf("Address: 0x%x, Value: %d\n", address, (unsigned long)*temp_data_buf);
+          OperandList store_list;
+          store_list.push_back(Operand(Operand::MEMORY, 0, Operand::WRITE));
+          store_list.push_back(Operand(Operand::REG, (unsigned long)(*temp_data_buf), Operand::READ, "", true));
+          Instruction *store_inst = new GenericInstruction(store_list);
+          store_inst->setAddress(m_mbench_dest_addr); //TODO: To check where inst addr is used
+          store_inst->setSize(4); //Possible sizes seen (L:1-9, S:1-8)
+          store_inst->setAtomic(false);
+          store_inst->setDisassembly("");
+          std::vector<const MicroOp *> *store_uops 
+                                  = new std::vector<const MicroOp*>();
+          MicroOp *currentSMicroOp = new MicroOp();
+          currentSMicroOp->setInstructionPointer(Memory::make_access(m_mbench_dest_addr));
+          currentSMicroOp->makeStore(
+            0
+            , 0
+            , XED_ICLASS_MOVQ //TODO: xed_decoded_inst_get_iclass(ins)
+            , "" //xed_iclass_enum_t2str(xed_decoded_inst_get_iclass(ins))
+            , 1
+           );
+          currentSMicroOp->setOperandSize(64); 
+          currentSMicroOp->setInstruction(store_inst);
+          currentSMicroOp->setFirst(true);
+          currentSMicroOp->setLast(true);
+          store_uops->push_back(currentSMicroOp);
+          store_inst->setMicroOps(store_uops);
+          m_cap_ins.push_back(store_inst);
+          sub_block++;
+
+          //CAP: Dynamic Instructions Info creation
+          DynamicInstructionInfo sinfo = DynamicInstructionInfo::createMemoryInfo(m_mbench_dest_addr,//ins address 
+			                                true, //False if instruction will not be executed because of predication
+			                                SubsecondTime::Zero(), addr, 8, Operand::WRITE, 0, 
+			                                HitWhere::UNKNOWN);
+		      m_cap_dyn_ins_info.push_back(sinfo);
+          // TODO: FIXME: What the hell is this?
+
+          struct CAPInsInfo cii;
+          cii.addr	= addr;
+          cii.op		= CacheCntlr::CAP_ST_MASK;	
+          cii.cap_data_buf = new Byte;
+          memcpy(cii.cap_data_buf, temp_data_buf, 1);  // copy 1 byte of data
+          capInsInfoMap[addr] 	= cii;
+       } 
+      cur_subarray++;
+    }  
+
+    // Now reading the reporting STE mask
+    if (DEBUG_ENABLED)  printf ("Finished reading start mask. Now reading reporting STE mask...\n");
+    cur_subarray = 0;
+
+    while(cur_subarray < NUM_SUBARRAYS) {
+
+        int sub_block = 0;
+        while(sub_block < block_size) {  
+        //while(sub_block < 3) {
+          cur_byte_pos = (NUM_SUBARRAYS * block_size) + (cur_subarray * block_size) + sub_block;
+          address = cur_byte_pos;  
+          memcpy(temp_data_buf, ste_file + cur_byte_pos, 1);
+
+          // below is a global hack, since the ASCII of 0 is NULL, which does not exist as a char
+          if(*temp_data_buf == 199) 
+            *temp_data_buf = 0; 
+/*
+          if(*temp_data_buf == 36) *temp_data_buf = 0;  //Refer to the NOTE
+          else if(*temp_data_buf == 32) *temp_data_buf = 32;
+          else if(*temp_data_buf == 42) *temp_data_buf = 16;
+          else if(*temp_data_buf == 33) *temp_data_buf = 8;
+          else if(*temp_data_buf == 61) *temp_data_buf = 4;
+          else if(*temp_data_buf == 38) *temp_data_buf = 2;
+*/
 
 
           if (DEBUG_ENABLED)  printf("create_cap_rep_ste_instructions writing!!! addr: %d  data: %d\n", address, *temp_data_buf);
@@ -1057,6 +1135,8 @@ void  MemoryManager::create_cap_rep_ste_instructions(Byte* ste_file) {
        } 
       cur_subarray++;
     }  
+
+
   }
   if (DEBUG_ENABLED)  printf("\nCAP: After RepSTE CAPInsInfoMap Display\n");
   showCapInsInfoMap();
@@ -1079,8 +1159,8 @@ void  MemoryManager::schedule_cap_instructions() {
 void MemoryManager::showCapInsInfoMap() {
    for (CAPInsInfoMap::iterator it = capInsInfoMap.begin(); it!=capInsInfoMap.end(); it++)
    {
-      printf("address: %d, data: %d op_type: %d\n", 
-            (UInt32)(it->first), (UInt32)(*((it->second).cap_data_buf)), (UInt32)((it->second).op));
+      printf("address: 0x%x, data: %d op_type: %d\n", 
+            (UInt64)(it->first), (UInt32)(*((it->second).cap_data_buf)), (UInt32)((it->second).op));
    }
 }
 
@@ -1104,6 +1184,10 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
 
           address =  address | (1<<31) | (1<<30);
 
+          // below is a global hack, since the ASCII of 0 is NULL, which does not exist as a char
+          if(*temp_data_buf == 199) *temp_data_buf = 0;
+
+/*
           //Hack for COLOR  
           if(*temp_data_buf == 36) *temp_data_buf = 0;  //Refer to the NOTE
           else if(*temp_data_buf == 32) *temp_data_buf = 32;
@@ -1111,7 +1195,7 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
           else if(*temp_data_buf == 33) *temp_data_buf = 8;
           else if(*temp_data_buf == 61) *temp_data_buf = 4;
           else if(*temp_data_buf == 38) *temp_data_buf = 2;
-
+*/
 
 
 
@@ -1174,7 +1258,6 @@ void  MemoryManager::create_cap_ss_instructions(Byte* ss_file) {
   }
 
 }  
-
 
 void  MemoryManager::create_cap_match_instructions(Byte* match_file) {
   UInt32 address1 = 0, address = 0; 
@@ -3681,15 +3764,29 @@ MemoryManager::coreInitiateMemoryAccess(
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length = 1
          }
          else if (cii.op == CacheCntlr::CAP_END) {
-            if (DEBUG_ENABLED)  printf("End of input pattern detected! \nExiting!!!\n");
+            printf("End of input pattern! \n");
+
+            UInt32 numFSMmatches = m_cache_cntlrs[mem_component]->getNumFSMmatches();
+
+            if (numFSMmatches)
+               printf("HURRAY! %d matches found from input stream for current FSM!\n", numFSMmatches);
+            else
+               printf("No matches found for current FSM. Maybe later?\n");
+            
+            printf("Exiting!!!\n");             
             exit(0);
          }
          else if  (cii.op == CacheCntlr::CAP_REP_STE) {
+            capAddr = (IntPtr)((UInt32)(capAddr) - NUM_SUBARRAYS*m_cache_block_size);
             memcpy(data_buf, cii.cap_data_buf, 1);
 
             return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length = 1
          }
+         else if  (cii.op == CacheCntlr::CAP_ST_MASK) {
+            memcpy(data_buf, cii.cap_data_buf, 1);
 
+            return m_cache_cntlrs[mem_component]->processCAPSOpFromCore(cii.op, capAddr, data_buf, data_length);  // assumed data_length = 1
+         }
          else {
             memcpy(data_buf, cii.cap_data_buf, 1);
             if (DEBUG_ENABLED)  printf("CAP_NONE: coreInitiateMemoryAccess: reading!!! addr: %d  data: %d\n", (UInt32)(capAddr), *data_buf);

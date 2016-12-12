@@ -19,6 +19,9 @@
 
 #include "boost/tuple/tuple.hpp"
 
+// To enable debug prints for CAP
+#define DEBUG_ENABLED 0
+
 class DramCntlrInterface;
 class ATD;
 
@@ -36,17 +39,21 @@ namespace ParametricDramDirectoryMSI
 }
 class FaultInjector;
 class ShmemPerf;
+
 // Maximum size of the list of addresses to prefetch
 #define PREFETCH_MAX_QUEUE_LENGTH 32
 // Time between prefetches
 #define PREFETCH_INTERVAL SubsecondTime::NS(1)
 
-// CAP: Swizzle switch X (curr state) and Y (next state) dimensions (in Bytes)
-#define SWIZZLE_SWITCH_X 24 //64 - this is line number
-#define SWIZZLE_SWITCH_Y 3 //128 - only this is in bytes
-
 // CAP: declare number of subarrays
-#define NUM_SUBARRAYS 1
+#define NUM_SUBARRAYS 2
+
+// CAP: Swizzle switch X (curr state) and Y (next state) dimensions (in Bytes)
+#define SWIZZLE_SWITCH_X (512*NUM_SUBARRAYS) //64 - this is line number
+#define SWIZZLE_SWITCH_Y (64*NUM_SUBARRAYS) //128 - only this is in bytes
+
+// CAP: another way to extract cache size/number of rows per sub-array
+#define CACHE_LINES_PER_SUBARRAY 256
 
 namespace ParametricDramDirectoryMSI
 {
@@ -247,9 +254,11 @@ namespace ParametricDramDirectoryMSI
          // CAP: define swizzle switch        
          Byte* m_swizzleSwitch;
          Byte* m_reportingSteInfo;
+         Byte* m_startSTEMask;
          // CAP: current state mask register
          Byte* m_currStateMask;
          UInt32 m_logASCIISetIndex; 
+         UInt32 m_numFSMmatches;
 
          bool m_perfect;
          bool m_coherent;
@@ -431,6 +440,7 @@ namespace ParametricDramDirectoryMSI
            CAP_MATCH,
            CAP_SS,
            CAP_REP_STE, // for reporting STEs
+           CAP_ST_MASK,  // for FSM start mask
            CAP_END
          };
 
@@ -559,6 +569,9 @@ namespace ParametricDramDirectoryMSI
          // CAP:  Program the reporting STE information per sub array
          void updateReportingSteInfo(UInt32 bytePos, Byte *data_buf, UInt32 data_length);
 
+         //CAP: update the curr state mask at the beginning of sim and after every reset
+         void updateStartStateMask(UInt32 bytePos, Byte *data_buf, UInt32 data_length);
+         
          // CAP: show the contents of the swizzle switch
          void showSwizzleSwitch();
 
@@ -567,7 +580,10 @@ namespace ParametricDramDirectoryMSI
 
          // CAP: parent function which gets the input character, accesses the cache subarrays and concatenates the curr_state vectors from each,
          // performs a lookup in the swizzle switch and estimates next_state vectors and writes back into the curr_state mask register
-         void processPatternMatch (UInt32 inputChar, UInt32 byte_pos);
+         void processPatternMatch (UInt32 inputChar);
+
+         UInt32 getNumFSMmatches()
+         { return m_numFSMmatches;  }
 
          //CAP: 
          HitWhere::where_t processCAPSOpFromCore(CacheCntlr::cap_ops_t cap_op,

@@ -76,11 +76,11 @@ PerformanceModel::PerformanceModel(Core *core)
    , m_elapsed_time(Sim()->getDvfsManager()->getCoreDomain(core->getId()))
    , m_idle_elapsed_time(Sim()->getDvfsManager()->getCoreDomain(core->getId()))
    #ifdef ENABLE_PERF_MODEL_OWN_THREAD
-   , m_instruction_queue(125000 /*256*/) // Reduce from default size to keep memory issue time more or less synchronized
+   , m_instruction_queue(132000 /*256*/) // Reduce from default size to keep memory issue time more or less synchronized
    #else
-   , m_instruction_queue(125000 /*1024*/) // Need a bit more space for when the dyninsninfo items aren't coming in yet, or for a boatload of TLBMissInstructions
+   , m_instruction_queue(132000 /*1024*/) // Need a bit more space for when the dyninsninfo items aren't coming in yet, or for a boatload of TLBMissInstructions
    #endif
-   , m_dynamic_info_queue(125000/*640*/) // Required for REPZ CMPSB instructions with max counts of 256 (256 * 2 memory accesses + space for other dynamic instructions)
+   , m_dynamic_info_queue(132000/*640*/) // Required for REPZ CMPSB instructions with max counts of 256 (256 * 2 memory accesses + space for other dynamic instructions)
    , m_current_ins_index(0)
    , m_min_dummy_inst(0)
 {

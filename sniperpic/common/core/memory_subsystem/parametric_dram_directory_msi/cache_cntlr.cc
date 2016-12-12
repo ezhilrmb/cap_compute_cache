@@ -32,9 +32,6 @@ Lock iolock;
 #  define MYLOG(...) {}
 #endif
 
-// To enable debug prints for CAP
-#define DEBUG_ENABLED 0
-
 namespace ParametricDramDirectoryMSI
 {
 
@@ -141,9 +138,11 @@ CacheCntlr::CacheCntlr(MemComponent::component_t mem_component,
    m_next_cache_cntlr(NULL),
    m_last_level(NULL),
    m_tag_directory_home_lookup(tag_directory_home_lookup),
+   m_numFSMmatches(0),
    m_swizzleSwitch(new Byte[SWIZZLE_SWITCH_X * SWIZZLE_SWITCH_Y]), // CAP: adding swizzle switch in ctrlr
    m_currStateMask(new Byte[SWIZZLE_SWITCH_Y]),
    m_reportingSteInfo(new Byte[NUM_SUBARRAYS*cache_block_size]),
+   m_startSTEMask(new Byte[NUM_SUBARRAYS*cache_block_size]),
    m_perfect(cache_params.perfect),
    m_coherent(cache_params.coherent),
    m_prefetch_on_prefetch_hit(false),
@@ -2607,6 +2606,16 @@ void CacheCntlr::updateReportingSteInfo(UInt32 bytePos, Byte *data_buf, UInt32 d
 }
 
 /*****************************************************************************
+ * CAP: Program the initial start state mask into the currStateMask at the 
+ * beginning of the sim
+ *****************************************************************************/
+void CacheCntlr::updateStartStateMask(UInt32 bytePos, Byte *data_buf, UInt32 data_length)
+{
+   memcpy((m_startSTEMask + bytePos), data_buf, data_length);
+   memcpy((m_currStateMask + bytePos), data_buf, data_length);  // also update the curr state mask the first time
+}
+
+/*****************************************************************************
  * CAP: Display the content of the swizzle switch
  *****************************************************************************/
 
@@ -2650,12 +2659,12 @@ void CacheCntlr::retrieveNextStateInfo(Byte* inDataBuf, Byte* outDataBuf)
 
       while (j<8) {
          if ((Byte)(dataByte>>(7-j)) & 0x1) {   // check if last bit is 1
-            int byteToReadFrom = (i*8+j)*nextStateVecLength;  // skip every 128B chunk
+            int byteToReadFrom = (i*8+j)*nextStateVecLength;  // skip every 64B chunk
 
             memcpy(tempOutDataBuf, m_swizzleSwitch+byteToReadFrom, nextStateVecLength);  // swizzle switch look-up
 
             if(DEBUG_ENABLED)  {
-               printf("Found next state vector at STE:%d \n", byteToReadFrom);
+               printf("Found next state vector at STE:%d at byte position: %d\n", (i*8+j), byteToReadFrom);
                for (l=0; l<nextStateVecLength; l++)  
                   printf("%d\t", (Byte)(*(tempOutDataBuf+l)));
                printf ("\n");
@@ -2693,7 +2702,7 @@ void CacheCntlr::retrieveNextStateInfo(Byte* inDataBuf, Byte* outDataBuf)
  * each subarray, performs a lookup in the swizzle switch and estimates 
  * next_state vectors and writes back into the curr_state mask register
  *****************************************************************************/
-void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
+void CacheCntlr::processPatternMatch(UInt32 inputChar)
 {
    UInt32 subarrayIndexBits = 0, k=0, i=0;
    UInt32 address;
@@ -2717,8 +2726,8 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
       accessCache(Core::READ, addr, 0, temp_data_buf, m_cache_block_size, 1);
 
       //Byte_pos = 0 means it's the first character. If its first character, then load the curr state mask
-      if(!byte_pos)   
-         memcpy(m_currStateMask,temp_data_buf, SWIZZLE_SWITCH_Y);
+      //if(!byte_pos)   
+      //   memcpy(m_currStateMask,temp_data_buf, SWIZZLE_SWITCH_Y);
 
       if(DEBUG_ENABLED)  {
          // print the cache line
@@ -2738,7 +2747,14 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
       for (i=0; i<SWIZZLE_SWITCH_Y; i++)  
          printf("%d\t", (Byte)(*(m_reportingSteInfo+i)));
       printf("\n");
+   }
 
+   if(DEBUG_ENABLED)  {
+      // print the starting state mask
+      printf ("Start state mask info:\n");
+      for (i=0; i<SWIZZLE_SWITCH_Y; i++)  
+         printf("%d\t", (Byte)(*(m_startSTEMask+i)));
+      printf("\n");
 
       // print the current state info before masking
       printf ("Current state info before masking: \n");
@@ -2747,11 +2763,17 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
       printf("\n");
    }
    
-   // Mask curr state vectors read from cache subarrays with the current state Mask
+   bool activeCurrStFound = 0;
+
+   // Mask curr state vectors read from cache subarrays with the current state Mask 
    while (k<nextStateVecLength)  {
       memcpy(&tempA_data_buf, data_buf+k, 1);
       memcpy(&tempB_data_buf, m_currStateMask+k, 1);
       tempA_data_buf = tempA_data_buf & tempB_data_buf;
+
+      if (tempA_data_buf) 
+         activeCurrStFound = 1;
+
       memcpy(data_buf+k, &tempA_data_buf, 1);
       ++k;
    }
@@ -2763,36 +2785,47 @@ void CacheCntlr::processPatternMatch(UInt32 inputChar, UInt32 byte_pos)
          printf("%d\t", (Byte)(*(data_buf+i)));
       printf("\n");
    }
-   
-   // Reporting STE detection
-   k = 0;
-   while (k<nextStateVecLength)  {
-      memcpy(&tempA_data_buf, data_buf+k, 1);
-      memcpy(&tempB_data_buf, m_reportingSteInfo+k, 1);
-      tempA_data_buf = tempA_data_buf & tempB_data_buf;
-      if (tempA_data_buf) {
-         printf("Yaay! The END!!!\n");
-         exit(0);
-      }
-      ++k;
-   }
-   
-   // Look up in the swizzle switch to get the next_state vector
-   retrieveNextStateInfo(data_buf, out_data_buf);
-  
-   if(DEBUG_ENABLED)  {
-      // print the next state info
-      printf ("Overall next state info: \n");
-      for (i=0; i<m_cache_block_size; i++)  
-         printf("%d\t", (Byte)(*(out_data_buf+i)));
-      printf("\n");
-   }
 
-   // Update the mask register with next state bits 
-   k=0;
-   while (k<nextStateVecLength)  {
-      memcpy(m_currStateMask+k, out_data_buf+k, 1);
-      ++k;
+   if (!activeCurrStFound) {
+      printf("No active state found for current input. Invalid transition... Resetting...\n");
+
+      // update the start state mask
+      memcpy(m_currStateMask, m_startSTEMask, (NUM_SUBARRAYS*m_cache_block_size));
+   }
+   else { // an active current state has been found
+
+      // Look up in the swizzle switch to get the next_state vector
+      retrieveNextStateInfo(data_buf, out_data_buf);
+     
+      if(DEBUG_ENABLED)  {
+         // print the next state info
+         printf ("Overall next state info: \n");
+         for (i=0; i<m_cache_block_size; i++)  
+            printf("%d\t", (Byte)(*(out_data_buf+i)));
+         printf("\n");
+      }
+
+      // Update the mask register with next state bits 
+      k=0;
+      while (k<nextStateVecLength)  {
+         memcpy(m_currStateMask+k, out_data_buf+k, 1);
+         ++k;
+      }
+
+      // Reporting STE detection
+      k = 0;
+      while (k<nextStateVecLength)  {
+         memcpy(&tempA_data_buf, m_currStateMask+k, 1);
+         memcpy(&tempB_data_buf, m_reportingSteInfo+k, 1);
+         tempA_data_buf = tempA_data_buf & tempB_data_buf;
+         if (tempA_data_buf) {
+            printf("Yaay! FSM Match found! The END!!!\n");
+            m_numFSMmatches++;
+            //exit(0);
+         }
+         ++k;
+      }
+      
    }
 }
 
@@ -2828,9 +2861,13 @@ CacheCntlr::processCAPSOpFromCore(
       UInt32 bytePos = (UInt32)(addr);
       updateReportingSteInfo(bytePos, data_buf, data_length);
    }
+   else if (cap_op == CacheCntlr::CAP_ST_MASK)  { // start mask programming
+      UInt32 bytePos = (UInt32)(addr);
+      updateStartStateMask(bytePos, data_buf, data_length);
+   }
    else {
       UInt32 bytePos = (UInt32)(addr);
-      processPatternMatch((Byte)(*data_buf), bytePos);
+      processPatternMatch((Byte)(*data_buf));
    }
 
    return HitWhere::L1_OWN;  // TODO: HACK: always return hit in L1
