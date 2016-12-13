@@ -1,0 +1,27 @@
+This repository contains work related to the Cache-based Automata Processor. If you require any assistance or have questions, please contact Ezhil Raja (ezhilrmb@umich.edu) or Rashmi (rashmivs@umich.edu).
+
+PHASE 1:
+To generate the various programming files (for the cache, swizzle switch, reporting STE and Starting State STE) for a given anml benchmark:
+
+   The ANML parser script is root/prog.pl
+   This script takes the benchmark anml file as input. There are 5 benchmark anml files at root/snort1.anml, root/snort2.anml, root/snort3.anml and root/snort4.anml, root/snort5.anml. Currently, the default anml is snort1.anml
+   Change the anml input file inside the perl script in line 14.
+   Run the script as "./prog.pl" on a Terminal.
+   This script produces 3 files - cachep.txt, ssp.txt and repSTE.txt
+   Copy the three files into root/sniperpic/test/match/ directory
+
+PHASE 2:
+To compile the sniper source code, 
+
+   Go to root/sniperpic/ and run "make". This creates the sniper executable.
+
+PHASE 3:
+To run the pattern match application,
+      
+   Go to root/sniperpic/test/match/ and run "make". This creates the pattern match executable. 
+   Run "make run". This runs the application on sniper executable created in previous phase. 
+   Enjoy looking at the results!
+
+Note: 
+   If you only want to see the demo of the pattern matching application in action, just do phases 2 and 3.
+
